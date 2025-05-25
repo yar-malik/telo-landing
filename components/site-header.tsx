@@ -14,7 +14,7 @@ export function SiteHeader() {
             alt="ConnectAI Solutions Logo"
             width={180}
             height={180}
-            className="h-[70px] w-auto"
+            className="h-[60px] w-auto"
             priority
           />
         </Link>

@@ -13,14 +13,13 @@ export function SiteFooter() {
               <Image
                 src="/images/logo.png"
                 alt="ConnectAI Solutions Logo"
-                width={180}
-                height={180}
-                className="h-[120px] w-auto"
+                width={100}
+                height={80}
+                className="h-[70px] w-auto"
                 priority
               />
             </Link>
-            <div className="mb-6"></div>
-            <div className="mt-8 text-center">
+            {/* <div className="mt-8 text-center">
               <div className="flex justify-center space-x-4 mb-6">
                 <a
                   href="https://www.facebook.com/profile.php?id=61571865652363"
@@ -83,11 +82,11 @@ export function SiteFooter() {
                   </svg>
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="grid grid-cols-2 gap-8">
-            <div>
+            {/* <div>
               <h3 className="font-semibold mb-4 text-black">AI Employees</h3>
               <ul className="space-y-3">
                 <li>
@@ -115,7 +114,7 @@ export function SiteFooter() {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             {/* <div>
               <h3 className="font-semibold mb-4 text-black">Company</h3>
@@ -190,11 +189,10 @@ export function SiteFooter() {
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-sm text-gray-800">
-              © {new Date().getFullYear()} 2025 AI-Automation Agency – Connect
-              AI Solutions. All rights reserved.
+              © {new Date().getFullYear()} Telo AI Ltd. All rights reserved. UK Ltd Company Number: 14474051
             </p>
           </div>
-          <div className="flex gap-6">
+          {/* <div className="flex gap-6">
             <Link
               href="/terms-and-conditions"
               className="text-sm text-gray-800 hover:text-black transition-colors"
@@ -207,7 +205,7 @@ export function SiteFooter() {
             >
               Privacy Policy
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
