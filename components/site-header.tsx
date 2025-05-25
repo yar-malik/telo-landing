@@ -20,15 +20,6 @@ export function SiteHeader() {
         </Link>
       </div>
       <nav className="hidden md:flex items-center gap-8">
-        <Link href="/sales-executive" className="text-gray-900 font-medium">
-          Sales
-        </Link>
-        <Link href="/receptionist" className="text-gray-900 font-medium">
-          Receptionist
-        </Link>
-        <Link href="/recruitment" className="text-gray-900 font-medium">
-          Recruitment
-        </Link>
         <Link href="/pricing" className="text-gray-900 font-medium">
           Pricing
         </Link>

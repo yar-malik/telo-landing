@@ -32,116 +32,77 @@ export default function Home() {
 
       <main>
         {/* Hero section - Completely redesigned */}
-        <section className="relative overflow-hidden min-h-screen flex items-center">
+        <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10"></div>
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-400/20 rounded-full blur-3xl"></div>
 
-          <div className="relative container mx-auto px-6 py-20">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-6">
-                <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full text-blue-700 text-sm font-medium border border-blue-200">
-                  <Zap className="w-4 h-4 mr-2" />
-                  AI-Powered Workforce Revolution
-                </div>
-
-                <h1 className="text-6xl lg:text-7xl font-black text-gray-900 leading-tight">
-                  Meet Your
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                    AI Dream Team
-                  </span>
-                </h1>
-
-                <div className="text-2xl text-gray-600 leading-relaxed">
-                  Specialized in{" "}
-                  <DynamicText
-                    words={[
-                      "Sales Excellence",
-                      "Smart Recruitment",
-                      "Customer Service",
-                    ]}
-                    className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"
-                  />
-                </div>
-
-                <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
-                  Transform your recruitment process with AI that calls,
-                  qualifies, and identifies the best candidates automatically.
-                  Save hours every week on candidate outreach.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <a
-                    href={CALENDLY_LINK}
-                    className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center text-lg"
-                  >
-                    Start Free Trial
-                    <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                  <a
-                    target="_blank"
-                    href="https://connectaisolutionsvoice.vercel.app/"
-                    className="group border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center text-lg"
-                    rel="noreferrer"
-                  >
-                    <Play className="w-6 h-6 mr-2" />
-                    Watch Demo
-                  </a>
-                </div>
-
-                <div className="flex items-center space-x-8 py-8">
-                  <div className="flex items-center">
-                    <div className="flex -space-x-2">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <div
-                          key={i}
-                          className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-indigo-400 border-2 border-white flex items-center justify-center text-white font-bold text-sm"
-                        >
-                          {i}
-                        </div>
-                      ))}
-                    </div>
-                    <span className="ml-4 text-gray-600 font-medium">
-                      500+ companies trust us
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="flex">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <Star
-                          key={i}
-                          className="w-5 h-5 text-yellow-400 fill-current"
-                        />
-                      ))}
-                    </div>
-                    <span className="ml-2 text-gray-600 font-medium">
-                      4.9/5 rating
-                    </span>
-                  </div>
-                </div>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-10 sm:gap-20 max-w-[1400px] mx-auto px-6 py-10 sm:py-20">
+            <div className="space-y-3 sm:space-y-6 flex-1">
+              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full text-blue-700 text-sm font-medium border border-blue-200">
+                <Zap className="w-4 h-4 mr-2" />
+                AI-Powered Workforce Revolution
               </div>
 
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-3xl transform rotate-6 opacity-20"></div>
-                <div className="relative bg-white rounded-3xl p-8 shadow-2xl transform hover:rotate-1 transition-transform duration-300">
-                  <OptimizedImage
-                    src="/hero_image.png"
-                    alt="AI Assistant"
-                    width={500}
-                    height={500}
-                    className="w-full h-auto rounded-2xl"
-                  />
-                  <div className="absolute -bottom-4 -right-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                    ✨ Live & Ready
-                  </div>
-                </div>
+              <h1 className="text-4xl lg:text-7xl font-black text-gray-900 leading-tight">
+                Meet Your
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                  AI Dream Team
+                </span>
+              </h1>
+
+              <div className="text-2xl text-gray-600 leading-relaxed">
+                Specialized in <br />
+                <DynamicText
+                  words={[
+                    "Sales Excellence",
+                    "Smart Recruitment",
+                    "Customer Service",
+                  ]}
+                  className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"
+                />
               </div>
+
+              <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+                Transform your recruitment process with AI that calls,
+                qualifies, and identifies the best candidates automatically.
+                Save hours every week on candidate outreach.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-6">
+                <a
+                  href={CALENDLY_LINK}
+                  className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center text-lg"
+                >
+                  Start Free Trial
+                  <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a
+                  target="_blank"
+                  href="https://connectaisolutionsvoice.vercel.app/"
+                  className="group border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center text-lg"
+                  rel="noreferrer"
+                >
+                  <Play className="w-6 h-6 mr-2" />
+                  Watch Demo
+                </a>
+              </div>
+            </div>
+
+            <div className="relative flex-1">
+              <OptimizedImage
+                src="/hero_image.png"
+                alt="AI Assistant"
+                width={500}
+                height={500}
+                className="w-full h-auto rounded-2xl"
+              />
             </div>
           </div>
         </section>
 
         {/* Floating Stats Cards */}
-        <section className="relative -mt-20 z-10">
+        <section className="relative mt-10 sm:-mt-10 z-10">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
               {[
@@ -413,7 +374,7 @@ export default function Home() {
             <div className="max-w-4xl mx-auto">
               <div className="relative">
                 {/* Timeline line */}
-                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-indigo-400"></div>
+                <div className="hidden sm:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-indigo-400"></div>
 
                 <div className="space-y-12">
                   {[
@@ -443,15 +404,20 @@ export default function Home() {
                   ].map(({ step, title, desc, img, color }, index) => (
                     <div key={step} className="relative flex items-center">
                       <div
-                        className={`relative z-10 w-16 h-16 bg-gradient-to-r ${color} rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg`}
+                        className={`hidden sm:flex relative z-10 w-10 sm:w-16 h-10 sm:h-16 bg-gradient-to-r ${color} rounded-full items-center justify-center text-white font-bold text-xl shadow-lg`}
                       >
                         {step}
                       </div>
 
-                      <div className="ml-8 flex-1">
+                      <div className="ml-0 sm:ml-8 flex-1">
                         <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
                           <div className="grid lg:grid-cols-2 gap-8 items-center">
                             <div>
+                              <div
+                                className={`block sm:hidden relative z-10 w-16 h-16 bg-gradient-to-r ${color} rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg mb-4`}
+                              >
+                                {step}
+                              </div>
                               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                                 {title}
                               </h3>
