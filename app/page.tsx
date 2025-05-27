@@ -2,9 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  Play,
   CheckCircle,
-  Star,
   Users,
   Clock,
   Zap,
@@ -14,7 +12,6 @@ import {
   TrendingUp,
   ChevronDown,
 } from "lucide-react";
-import { DynamicText } from "@/components/dynamic-text";
 import { OptimizedImage } from "@/components/optimized-image";
 import { SiteHeader } from "@/components/site-header";
 import { AgentImage } from "@/components/agent-image";
@@ -23,8 +20,94 @@ import UseCaseSection from "@/components/usecase-section";
 import TrustSection from "@/components/gdpAndCompliance";
 import PricingPlansSection from "@/components/pricing-plans";
 import { CALENDLY_LINK } from "@/constants";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
+  const aiAgents = [
+    {
+      name: "Emma",
+      role: "AI Sales Executive",
+      href: "/sales-executive",
+      img: "/ai-sales-face.png",
+      imgAlt: "Emma AI Sales",
+      gradient: "from-blue-50 to-indigo-50",
+      avatarGradient: "from-blue-400 to-blue-600",
+      linkColor: "text-blue-600 hover:text-blue-700",
+      features: [
+        { icon: TrendingUp, label: "Lead Generation", color: "text-blue-500" },
+        {
+          icon: MessageSquare,
+          label: "Personalized Outreach",
+          color: "text-blue-500",
+        },
+        { icon: Bot, label: "24/7 Follow-ups", color: "text-blue-500" },
+        { icon: CheckCircle, label: "CRM Integration", color: "text-blue-500" },
+      ],
+      description:
+        "Generates qualified leads, conducts personalized outreach, and nurtures prospects through your entire sales funnel with human-like conversations.",
+    },
+    {
+      name: "Alex",
+      role: "AI Recruiter",
+      href: "/recruitment",
+      img: "/ai-customer-service-face.png",
+      imgAlt: "Alex AI Recruiter",
+      gradient: "from-indigo-50 to-purple-50",
+      avatarGradient: "from-indigo-400 to-indigo-600",
+      linkColor: "text-indigo-600 hover:text-indigo-700",
+      features: [
+        { icon: Users, label: "Candidate Screening", color: "text-indigo-500" },
+        {
+          icon: Calendar,
+          label: "Interview Scheduling",
+          color: "text-indigo-500",
+        },
+        {
+          icon: MessageSquare,
+          label: "Candidate Communication",
+          color: "text-indigo-500",
+        },
+        {
+          icon: CheckCircle,
+          label: "ATS Integration",
+          color: "text-indigo-500",
+        },
+      ],
+      description:
+        "Screens candidates, schedules interviews, and manages your entire recruitment pipeline with precision and efficiency.",
+    },
+    {
+      name: "Sophia",
+      role: "AI Receptionist",
+      href: "/receptionist",
+      img: "/ai-receptionist-face.jpg",
+      imgAlt: "Sophia AI Receptionist",
+      gradient: "from-purple-50 to-pink-50",
+      avatarGradient: "from-purple-400 to-purple-600",
+      linkColor: "text-purple-600 hover:text-purple-700",
+      features: [
+        {
+          icon: MessageSquare,
+          label: "Call Handling",
+          color: "text-purple-500",
+        },
+        {
+          icon: Calendar,
+          label: "Appointment Booking",
+          color: "text-purple-500",
+        },
+        { icon: Clock, label: "24/7 Availability", color: "text-purple-500" },
+        {
+          icon: CheckCircle,
+          label: "Multi-language Support",
+          color: "text-purple-500",
+        },
+      ],
+      description:
+        "Handles calls, books appointments, and provides exceptional customer service around the clock with professional courtesy.",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Header section */}
@@ -33,35 +116,26 @@ export default function Home() {
       <main>
         {/* Hero section - Completely redesigned */}
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10"></div>
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-400/20 rounded-full blur-3xl"></div>
+          <div className="absolute top-[50%] left-[30%] w-72 h-72 bg-blue-800/40 rounded-full blur-[100px]"></div>
 
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-10 sm:gap-20 max-w-[1400px] mx-auto px-6 py-10 sm:py-20">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-10 sm:gap-20 max-w-[1400px] mx-auto px-6 sm:py-16 md:py-24">
             <div className="space-y-3 sm:space-y-6 flex-1">
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full text-blue-700 text-sm font-medium border border-blue-200">
                 <Zap className="w-4 h-4 mr-2" />
                 AI-Powered Workforce Revolution
               </div>
 
-              <h1 className="text-4xl lg:text-7xl font-black text-gray-900 leading-tight">
-                Meet Your
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                  AI Dream Team
-                </span>
-              </h1>
-
-              <div className="text-2xl text-gray-600 leading-relaxed">
-                Specialized in <br />
-                <DynamicText
+              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Let AI handle your <br /> calls like a human
+                {/* <DynamicText
                   words={[
                     "Sales Excellence",
                     "Smart Recruitment",
                     "Customer Service",
                   ]}
                   className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"
-                />
-              </div>
+                /> */}
+              </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
                 Transform your recruitment process with AI that calls,
@@ -70,22 +144,12 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6">
-                <a
-                  href={CALENDLY_LINK}
-                  className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center text-lg"
-                >
-                  Start Free Trial
-                  <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
-                </a>
-                <a
-                  target="_blank"
-                  href="https://connectaisolutionsvoice.vercel.app/"
-                  className="group border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center text-lg"
-                  rel="noreferrer"
-                >
-                  <Play className="w-6 h-6 mr-2" />
-                  Watch Demo
-                </a>
+                <Link href={CALENDLY_LINK}>
+                  <Button>
+                    Start Free Trial
+                    <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -101,8 +165,11 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Use Cases */}
+        <UseCaseSection />
+
         {/* Floating Stats Cards */}
-        <section className="relative mt-10 sm:-mt-10 z-10">
+        <section className="relative z-10 my-8 md:my-16">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
               {[
@@ -160,7 +227,7 @@ export default function Home() {
 
         {/* AI Team Showcase - Horizontal Cards */}
         <section className="py-20 bg-white">
-          <div className="container mx-auto px-6">
+          <div className="max-w-[1400px] mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                 Your{" "}
@@ -174,185 +241,61 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-8 max-w-5xl mx-auto">
+            <div className="flex gap-8 mx-auto">
               {/* Emma - Sales */}
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
-                <div className="grid lg:grid-cols-3 gap-8 items-center">
-                  <div className="text-center lg:text-left">
-                    <div className="relative inline-block mb-4">
-                      <div className="w-36 h-36 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 p-1">
-                        <img
-                          src="/ai-sales-face.png"
-                          alt="Emma AI Sales"
-                          className="w-full h-full rounded-full object-cover"
-                        />
+              {aiAgents.map(
+                (
+                  {
+                    name,
+                    role,
+                    img,
+                    imgAlt,
+                    gradient,
+                    avatarGradient,
+                    features,
+                    description,
+                  },
+                  idx
+                ) => (
+                  <div
+                    key={idx}
+                    className={`bg-gradient-to-b ${gradient} flex-1 rounded-3xl p-6 hover:shadow-xl transition-all duration-300`}
+                  >
+                    <div className="flex flex-col gap-4 items-center">
+                      <div className="flex flex-col items-start w-full">
+                        <div
+                          className={`w-full h-[350px] rounded-xl bg-gradient-to-r ${avatarGradient} mb-4`}
+                        >
+                          <img
+                            src={img}
+                            alt={imgAlt}
+                            className="w-full h-full object-cover rounded-xl"
+                          />
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                          {name}
+                        </h3>
+                        <p className={`text-blue-600 text-base font-semibold`}>
+                          {role}
+                        </p>
                       </div>
-                      <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white"></div>
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      Emma
-                    </h3>
-                    <p className="text-blue-600 font-semibold mb-2">
-                      AI Sales Executive
-                    </p>
-                    <Link
-                      href="/sales-executive"
-                      className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold"
-                    >
-                      Learn More <ArrowRight className="w-4 h-4 ml-1" />
-                    </Link>
-                  </div>
-
-                  <div className="lg:col-span-2">
-                    <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                      Generates qualified leads, conducts personalized outreach,
-                      and nurtures prospects through your entire sales funnel
-                      with human-like conversations.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="flex items-center">
-                        <TrendingUp className="w-5 h-5 text-blue-500 mr-2" />
-                        <span className="text-gray-600">Lead Generation</span>
-                      </div>
-                      <div className="flex items-center">
-                        <MessageSquare className="w-5 h-5 text-blue-500 mr-2" />
-                        <span className="text-gray-600">
-                          Personalized Outreach
-                        </span>
-                      </div>
-                      <div className="flex items-center">
-                        <Bot className="w-5 h-5 text-blue-500 mr-2" />
-                        <span className="text-gray-600">24/7 Follow-ups</span>
-                      </div>
-                      <div className="flex items-center">
-                        <CheckCircle className="w-5 h-5 text-blue-500 mr-2" />
-                        <span className="text-gray-600">CRM Integration</span>
+                      <div className="lg:col-span-2">
+                        <p className="text-gray-700 text-base leading-relaxed mb-6">
+                          {description}
+                        </p>
+                        <div className="grid grid-cols-1 gap-4">
+                          {features.map(({ icon: Icon, label, color }) => (
+                            <div className="flex items-center" key={label}>
+                              <Icon className={`w-5 h-5 ${color} mr-2`} />
+                              <span className="text-gray-600">{label}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Alex - Recruitment */}
-              <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
-                <div className="grid lg:grid-cols-3 gap-8 items-center">
-                  <div className="text-center lg:text-left">
-                    <div className="relative inline-block mb-4">
-                      <div className="w-36 h-36 rounded-full bg-gradient-to-r from-indigo-400 to-indigo-600 p-1">
-                        <img
-                          src="/ai-customer-service-face.png"
-                          alt="Alex AI Recruitment"
-                          className="w-full h-full rounded-full object-cover"
-                        />
-                      </div>
-                      <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white"></div>
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      Alex
-                    </h3>
-                    <p className="text-indigo-600 font-semibold mb-2">
-                      AI Recruitment Agent
-                    </p>
-                    <Link
-                      href="/recruitment"
-                      className="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-semibold"
-                    >
-                      Learn More <ArrowRight className="w-4 h-4 ml-1" />
-                    </Link>
-                  </div>
-
-                  <div className="lg:col-span-2">
-                    <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                      Screens candidates, schedules interviews, and manages your
-                      entire recruitment pipeline with precision and efficiency.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-indigo-500 mr-2" />
-                        <span className="text-gray-600">
-                          Candidate Screening
-                        </span>
-                      </div>
-                      <div className="flex items-center">
-                        <Calendar className="w-5 h-5 text-indigo-500 mr-2" />
-                        <span className="text-gray-600">
-                          Interview Scheduling
-                        </span>
-                      </div>
-                      <div className="flex items-center">
-                        <MessageSquare className="w-5 h-5 text-indigo-500 mr-2" />
-                        <span className="text-gray-600">
-                          Candidate Communication
-                        </span>
-                      </div>
-                      <div className="flex items-center">
-                        <CheckCircle className="w-5 h-5 text-indigo-500 mr-2" />
-                        <span className="text-gray-600">ATS Integration</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Sophia - Reception */}
-              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
-                <div className="grid lg:grid-cols-3 gap-8 items-center">
-                  <div className="text-center lg:text-left">
-                    <div className="relative inline-block mb-4">
-                      <div className="w-36 h-36 rounded-full bg-gradient-to-r from-purple-400 to-purple-600 p-1">
-                        <img
-                          src="/ai-receptionist-face.jpg"
-                          alt="Sophia AI Receptionist"
-                          className="w-full h-full rounded-full object-cover"
-                        />
-                      </div>
-                      <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white"></div>
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      Sophia
-                    </h3>
-                    <p className="text-purple-600 font-semibold mb-2">
-                      AI Receptionist
-                    </p>
-                    <Link
-                      href="/receptionist"
-                      className="inline-flex items-center text-purple-600 hover:text-purple-700 font-semibold"
-                    >
-                      Learn More <ArrowRight className="w-4 h-4 ml-1" />
-                    </Link>
-                  </div>
-
-                  <div className="lg:col-span-2">
-                    <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                      Handles calls, books appointments, and provides
-                      exceptional customer service around the clock with
-                      professional courtesy.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="flex items-center">
-                        <MessageSquare className="w-5 h-5 text-purple-500 mr-2" />
-                        <span className="text-gray-600">Call Handling</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Calendar className="w-5 h-5 text-purple-500 mr-2" />
-                        <span className="text-gray-600">
-                          Appointment Booking
-                        </span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-purple-500 mr-2" />
-                        <span className="text-gray-600">24/7 Availability</span>
-                      </div>
-                      <div className="flex items-center">
-                        <CheckCircle className="w-5 h-5 text-purple-500 mr-2" />
-                        <span className="text-gray-600">
-                          Multi-language Support
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                )
+              )}
             </div>
           </div>
         </section>
@@ -647,9 +590,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Use Cases */}
-        <UseCaseSection />
 
         {/* Trust Section */}
         <TrustSection />

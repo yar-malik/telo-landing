@@ -8,10 +8,13 @@ import Script from "next/script"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "ConnectAI - Human-like AI Employees",
+  title: "TeloAI",
   description: "AI employees for your business that never sleep, get tired or quit.",
-  generator: "ConnectAI Platform",
-  creator: "ConnectAI",
+  generator: "TeloAI Platform",
+  creator: "TeloAI",
+  icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({
@@ -22,11 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preload" href="/ai-sales-face.png" as="image" />
-        <link rel="preload" href="/ai-receptionist-face.jpg" as="image" />
-        <link rel="preload" href="/ai-real-estate-face.png" as="image" />
-        <link rel="preload" href="/ai-customer-service-face.png" as="image" />
-        <link rel="preload" href="/images/logo.webp" as="image" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="apple-mobile-web-app-title" content="Telo AI" />
+        <link rel="preload" href="/images/logo.png" as="image" />
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
