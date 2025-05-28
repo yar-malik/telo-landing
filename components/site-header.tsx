@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { CALENDLY_LINK } from "@/constants"
+import { CALENDLY_LINK, SIGNUP_LINK } from "@/constants"
 
 export function SiteHeader() {
   return (
@@ -25,7 +25,7 @@ export function SiteHeader() {
         </Link>
         <a
           target="_blank"
-          href={CALENDLY_LINK}
+          href={SIGNUP_LINK}
           className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors"
           rel="noreferrer"
         >
