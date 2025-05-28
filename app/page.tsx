@@ -120,7 +120,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row justify-between items-center gap-10 sm:gap-20 max-w-[1400px] mx-auto px-6 sm:py-16 md:py-24">
             <div className="space-y-3 sm:space-y-6 flex-1">
-              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full text-blue-700 text-sm font-medium border border-blue-200">
+              <div className="inline-flex items-center px-2 py-[5px] bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full text-blue-700 text-xs font-medium border border-blue-200">
                 <Zap className="w-4 h-4 mr-2" />
                 AI-Powered Workforce Revolution
               </div>
@@ -137,7 +137,7 @@ export default function Home() {
                 /> */}
               </h1>
 
-              <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+              <p className="text-base text-gray-600 leading-relaxed max-w-lg">
                 Transform your recruitment process with AI that calls,
                 qualifies, and identifies the best candidates automatically.
                 Save hours every week on candidate outreach.
@@ -229,7 +229,7 @@ export default function Home() {
         <section className="py-20 bg-white">
           <div className="max-w-[1400px] mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
                 Your{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                   AI Dream Team
@@ -304,11 +304,11 @@ export default function Home() {
         <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
                 Get Started in{" "}
                 <span className="text-blue-600">3 Simple Steps</span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-base text-gray-600 max-w-3xl mx-auto">
                 From setup to deployment, we'll have your AI employee working in
                 under an hour.
               </p>
@@ -361,10 +361,10 @@ export default function Home() {
                               >
                                 {step}
                               </div>
-                              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4">
                                 {title}
                               </h3>
-                              <p className="text-gray-600 text-lg leading-relaxed">
+                              <p className="text-gray-600 text-base leading-relaxed">
                                 {desc}
                               </p>
                             </div>
@@ -385,12 +385,11 @@ export default function Home() {
             </div>
 
             <div className="text-center mt-16">
-              <a
-                href={CALENDLY_LINK}
-                className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg text-xl"
-              >
-                Get Started Now
-                <ArrowRight className="w-6 h-6 ml-2" />
+              <a href={CALENDLY_LINK}>
+                <Button variant="default">
+                  Get Started Now
+                  <ArrowRight className="w-6 h-6 ml-2" />
+                </Button>
               </a>
             </div>
           </div>
@@ -400,11 +399,11 @@ export default function Home() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
                 Why Choose Our{" "}
                 <span className="text-blue-600">AI Employees</span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-base text-gray-600 max-w-3xl mx-auto">
                 Experience the future of work with AI that's indistinguishable
                 from human interaction.
               </p>
@@ -412,11 +411,11 @@ export default function Home() {
 
             <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
               <div>
-                <h3 className="text-4xl font-bold text-gray-900 mb-6">
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">
                   Always <span className="text-blue-600">Available</span>,
                   Always <span className="text-indigo-600">Professional</span>
                 </h3>
-                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                <p className="text-base text-gray-600 mb-8 leading-relaxed">
                   Our AI employees deliver human-like conversations that feel
                   natural and engaging. They're available 24/7, never need
                   breaks, and consistently provide exceptional service.
@@ -429,47 +428,46 @@ export default function Home() {
                     "Consistent quality",
                   ].map((feature) => (
                     <div key={feature} className="flex items-center">
-                      <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
-                <a
-                  href={CALENDLY_LINK}
-                  className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300"
-                >
-                  Experience the Difference
-                  <ArrowRight className="w-5 h-5 ml-2" />
+
+                <a href={CALENDLY_LINK}>
+                  <Button variant="default">
+                    Experience the Difference
+                    <ArrowRight className="w-6 h-6 ml-2" />
+                  </Button>
                 </a>
               </div>
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 rounded-3xl transform rotate-3"></div>
+              <div className="flex justify-end">
                 <AgentImage
                   src="/available.jpg"
                   alt="24/7 Available AI"
                   width={600}
                   height={400}
-                  className="relative w-full h-auto rounded-3xl shadow-2xl"
+                  className="relative w-full lg:w-[70%] h-auto rounded-3xl"
                 />
               </div>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="order-2 lg:order-1 relative">
+              <div className="order-2 lg:order-1 relative flex justify-start">
                 <Image
                   src="/love_employee.png"
                   alt="Customizable AI"
                   width={600}
                   height={400}
-                  className="relative w-full h-auto rounded-3xl"
+                  className="relative w-full lg:w-[70%] h-auto"
                 />
               </div>
               <div className="order-1 lg:order-2">
-                <h3 className="text-4xl font-bold text-gray-900 mb-6">
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">
                   Fully <span className="text-blue-600">Customizable</span> to
                   Your Brand
                 </h3>
-                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                <p className="text-base text-gray-600 mb-8 leading-relaxed">
                   Tailor every aspect of your AI employee to match your brand
                   voice, industry requirements, and specific business processes.
                 </p>
@@ -481,17 +479,17 @@ export default function Home() {
                     "Workflow integration",
                   ].map((feature) => (
                     <div key={feature} className="flex items-center">
-                      <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
-                <a
-                  href={CALENDLY_LINK}
-                  className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300"
-                >
-                  Customize Your AI
-                  <ArrowRight className="w-5 h-5 ml-2" />
+
+                <a href={CALENDLY_LINK}>
+                  <Button variant="default">
+                    Customize Your AI
+                    <ArrowRight className="w-6 h-6 ml-2" />
+                  </Button>
                 </a>
               </div>
             </div>
@@ -503,22 +501,21 @@ export default function Home() {
           <div className="px-6 md:px-12 text-center">
             <div className="grid md:grid-cols-2 gap-16 items-center mb-12">
               <div className="flex flex-col items-center md:items-start">
-                <h2 className="text-4xl font-bold mb-4 text-center md:text-left">
+                <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center md:text-left">
                   We integrate with your existing tools
                 </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12 text-center md:text-left">
+                <p className="text-base text-gray-600 max-w-3xl mx-auto mb-8 text-center md:text-left">
                   Our platform integrates with the most commonly used
                   applications, so you can continue using your existing tools
                   while maximising your efficiency.
                 </p>
-                <div>
-                  <a
-                    href={CALENDLY_LINK}
-                    className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg font-medium transition-colors text-xl inline-block"
-                  >
+
+                <a href={CALENDLY_LINK}>
+                  <Button variant="default">
                     Start building today
-                  </a>
-                </div>
+                    <ArrowRight className="w-6 h-6 ml-2" />
+                  </Button>
+                </a>
               </div>
 
               <div>
@@ -538,10 +535,10 @@ export default function Home() {
         <PricingPlansSection />
 
         {/* FAQ Section */}
-        <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+        <section className="py-20">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
                 FAQ
               </h2>
             </div>

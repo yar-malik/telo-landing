@@ -4,13 +4,13 @@ import Image from "next/image";
 
 export default function TrustSection() {
   return (
-    <section className="py-16 bg-purple-50 rounded-3xl my-16">
+    <section className="py-16 rounded-3xl my-16">
       <div className="max-w-4xl mx-auto text-center">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-slate-800 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4">
             We honor your trust.
           </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+          <p className="text-base text-gray-700 max-w-3xl mx-auto">
             Your trust is our priority. We safeguard your data with the highest standards of security and compliance, ensuring every interaction is protected and every user feels safe.
           </p>
         </div>
