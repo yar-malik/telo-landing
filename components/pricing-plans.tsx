@@ -1,82 +1,77 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { Calendar, Check } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { CardContent } from "./ui/card";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
 
 const PricingPlansSection = () => {
-  const plans = [
+  const [isYearly, setIsYearly] = useState(false);
+
+  const pricingPlans = [
     {
       name: "Starter",
-      price: "£199",
-      period: "/mo",
-      description: "Perfect for developing and launching your AI voice agent.",
+      description: "For businesses getting started with AI phone minutes",
+      monthlyPrice: 99,
+      yearlyPrice: 99,
+      yearlyDiscount: 0,
       features: [
-        { text: "1 User" },
-        { text: "50 Candidate calls" },
-        { text: "Free SMS Follow Ups" },
-        { text: "3 Days Free Trial" },
+        "200 minutes, then $0.29/min",
+        "AI-powered call automation",
+        "Basic chat support",
       ],
-      button: {
-        href: "/book-demo",
-        className:
-          "block w-full py-3 px-4 bg-primary text-white hover:bg-primary/90 rounded-lg text-centre font-medium",
-        text: "Get Started",
-      },
+      buttonText: "Start with 10 Free minutes",
+      isEnterprise: false,
     },
     {
       name: "Growth",
-      price: "£499",
-      period: "/mo",
-      description: "Ideal for businesses with low call volumes.",
+      description: "For businesses needing versatile and smart AI phone agents",
+      monthlyPrice: 249,
+      yearlyPrice: 224,
+      yearlyDiscount: 10,
       features: [
-        { text: "3 User" },
-        { text: "200 Candidate calls" },
-        { text: "Free SMS Follow Ups" },
-        { text: "3 Days Free Trial" },
+        "1000 minutes, then $0.26/min",
+        "Self-learning AI technology",
+        "Customer recognition",
+        "Advanced call analytics",
+        "30-day onboarding support",
       ],
-      button: {
-        href: "/book-demo",
-        className:
-          "block w-full py-3 px-4 bg-primary text-white hover:bg-primary/90 rounded-lg text-centre font-medium",
-        text: "Get Started",
-      },
+      buttonText: "Start with 10 Free minutes",
+      isEnterprise: false,
     },
     {
       name: "Scale",
-      price: "£999",
-      period: "/mo",
-      description: "Best for businesses with higher call volumes.",
+      description: "For enterprises needing advanced AI phone solutions",
+      monthlyPrice: 499,
+      yearlyPrice: 409,
+      yearlyDiscount: 18,
       features: [
-        { text: "10 User" },
-        { text: "500 Candidate calls" },
-        { text: "Free SMS Follow Ups" },
-        { text: "3 Days Free Trial" },
+        "2000 minutes, then $0.23/min",
+        "All Growth plan features",
+        "Custom pricing per minute",
+        "Custom AI agent & integrations",
+        "Monthly optimization reports",
       ],
-      button: {
-        href: "/book-demo",
-        className:
-          "block w-full py-3 px-4 bg-primary text-white hover:bg-primary/90 rounded-lg text-centre font-medium",
-        text: "Get Started",
-      },
+      buttonText: "Start with 10 Free minutes",
+      isEnterprise: false,
     },
     {
-      name: "Custom Pricing",
-      price: "",
-      period: "/mo",
-      description: "Full-featured solution for agencies and large businesses.",
+      name: "Enterprise",
+      description: "For organizations needing complete customization",
+      monthlyPrice: null,
+      yearlyPrice: null,
+      yearlyDiscount: 0,
       features: [
-        { text: "Unlimited Users" },
-        { text: "Unlimited calls" },
-        { text: "Free SMS Follow Ups" },
-        { text: "3 Days Free Trial" },
+        "White Label solution",
+        "Dedicated Slack support",
+        "Free phone number",
+        "Prompting assistance",
+        "All Scale plan features",
       ],
-      button: {
-        href: "/book-demo",
-        className:
-          "block w-full py-3 px-4 bg-primary text-white hover:bg-primary/90 rounded-lg text-centre font-medium",
-        text: "Get Started",
-      },
+      buttonText: "Book a call",
+      isEnterprise: true,
     },
   ];
 
@@ -91,45 +86,163 @@ const PricingPlansSection = () => {
           call volume.
         </p>
       </div>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-        {plans.map((plan, idx) => (
-          <div
-            key={plan.name}
-            className={`flex flex-col bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow border border-primary`}
+      {/* Billing Toggle */}
+      <div className="flex items-center justify-center mb-12">
+        <div className="bg-gray-200 rounded-full p-1 flex">
+          <button
+            onClick={() => setIsYearly(false)}
+            className={`px-6 py-2 rounded-full font-medium transition-all ${
+              !isYearly
+                ? "bg-purple-600 text-white shadow-sm"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
           >
-            <div
-              className={`p-6 border-b border-gray-100 bg-primary/5 h-[120px]`}
-            >
-              <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-              {plan.price && (
-                <div className="flex items-baseline">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-gray-500 ml-1">{plan.period}</span>
-                </div>
-              )}
-            </div>
-            <div className="flex flex-col justify-between">
-              <div className="p-6 space-y-4">
-                {plan.features.map((feature, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                    <span>{feature.text}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="p-6 pt-0">
-                <Link
-                  href={plan.button.href}
-                  className={`${plan.button.className} text-center`}
-                >
-                  {plan.button.text}
-                </Link>
-              </div>
-            </div>
-          </div>
-        ))}
+            Monthly
+          </button>
+          <button
+            onClick={() => setIsYearly(true)}
+            className={`px-6 py-2 rounded-full font-medium transition-all ${
+              isYearly
+                ? "bg-purple-600 text-white shadow-sm"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+          >
+            Yearly
+          </button>
+        </div>
       </div>
+      {/* Pricing Cards Section */}
+      <section className="py-8 px-4 relative">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid lg:grid-cols-4 gap-6 lg:gap-8">
+            {pricingPlans.map((plan, index) => (
+              <div key={index} className="relative">
+                <CardContent
+                  className={`p-4 h-full relative overflow-hidden rounded-xl ${
+                    plan.isEnterprise
+                      ? "bg-gradient-to-br from-purple-900 to-purple-800 text-white border-0"
+                      : "bg-white border border-gray-200 shadow-lg"
+                  }`}
+                >
+                  <CardContent className="p-0">
+                    {/* Plan Header */}
+                    <div className="mb-6">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3
+                          className={`text-2xl font-bold ${
+                            plan.isEnterprise ? "text-white" : "text-gray-900"
+                          }`}
+                        >
+                          {plan.name}
+                        </h3>
+                        {isYearly && plan.yearlyDiscount > 0 && (
+                          <Badge className="bg-green-100 text-green-800 text-xs">
+                            -{plan.yearlyDiscount}%
+                          </Badge>
+                        )}
+                      </div>
+                      <p
+                        className={`text-xs ${
+                          plan.isEnterprise
+                            ? "text-purple-100"
+                            : "text-gray-600"
+                        }`}
+                      >
+                        {plan.description}
+                      </p>
+                    </div>
+
+                    {/* Pricing */}
+                    <div className="mb-2">
+                      {plan.isEnterprise ? (
+                        <div className="text-4xl font-bold text-white mb-2">
+                          Custom
+                        </div>
+                      ) : (
+                        <div className="flex items-baseline mb-2">
+                          <span
+                            className={`text-4xl font-bold ${
+                              plan.isEnterprise ? "text-white" : "text-gray-900"
+                            }`}
+                          >
+                            ${isYearly ? plan.yearlyPrice : plan.monthlyPrice}
+                          </span>
+                          <span
+                            className={`text-lg ${
+                              plan.isEnterprise
+                                ? "text-purple-100"
+                                : "text-gray-600"
+                            }`}
+                          >
+                            /mo
+                          </span>
+                        </div>
+                      )}
+
+                      <div className="text-sm text-gray-500 line-through h-6">
+                        {(isYearly && plan.yearlyDiscount) ? `$${plan.monthlyPrice}` : ""}
+                      </div>
+
+                      {plan.isEnterprise ? (
+                        <p className="text-[10px] text-center text-purple-100">
+                          Contact us for custom pricing
+                        </p>
+                      ) : (
+                        <p className="text-[10px] text-center text-gray-600">
+                          Cancel anytime. We'll remind you before trial ends
+                        </p>
+                      )}
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="mb-6">
+                      <Button
+                        className={`w-full py-3 font-medium ${
+                          plan.isEnterprise
+                            ? "bg-white text-purple-900 hover:bg-gray-100"
+                            : "bg-gray-800 text-white hover:bg-gray-900"
+                        }`}
+                      >
+                        {plan.isEnterprise && (
+                          <Calendar className="w-4 h-4 mr-2" />
+                        )}
+                        {plan.buttonText}
+                      </Button>
+                    </div>
+
+                    {/* Features */}
+                    <div className="space-y-3">
+                      {plan.features.map((feature, featureIndex) => (
+                        <div
+                          key={featureIndex}
+                          className="flex items-start gap-3"
+                        >
+                          <Check
+                            className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                              plan.isEnterprise
+                                ? "text-purple-200"
+                                : "text-green-500"
+                            }`}
+                          />
+                          <span
+                            className={`text-sm ${
+                              plan.isEnterprise
+                                ? "text-purple-100"
+                                : "text-gray-700"
+                            }`}
+                          >
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </CardContent>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
