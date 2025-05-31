@@ -1,11 +1,11 @@
 "use client";
 
 import { Calendar, Check } from "lucide-react";
-import Link from "next/link";
 import React, { useState } from "react";
 import { CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import { motion } from "framer-motion";
 
 const PricingPlansSection = () => {
   const [isYearly, setIsYearly] = useState(false);
@@ -114,7 +114,20 @@ const PricingPlansSection = () => {
       {/* Pricing Cards Section */}
       <section className="grid lg:grid-cols-4 gap-6 lg:gap-8 py-8 sm:px-4 relative mx-auto max-w-full sm:max-w-7xl">
         {pricingPlans.map((plan, index) => (
-          <div key={index} className="relative">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.7,
+              delay: 0.1 + index * 0.15,
+              type: "spring",
+              stiffness: 80,
+              damping: 18,
+            }}
+            className="relative"
+          >
             <CardContent
               className={`p-4 h-full relative overflow-hidden rounded-xl ${
                 plan.isEnterprise
@@ -148,7 +161,6 @@ const PricingPlansSection = () => {
                   </p>
                 </div>
 
-                {/* Pricing */}
                 <div className="mb-2">
                   {plan.isEnterprise ? (
                     <div className="text-3xl sm:text-4xl font-bold text-white mb-2">
@@ -209,7 +221,18 @@ const PricingPlansSection = () => {
                 {/* Features */}
                 <div className="space-y-3">
                   {plan.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-start gap-3">
+                    <motion.div
+                      key={featureIndex}
+                      initial={{ opacity: 0, x: 30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.5,
+                        delay: 0.5 + featureIndex * 0.07 + index * 0.1,
+                        ease: "easeOut",
+                      }}
+                      className="flex items-start gap-3"
+                    >
                       <Check
                         className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
                           plan.isEnterprise
@@ -226,12 +249,12 @@ const PricingPlansSection = () => {
                       >
                         {feature}
                       </span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </CardContent>
             </CardContent>
-          </div>
+          </motion.div>
         ))}
       </section>
     </div>

@@ -2,8 +2,35 @@
 
 import { ChevronDown } from "lucide-react";
 import React from "react";
+import { motion } from "framer-motion";
 
 const FaqSection = () => {
+  const faqs = [
+    {
+      question: "How does the 3-day free trial work?",
+      answer: "You get 3 free candidate calls per day for 3 days.",
+    },
+    {
+      question: "Can I customise the AI voice and scripts?",
+      answer:
+        "Yes! You can choose from 10+ professional voices. You can also customise both call prompts and SMS templates.",
+    },
+    {
+      question: "What happens if a candidate doesn't answer?",
+      answer:
+        "We send an automated SMS follow-up asking them to call you back or reply via email.",
+    },
+    {
+      question: "Can Telo AI integrate with my CRM?",
+      answer:
+        "Yes, we offer CRM/ATS integrations to sync all call data and notes",
+    },
+    {
+      question: "What happens after my free trial ends?",
+      answer:
+        "You can choose from one of our paid plans starting at £199/month or upgrade to a custom Enterprise plan.",
+    },
+  ];
   return (
     <section className="py-10 sm:py-20 container mx-auto px-3 sm:px-6">
       <div className="text-center mb-16">
@@ -17,32 +44,7 @@ const FaqSection = () => {
       </div>
 
       <div className="max-w-4xl mx-auto space-y-3 sm:space-y-6">
-        {[
-          {
-            question: "How does the 3-day free trial work?",
-            answer: "You get 3 free candidate calls per day for 3 days.",
-          },
-          {
-            question: "Can I customise the AI voice and scripts?",
-            answer:
-              "Yes! You can choose from 10+ professional voices. You can also customise both call prompts and SMS templates.",
-          },
-          {
-            question: "What happens if a candidate doesn't answer?",
-            answer:
-              "We send an automated SMS follow-up asking them to call you back or reply via email.",
-          },
-          {
-            question: "Can Telo AI integrate with my CRM?",
-            answer:
-              "Yes, we offer CRM/ATS integrations to sync all call data and notes",
-          },
-          {
-            question: "What happens after my free trial ends?",
-            answer:
-              "You can choose from one of our paid plans starting at £199/month or upgrade to a custom Enterprise plan.",
-          },
-        ].map((faq, idx) => (
+        {faqs.map((faq, idx) => (
           <details
             key={faq.question}
             className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg group"
@@ -54,9 +56,16 @@ const FaqSection = () => {
                 <ChevronDown />
               </span>
             </summary>
-            <p className="text-gray-600 mt-4 text-sm sm:text-base">
-              {faq.answer}
-            </p>
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              whileInView={{ opacity: 1, height: "auto" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3 }}
+            >
+              <p className="text-gray-600 mt-4 text-sm sm:text-base">
+                {faq.answer}
+              </p>
+            </motion.div>
           </details>
         ))}
       </div>
