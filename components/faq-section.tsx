@@ -45,28 +45,34 @@ const FaqSection = () => {
 
       <div className="max-w-4xl mx-auto space-y-3 sm:space-y-6">
         {faqs.map((faq, idx) => (
-          <details
+          <motion.div
+            initial={{ opacity: 0, x: idx % 2 === 0 ? 100 : -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.7,
+              delay: 0.1 + idx * 0.15,
+              type: "spring",
+              stiffness: 80,
+              damping: 18,
+            }}
             key={faq.question}
-            className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg group"
-            open={idx === 0}
           >
-            <summary className="cursor-pointer text-base sm:text-xl font-bold text-gray-900 outline-none flex items-center justify-between">
-              {faq.question}
-              <span className="ml-4 transition-transform group-open:rotate-180">
-                <ChevronDown />
-              </span>
-            </summary>
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              whileInView={{ opacity: 1, height: "auto" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3 }}
+            <details
+              className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg group"
+              open={idx === 0}
             >
+              <summary className="cursor-pointer text-base sm:text-xl font-bold text-gray-900 outline-none flex items-center justify-between">
+                {faq.question}
+                <span className="ml-4 transition-transform group-open:rotate-180">
+                  <ChevronDown />
+                </span>
+              </summary>
               <p className="text-gray-600 mt-4 text-sm sm:text-base">
                 {faq.answer}
               </p>
-            </motion.div>
-          </details>
+            </details>
+          </motion.div>
         ))}
       </div>
     </section>

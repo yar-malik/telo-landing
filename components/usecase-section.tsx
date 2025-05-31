@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 export default function UseCaseSection() {
   const [activeTab, setActiveTab] = useState("inbound");
@@ -177,53 +178,64 @@ export default function UseCaseSection() {
           </p>
         </div>
 
-        <Tabs
-          defaultValue="inbound"
-          className="mb-12"
-          onValueChange={setActiveTab}
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
-          <TabsList className="grid w-full max-w-xl mx-auto grid-cols-3 bg-slate-100 border-[1px] border-gray-200 rounded-md h-[55px] gap-2 p-2">
-            {tabs.map((tab) => (
-              <TabsTrigger
-                key={tab.value}
-                value={tab.value}
-                className={cn(
-                  "rounded-sm flex items-center gap-3 px-4 py-2",
-                  activeTab === tab.value
-                    ? "text-orange-500 bg-white shadow border-[1px] border-gray-200"
-                    : "text-slate-600"
-                )}
-              >
-                <span className="hidden sm:block">{tab.icon}</span>
-                <span className="sm:ml-1">{tab.label}</span>
-              </TabsTrigger>
+          <Tabs
+            defaultValue="inbound"
+            className="mb-12"
+            onValueChange={setActiveTab}
+          >
+            <TabsList className="grid w-full max-w-xl mx-auto grid-cols-3 bg-slate-100 border-[1px] border-gray-200 rounded-md h-[55px] gap-2 p-2">
+              {tabs.map((tab) => (
+                <TabsTrigger
+                  key={tab.value}
+                  value={tab.value}
+                  className={cn(
+                    "rounded-sm flex items-center gap-3 px-4 py-2",
+                    activeTab === tab.value
+                      ? "text-orange-500 bg-white shadow border-[1px] border-gray-200"
+                      : "text-slate-600"
+                  )}
+                >
+                  <span className="hidden sm:block">{tab.icon}</span>
+                  <span className="sm:ml-1">{tab.label}</span>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {/* Dynamically render tab content */}
+            {Object.keys(useCases).map((tabKey) => (
+              <TabsContent key={tabKey} value={tabKey} className="mt-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3">
+                  {useCases[tabKey as keyof typeof useCases].map(
+                    (useCase, index) => (
+                      <UseCaseCard
+                        key={index}
+                        icon={useCase.icon}
+                        title={useCase.title}
+                        description={useCase.description}
+                      />
+                    )
+                  )}
+                </div>
+              </TabsContent>
             ))}
-          </TabsList>
+          </Tabs>
+        </motion.div>
 
-          {/* Dynamically render tab content */}
-          {Object.keys(useCases).map((tabKey) => (
-            <TabsContent key={tabKey} value={tabKey} className="mt-8">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3">
-                {useCases[tabKey as keyof typeof useCases].map(
-                  (useCase, index) => (
-                    <UseCaseCard
-                      key={index}
-                      icon={useCase.icon}
-                      title={useCase.title}
-                      description={useCase.description}
-                    />
-                  )
-                )}
-              </div>
-            </TabsContent>
-          ))}
-        </Tabs>
-
-        <div className="text-center mt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mt-12"
+        >
           <p className="text-base sm:text-xl font-semibold text-slate-800">
             and much more...
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

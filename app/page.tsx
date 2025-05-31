@@ -169,6 +169,7 @@ export default function Home() {
                 alt="AI Assistant"
                 width={550}
                 height={550}
+                priority
                 imageClassName="rounded-2xl object-cover"
                 className="w-full max-w-[550px] h-auto sm:h-[500px]"
               />
@@ -208,20 +209,7 @@ export default function Home() {
         {/* Floating Stats Cards */}
         <section className="relative z-10 mb-8 md:mb-16">
           <div className="container mx-auto px-6">
-            <motion.div
-              className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: {
-                    staggerChildren: 0.15,
-                  },
-                },
-              }}
-            >
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {[
                 {
                   number: "500+",
@@ -251,11 +239,9 @@ export default function Home() {
                 <motion.div
                   key={label}
                   className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
-                  variants={{
-                    hidden: { opacity: 0 },
-                    visible: { opacity: 1 },
-                  }}
-                  transition={{ duration: 1, delay: idx * 0.2 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1, y: -30 }}
+                  transition={{ duration: 1, y: 0, delay: idx * 0.5, damping: 20 }}
                 >
                   <div
                     className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${color} rounded-xl mb-4`}
@@ -268,7 +254,7 @@ export default function Home() {
                   <div className="text-gray-600 text-sm">{label}</div>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -396,12 +382,12 @@ export default function Home() {
               viewport={{ once: true, amount: 0.5 }}
             >
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-          Why Choose Our{" "}
-          <span className="text-blue-600">AI Employees</span>
+                Why Choose Our{" "}
+                <span className="text-blue-600">AI Employees</span>
               </h2>
               <p className="text-base text-gray-600 max-w-3xl mx-auto">
-          Experience the future of work with AI that's indistinguishable
-          from human interaction.
+                Experience the future of work with AI that's indistinguishable
+                from human interaction.
               </p>
             </motion.div>
 
@@ -411,71 +397,71 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={{
-          hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: 0.18,
-            },
-          },
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.18,
+                  },
+                },
               }}
             >
               <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true, amount: 0.5 }}
-              >
-          <h3 className="text-3xl font-bold text-gray-900 mb-6">
-            Always <span className="text-blue-600">Available</span>,
-            Always <span className="text-indigo-600">Professional</span>
-          </h3>
-          <p className="text-base text-gray-600 mb-8 leading-relaxed">
-            Our AI employees deliver human-like conversations that feel
-            natural and engaging. They're available 24/7, never need
-            breaks, and consistently provide exceptional service.
-          </p>
-          <div className="grid grid-cols-2 gap-6 mb-8">
-            {[
-              "Natural conversation flow",
-              "Multilingual support",
-              "Instant response time",
-              "Consistent quality",
-            ].map((feature, idx) => (
-              <motion.div
-                key={feature}
-                className="flex items-center"
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -60 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
+                transition={{ duration: 0.7 }}
                 viewport={{ once: true, amount: 0.5 }}
               >
-                <CheckCircle className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
-                <span className="text-gray-700 text-sm">{feature}</span>
-              </motion.div>
-            ))}
-          </div>
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                  Always <span className="text-blue-600">Available</span>,
+                  Always <span className="text-indigo-600">Professional</span>
+                </h3>
+                <p className="text-base text-gray-600 mb-8 leading-relaxed">
+                  Our AI employees deliver human-like conversations that feel
+                  natural and engaging. They're available 24/7, never need
+                  breaks, and consistently provide exceptional service.
+                </p>
+                <div className="grid grid-cols-2 gap-6 mb-8">
+                  {[
+                    "Natural conversation flow",
+                    "Multilingual support",
+                    "Instant response time",
+                    "Consistent quality",
+                  ].map((feature, idx) => (
+                    <motion.div
+                      key={feature}
+                      className="flex items-center"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
+                      viewport={{ once: true, amount: 0.5 }}
+                    >
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm">{feature}</span>
+                    </motion.div>
+                  ))}
+                </div>
 
-          <a href={CALENDLY_LINK}>
-            <Button variant="default">
-              Experience the Difference
-              <ArrowRight className="w-6 h-6 ml-2" />
-            </Button>
-          </a>
+                <a href={CALENDLY_LINK}>
+                  <Button variant="default">
+                    Experience the Difference
+                    <ArrowRight className="w-6 h-6 ml-2" />
+                  </Button>
+                </a>
               </motion.div>
               <motion.div
-          className="flex justify-end"
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          viewport={{ once: true, amount: 0.5 }}
+                className="flex justify-end"
+                initial={{ opacity: 0, x: 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.5 }}
               >
-          <AgentImage
-            src="/available.jpg"
-            alt="24/7 Available AI"
-            width={600}
-            height={400}
-            className="relative w-full lg:w-[70%] h-auto rounded-3xl"
-          />
+                <AgentImage
+                  src="/available.jpg"
+                  alt="24/7 Available AI"
+                  width={600}
+                  height={400}
+                  className="relative w-full lg:w-[70%] h-auto rounded-3xl"
+                />
               </motion.div>
             </motion.div>
 
@@ -485,78 +471,78 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={{
-          hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: 0.18,
-            },
-          },
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.18,
+                  },
+                },
               }}
             >
               <motion.div
-          className="order-2 lg:order-1 relative flex justify-start"
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true, amount: 0.5 }}
-              >
-          <Image
-            src="/love_employee.png"
-            alt="Customizable AI"
-            width={600}
-            height={400}
-            className="relative w-full lg:w-[70%] h-auto"
-          />
-              </motion.div>
-              <motion.div
-          className="order-1 lg:order-2"
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          viewport={{ once: true, amount: 0.5 }}
-              >
-          <h3 className="text-3xl font-bold text-gray-900 mb-6">
-            Fully <span className="text-blue-600">Customizable</span> to
-            Your Brand
-          </h3>
-          <p className="text-base text-gray-600 mb-8 leading-relaxed">
-            Tailor every aspect of your AI employee to match your brand
-            voice, industry requirements, and specific business processes.
-          </p>
-          <div className="grid grid-cols-2 gap-6 mb-8">
-            {[
-              "Custom personality & tone",
-              "Industry-specific knowledge",
-              "Brand voice alignment",
-              "Workflow integration",
-            ].map((feature, idx) => (
-              <motion.div
-                key={feature}
-                className="flex items-center"
-                initial={{ opacity: 0, x: -20 }}
+                className="order-2 lg:order-1 relative flex justify-start"
+                initial={{ opacity: 0, x: -60 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
+                transition={{ duration: 0.7 }}
                 viewport={{ once: true, amount: 0.5 }}
               >
-                <CheckCircle className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
-                <span className="text-gray-700 text-sm">{feature}</span>
+                <Image
+                  src="/love_employee.png"
+                  alt="Customizable AI"
+                  width={600}
+                  height={400}
+                  className="relative w-full lg:w-[70%] h-auto"
+                />
               </motion.div>
-            ))}
-          </div>
+              <motion.div
+                className="order-1 lg:order-2"
+                initial={{ opacity: 0, x: 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.5 }}
+              >
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                  Fully <span className="text-blue-600">Customizable</span> to
+                  Your Brand
+                </h3>
+                <p className="text-base text-gray-600 mb-8 leading-relaxed">
+                  Tailor every aspect of your AI employee to match your brand
+                  voice, industry requirements, and specific business processes.
+                </p>
+                <div className="grid grid-cols-2 gap-6 mb-8">
+                  {[
+                    "Custom personality & tone",
+                    "Industry-specific knowledge",
+                    "Brand voice alignment",
+                    "Workflow integration",
+                  ].map((feature, idx) => (
+                    <motion.div
+                      key={feature}
+                      className="flex items-center"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
+                      viewport={{ once: true, amount: 0.5 }}
+                    >
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm">{feature}</span>
+                    </motion.div>
+                  ))}
+                </div>
 
-          <a href={CALENDLY_LINK}>
-            <Button variant="default">
-              Customize Your AI
-              <ArrowRight className="w-6 h-6 ml-2" />
-            </Button>
-          </a>
+                <a href={CALENDLY_LINK}>
+                  <Button variant="default">
+                    Customize Your AI
+                    <ArrowRight className="w-6 h-6 ml-2" />
+                  </Button>
+                </a>
               </motion.div>
             </motion.div>
           </div>
         </section>
 
         {/* Integration Section */}
-        <section className="py-16 bg-[#FDF9F8] rounded-3xl my-16">
+        <section className="py-16 bg-[#FDF9F8]">
           <div className="px-6 md:px-12 text-center">
             <motion.div
               className="grid md:grid-cols-2 gap-16 items-center mb-12"
@@ -564,51 +550,51 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={{
-          hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: 0.18,
-            },
-          },
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.18,
+                  },
+                },
               }}
             >
               <motion.div
-          className="flex flex-col items-center md:items-start"
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true, amount: 0.5 }}
+                className="flex flex-col items-center md:items-start"
+                initial={{ opacity: 0, x: -60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true, amount: 0.5 }}
               >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center md:text-left">
-            We integrate with your existing tools
-          </h2>
-          <p className="text-base text-gray-600 max-w-3xl mx-auto mb-8 text-center md:text-left">
-            Our platform integrates with the most commonly used
-            applications, so you can continue using your existing tools
-            while maximising your efficiency.
-          </p>
+                <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center md:text-left">
+                  We integrate with your existing tools
+                </h2>
+                <p className="text-base text-gray-600 max-w-3xl mx-auto mb-8 text-center md:text-left">
+                  Our platform integrates with the most commonly used
+                  applications, so you can continue using your existing tools
+                  while maximising your efficiency.
+                </p>
 
-          <a href={CALENDLY_LINK}>
-            <Button variant="default">
-              Start building today
-              <ArrowRight className="w-6 h-6 ml-2" />
-            </Button>
-          </a>
+                <a href={CALENDLY_LINK}>
+                  <Button variant="default">
+                    Start building today
+                    <ArrowRight className="w-6 h-6 ml-2" />
+                  </Button>
+                </a>
               </motion.div>
 
               <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          viewport={{ once: true, amount: 0.5 }}
+                initial={{ opacity: 0, x: 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.5 }}
               >
-          <Image
-            src="/how-it-works.png"
-            alt="How It Works Process"
-            width={1000}
-            height={400}
-            className="mx-auto"
-          />
+                <Image
+                  src="/how-it-works.png"
+                  alt="How It Works Process"
+                  width={1000}
+                  height={400}
+                  className="mx-auto"
+                />
               </motion.div>
             </motion.div>
           </div>
