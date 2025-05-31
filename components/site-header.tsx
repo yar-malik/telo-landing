@@ -23,6 +23,9 @@ export function SiteHeader() {
         <Link href="/pricing" className="text-gray-900 font-medium">
           Pricing
         </Link>
+        <Link href="/faq" className="text-gray-900 font-medium">
+          FAQs
+        </Link>
         <a
           target="_blank"
           href={SIGNUP_LINK}

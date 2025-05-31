@@ -76,7 +76,7 @@ const PricingPlansSection = () => {
   ];
 
   return (
-    <div className="container mx-auto px-6 md:px-12 py-12 md:py-24">
+    <div className="container mx-auto px-2 sm:px-6 md:px-12 py-12 md:py-24">
       <div className="text-center mb-16">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           Pricing Plans
@@ -93,7 +93,7 @@ const PricingPlansSection = () => {
             onClick={() => setIsYearly(false)}
             className={`px-6 py-2 rounded-full font-medium transition-all ${
               !isYearly
-                ? "bg-purple-600 text-white shadow-sm"
+                ? "bg-blue-700 text-white shadow-sm"
                 : "text-gray-600 hover:text-gray-900"
             }`}
           >
@@ -103,7 +103,7 @@ const PricingPlansSection = () => {
             onClick={() => setIsYearly(true)}
             className={`px-6 py-2 rounded-full font-medium transition-all ${
               isYearly
-                ? "bg-purple-600 text-white shadow-sm"
+                ? "bg-blue-700 text-white shadow-sm"
                 : "text-gray-600 hover:text-gray-900"
             }`}
           >
@@ -112,136 +112,127 @@ const PricingPlansSection = () => {
         </div>
       </div>
       {/* Pricing Cards Section */}
-      <section className="py-8 px-4 relative">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid lg:grid-cols-4 gap-6 lg:gap-8">
-            {pricingPlans.map((plan, index) => (
-              <div key={index} className="relative">
-                <CardContent
-                  className={`p-4 h-full relative overflow-hidden rounded-xl ${
-                    plan.isEnterprise
-                      ? "bg-gradient-to-br from-purple-900 to-purple-800 text-white border-0"
-                      : "bg-white border border-gray-200 shadow-lg"
-                  }`}
-                >
-                  <CardContent className="p-0">
-                    {/* Plan Header */}
-                    <div className="mb-6">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3
-                          className={`text-2xl font-bold ${
-                            plan.isEnterprise ? "text-white" : "text-gray-900"
-                          }`}
-                        >
-                          {plan.name}
-                        </h3>
-                        {isYearly && plan.yearlyDiscount > 0 && (
-                          <Badge className="bg-green-100 text-green-800 text-xs">
-                            -{plan.yearlyDiscount}%
-                          </Badge>
-                        )}
-                      </div>
-                      <p
-                        className={`text-xs ${
+      <section className="grid lg:grid-cols-4 gap-6 lg:gap-8 py-8 sm:px-4 relative mx-auto max-w-full sm:max-w-7xl">
+        {pricingPlans.map((plan, index) => (
+          <div key={index} className="relative">
+            <CardContent
+              className={`p-4 h-full relative overflow-hidden rounded-xl ${
+                plan.isEnterprise
+                  ? "bg-gradient-to-br from-blue-900 to-blue-700 text-white border-0"
+                  : "bg-white border border-gray-200 shadow-lg"
+              }`}
+            >
+              <CardContent className="p-0">
+                {/* Plan Header */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3
+                      className={`text-2xl font-bold ${
+                        plan.isEnterprise ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      {plan.name}
+                    </h3>
+                    {isYearly && plan.yearlyDiscount > 0 && (
+                      <Badge className="bg-green-100 text-green-800 text-xs">
+                        -{plan.yearlyDiscount}%
+                      </Badge>
+                    )}
+                  </div>
+                  <p
+                    className={`text-xs ${
+                      plan.isEnterprise ? "text-purple-100" : "text-gray-600"
+                    }`}
+                  >
+                    {plan.description}
+                  </p>
+                </div>
+
+                {/* Pricing */}
+                <div className="mb-2">
+                  {plan.isEnterprise ? (
+                    <div className="text-3xl sm:text-4xl font-bold text-white mb-2">
+                      Custom
+                    </div>
+                  ) : (
+                    <div className="flex items-baseline mb-2">
+                      <span
+                        className={`text-4xl font-bold ${
+                          plan.isEnterprise ? "text-white" : "text-gray-900"
+                        }`}
+                      >
+                        ${isYearly ? plan.yearlyPrice : plan.monthlyPrice}
+                      </span>
+                      <span
+                        className={`text-lg ${
                           plan.isEnterprise
                             ? "text-purple-100"
                             : "text-gray-600"
                         }`}
                       >
-                        {plan.description}
-                      </p>
+                        /mo
+                      </span>
                     </div>
+                  )}
 
-                    {/* Pricing */}
-                    <div className="mb-2">
-                      {plan.isEnterprise ? (
-                        <div className="text-4xl font-bold text-white mb-2">
-                          Custom
-                        </div>
-                      ) : (
-                        <div className="flex items-baseline mb-2">
-                          <span
-                            className={`text-4xl font-bold ${
-                              plan.isEnterprise ? "text-white" : "text-gray-900"
-                            }`}
-                          >
-                            ${isYearly ? plan.yearlyPrice : plan.monthlyPrice}
-                          </span>
-                          <span
-                            className={`text-lg ${
-                              plan.isEnterprise
-                                ? "text-purple-100"
-                                : "text-gray-600"
-                            }`}
-                          >
-                            /mo
-                          </span>
-                        </div>
-                      )}
+                  <div className="text-sm text-gray-500 line-through h-6">
+                    {isYearly && plan.yearlyDiscount
+                      ? `$${plan.monthlyPrice}`
+                      : ""}
+                  </div>
 
-                      <div className="text-sm text-gray-500 line-through h-6">
-                        {(isYearly && plan.yearlyDiscount) ? `$${plan.monthlyPrice}` : ""}
-                      </div>
+                  {plan.isEnterprise ? (
+                    <p className="text-[10px] text-center text-purple-100">
+                      Contact us for custom pricing
+                    </p>
+                  ) : (
+                    <p className="text-[10px] text-center text-gray-600">
+                      Cancel anytime. We'll remind you before trial ends
+                    </p>
+                  )}
+                </div>
 
-                      {plan.isEnterprise ? (
-                        <p className="text-[10px] text-center text-purple-100">
-                          Contact us for custom pricing
-                        </p>
-                      ) : (
-                        <p className="text-[10px] text-center text-gray-600">
-                          Cancel anytime. We'll remind you before trial ends
-                        </p>
-                      )}
-                    </div>
+                {/* CTA Button */}
+                <div className="mb-6">
+                  <Button
+                    className={`w-full py-3 font-medium ${
+                      plan.isEnterprise
+                        ? "bg-white text-blue-600 hover:bg-gray-100"
+                        : "bg-transparent hover:bg-blue-50 text-primary border border-primary"
+                    }`}
+                  >
+                    {plan.isEnterprise && <Calendar className="w-4 h-4 mr-2" />}
+                    {plan.buttonText}
+                  </Button>
+                </div>
 
-                    {/* CTA Button */}
-                    <div className="mb-6">
-                      <Button
-                        className={`w-full py-3 font-medium ${
+                {/* Features */}
+                <div className="space-y-3">
+                  {plan.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-start gap-3">
+                      <Check
+                        className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
                           plan.isEnterprise
-                            ? "bg-white text-purple-900 hover:bg-gray-100"
-                            : "bg-gray-800 text-white hover:bg-gray-900"
+                            ? "text-purple-200"
+                            : "text-green-500"
+                        }`}
+                      />
+                      <span
+                        className={`text-sm ${
+                          plan.isEnterprise
+                            ? "text-purple-100"
+                            : "text-gray-700"
                         }`}
                       >
-                        {plan.isEnterprise && (
-                          <Calendar className="w-4 h-4 mr-2" />
-                        )}
-                        {plan.buttonText}
-                      </Button>
+                        {feature}
+                      </span>
                     </div>
-
-                    {/* Features */}
-                    <div className="space-y-3">
-                      {plan.features.map((feature, featureIndex) => (
-                        <div
-                          key={featureIndex}
-                          className="flex items-start gap-3"
-                        >
-                          <Check
-                            className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
-                              plan.isEnterprise
-                                ? "text-purple-200"
-                                : "text-green-500"
-                            }`}
-                          />
-                          <span
-                            className={`text-sm ${
-                              plan.isEnterprise
-                                ? "text-purple-100"
-                                : "text-gray-700"
-                            }`}
-                          >
-                            {feature}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </CardContent>
-              </div>
-            ))}
+                  ))}
+                </div>
+              </CardContent>
+            </CardContent>
           </div>
-        </div>
+        ))}
       </section>
     </div>
   );

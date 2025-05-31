@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-blue-300 text-white pt-10 pb-8">
+    <footer className="bg-white pt-10 pb-8">
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-start mb-12">
           <div className="mb-8 md:mb-0">
@@ -186,7 +186,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-blue-400 flex flex-col md:flex-row justify-between items-center">
+        <div className="pt-8 border-t border-gray-300 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0 w-full">
             <p className="text-sm text-gray-800 text-center">
               © {new Date().getFullYear()} Telo AI Ltd. All rights reserved. UK Ltd Company Number: 14474051

@@ -39,7 +39,7 @@ export function DynamicText({ words, className = "" }: DynamicTextProps) {
 
   return (
     <span className={`inline-block ${className}`}>
-      {displayedText}
+      {displayedText}<span className="font-normal">|</span>
     </span>
   )
 }

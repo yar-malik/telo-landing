@@ -47,132 +47,131 @@ export default function UseCaseSection() {
   ];
 
   // Define use cases for each tab
-const useCases = {
-  inbound: [
-    {
-      icon: <Building className="h-8 w-8 text-blue-600" />,
-      title: "Receptionist",
-      description:
-        "Handle incoming enquiries, book appointments, and route calls to the appropriate departments with immediate assistance.",
-    },
-    {
-      icon: <Headphones className="h-8 w-8 text-indigo-600" />,
-      title: "Customer Care",
-      description:
-        "Instantly respond to enquiries, troubleshoot technical issues, and address FAQs, so you never miss a customer query.",
-    },
-    {
-      icon: <Package className="h-8 w-8 text-green-600" />,
-      title: "Order Management",
-      description:
-        "Assist customers with placing orders and tracking deliveries 24/7 to provide an exceptional experience.",
-    },
-    {
-      icon: <Heart className="h-8 w-8 text-yellow-500" />,
-      title: "Wellbeing Companion",
-      description:
-        "Offer wellbeing support through calming exercises, active listening, and employee mood tracking.",
-    },
-    {
-      icon: <MessageSquare className="h-8 w-8 text-indigo-600" />,
-      title: "Mock Interviews",
-      description:
-        "Simulate job interviews, giving feedback on answers, tone, and delivery to help candidates improve.",
-    },
-    {
-      icon: <Car className="h-8 w-8 text-blue-600" />,
-      title: "Drive-Through Orders",
-      description:
-        "Take food orders, confirm customisations, and streamline communication between customers and kitchens.",
-    },
-  ],
-  outbound: [
-    {
-      icon: <MessageSquare className="h-8 w-8 text-blue-600" />,
-      title: "Feedback Surveys",
-      description:
-        "Collect detailed customer feedback via automated voice surveys.",
-    },
-    {
-      icon: <BadgePercent className="h-8 w-8 text-indigo-600" />,
-      title: "Sales Calls",
-      description:
-        "Call clients to promote products, qualify leads, and schedule meetings.",
-    },
-    {
-      icon: <ShoppingCart className="h-8 w-8 text-green-600" />,
-      title: "Order Confirmation",
-      description:
-        "Deliver real-time updates on order statuses through various channels.",
-    },
-    {
-      icon: <Building2 className="h-8 w-8 text-yellow-500" />,
-      title: "Concierge Service",
-      description:
-        "Provide tailored recommendations, book reservations, or share event updates.",
-    },
-    {
-      icon: <PiggyBank className="h-8 w-8 text-indigo-600" />,
-      title: "Debt Collection",
-      description:
-        "Follow up with debtors, offer payment plans, and send reminders for overdue accounts.",
-    },
-    {
-      icon: <Receipt className="h-8 w-8 text-blue-600" />,
-      title: "Payment Reminders",
-      description:
-        "Send automated voice reminders for upcoming payments and due dates.",
-    },
-  ],
-  industries: [
-    {
-      icon: <Building2 className="h-8 w-8 text-blue-600" />,
-      title: "Banking & Financial Services",
-      description:
-        "From loan collections to sales and support, tailor multiple AI agents to automate operations and save millions of pounds.",
-    },
-    {
-      icon: <Heart className="h-8 w-8 text-indigo-600" />,
-      title: "Healthcare & Insurance",
-      description:
-        "Enhance patient care and simplify claims processes with intelligent, proactive, and always-available AI agents.",
-    },
-    {
-      icon: <Home className="h-8 w-8 text-green-600" />,
-      title: "Real Estate & Retail Services",
-      description:
-        "Generate high-quality leads based on your criteria and boost conversions without expanding your team.",
-    },
-    {
-      icon: <Hotel className="h-8 w-8 text-yellow-500" />,
-      title: "Hospitality & Entertainment",
-      description:
-        "Manage bookings, promote events, and engage customers with smooth, interactive communication.",
-    },
-    {
-      icon: <Brain className="h-8 w-8 text-indigo-600" />,
-      title: "Technology & E-commerce",
-      description:
-        "Resolve technical issues, track orders, and personalise product recommendations to keep customers happy.",
-    },
-    {
-      icon: <Tv className="h-8 w-8 text-blue-600" />,
-      title: "Telecom & Service Providers",
-      description:
-        "Handle account setups, billing issues, and troubleshooting efficiently, ensuring customer satisfaction.",
-    },
-  ],
-};
-
+  const useCases = {
+    inbound: [
+      {
+        icon: <Building className="h-8 w-8 text-blue-600" />,
+        title: "Receptionist",
+        description:
+          "Handle incoming enquiries, book appointments, and route calls to the appropriate departments with immediate assistance.",
+      },
+      {
+        icon: <Headphones className="h-8 w-8 text-indigo-600" />,
+        title: "Customer Care",
+        description:
+          "Instantly respond to enquiries, troubleshoot technical issues, and address FAQs, so you never miss a customer query.",
+      },
+      {
+        icon: <Package className="h-8 w-8 text-green-600" />,
+        title: "Order Management",
+        description:
+          "Assist customers with placing orders and tracking deliveries 24/7 to provide an exceptional experience.",
+      },
+      {
+        icon: <Heart className="h-8 w-8 text-yellow-500" />,
+        title: "Wellbeing Companion",
+        description:
+          "Offer wellbeing support through calming exercises, active listening, and employee mood tracking.",
+      },
+      {
+        icon: <MessageSquare className="h-8 w-8 text-indigo-600" />,
+        title: "Mock Interviews",
+        description:
+          "Simulate job interviews, giving feedback on answers, tone, and delivery to help candidates improve.",
+      },
+      {
+        icon: <Car className="h-8 w-8 text-blue-600" />,
+        title: "Drive-Through Orders",
+        description:
+          "Take food orders, confirm customisations, and streamline communication between customers and kitchens.",
+      },
+    ],
+    outbound: [
+      {
+        icon: <MessageSquare className="h-8 w-8 text-blue-600" />,
+        title: "Feedback Surveys",
+        description:
+          "Collect detailed customer feedback via automated voice surveys.",
+      },
+      {
+        icon: <BadgePercent className="h-8 w-8 text-indigo-600" />,
+        title: "Sales Calls",
+        description:
+          "Call clients to promote products, qualify leads, and schedule meetings.",
+      },
+      {
+        icon: <ShoppingCart className="h-8 w-8 text-green-600" />,
+        title: "Order Confirmation",
+        description:
+          "Deliver real-time updates on order statuses through various channels.",
+      },
+      {
+        icon: <Building2 className="h-8 w-8 text-yellow-500" />,
+        title: "Concierge Service",
+        description:
+          "Provide tailored recommendations, book reservations, or share event updates.",
+      },
+      {
+        icon: <PiggyBank className="h-8 w-8 text-indigo-600" />,
+        title: "Debt Collection",
+        description:
+          "Follow up with debtors, offer payment plans, and send reminders for overdue accounts.",
+      },
+      {
+        icon: <Receipt className="h-8 w-8 text-blue-600" />,
+        title: "Payment Reminders",
+        description:
+          "Send automated voice reminders for upcoming payments and due dates.",
+      },
+    ],
+    industries: [
+      {
+        icon: <Building2 className="h-8 w-8 text-blue-600" />,
+        title: "Banking & Financial Services",
+        description:
+          "From loan collections to sales and support, tailor multiple AI agents to automate operations and save millions of pounds.",
+      },
+      {
+        icon: <Heart className="h-8 w-8 text-indigo-600" />,
+        title: "Healthcare & Insurance",
+        description:
+          "Enhance patient care and simplify claims processes with intelligent, proactive, and always-available AI agents.",
+      },
+      {
+        icon: <Home className="h-8 w-8 text-green-600" />,
+        title: "Real Estate & Retail Services",
+        description:
+          "Generate high-quality leads based on your criteria and boost conversions without expanding your team.",
+      },
+      {
+        icon: <Hotel className="h-8 w-8 text-yellow-500" />,
+        title: "Hospitality & Entertainment",
+        description:
+          "Manage bookings, promote events, and engage customers with smooth, interactive communication.",
+      },
+      {
+        icon: <Brain className="h-8 w-8 text-indigo-600" />,
+        title: "Technology & E-commerce",
+        description:
+          "Resolve technical issues, track orders, and personalise product recommendations to keep customers happy.",
+      },
+      {
+        icon: <Tv className="h-8 w-8 text-blue-600" />,
+        title: "Telecom & Service Providers",
+        description:
+          "Handle account setups, billing issues, and troubleshooting efficiently, ensuring customer satisfaction.",
+      },
+    ],
+  };
 
   return (
-    <section className="py-16 bg-purple-50 rounded-3xl my-16">
+    <section className="px-4 2xl:px-16 py-16 bg-blue-50 rounded-3xl my-16">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-slate-800 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Tailored for every use case
           </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-700 max-w-3xl mx-auto">
             Our AI employees work alongside your human team members to save you
             cost and time, without additional headcount
           </p>
@@ -195,8 +194,8 @@ const useCases = {
                     : "text-slate-600"
                 )}
               >
-                {tab.icon}
-                <span className="ml-1">{tab.label}</span>
+                <span className="hidden sm:block">{tab.icon}</span>
+                <span className="sm:ml-1">{tab.label}</span>
               </TabsTrigger>
             ))}
           </TabsList>
@@ -221,7 +220,7 @@ const useCases = {
         </Tabs>
 
         <div className="text-center mt-12">
-          <p className="text-xl font-semibold text-slate-800">
+          <p className="text-base sm:text-xl font-semibold text-slate-800">
             and much more...
           </p>
         </div>

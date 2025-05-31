@@ -11,6 +11,8 @@ import {
   Calendar,
   TrendingUp,
   ChevronDown,
+  PhoneMissed,
+  PhoneIncoming,
 } from "lucide-react";
 import { OptimizedImage } from "@/components/optimized-image";
 import { SiteHeader } from "@/components/site-header";
@@ -21,6 +23,8 @@ import TrustSection from "@/components/gdpAndCompliance";
 import PricingPlansSection from "@/components/pricing-plans";
 import { CALENDLY_LINK } from "@/constants";
 import { Button } from "@/components/ui/button";
+import FaqSection from "@/components/faq-section";
+import { DynamicText } from "@/components/dynamic-text";
 
 export default function Home() {
   const aiAgents = [
@@ -31,8 +35,6 @@ export default function Home() {
       img: "/ai-sales-face.png",
       imgAlt: "Emma AI Sales",
       gradient: "from-blue-50 to-indigo-50",
-      avatarGradient: "from-blue-400 to-blue-600",
-      linkColor: "text-blue-600 hover:text-blue-700",
       features: [
         { icon: TrendingUp, label: "Lead Generation", color: "text-blue-500" },
         {
@@ -53,8 +55,6 @@ export default function Home() {
       img: "/ai-customer-service-face.png",
       imgAlt: "Alex AI Recruiter",
       gradient: "from-indigo-50 to-purple-50",
-      avatarGradient: "from-indigo-400 to-indigo-600",
-      linkColor: "text-indigo-600 hover:text-indigo-700",
       features: [
         { icon: Users, label: "Candidate Screening", color: "text-indigo-500" },
         {
@@ -82,9 +82,7 @@ export default function Home() {
       href: "/receptionist",
       img: "/ai-receptionist-face.jpg",
       imgAlt: "Sophia AI Receptionist",
-      gradient: "from-purple-50 to-pink-50",
-      avatarGradient: "from-purple-400 to-purple-600",
-      linkColor: "text-purple-600 hover:text-purple-700",
+      gradient: "from-indigo-50 to-purple-50",
       features: [
         {
           icon: MessageSquare,
@@ -109,14 +107,14 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-blue-50">
       {/* Header section */}
       <SiteHeader />
 
       <main>
         {/* Hero section - Completely redesigned */}
-        <section className="relative overflow-hidden">
-          <div className="absolute top-[50%] left-[30%] w-72 h-72 bg-blue-800/40 rounded-full blur-[100px]"></div>
+        <section className="relative">
+          <div className="absolute top-[50%] left-[30%] w-[50%] h-[50%] sm:w-72 sm:h-72 bg-blue-800/40 rounded-full blur-[100px]"></div>
 
           <div className="flex flex-col sm:flex-row justify-between items-center gap-10 sm:gap-20 max-w-[1400px] mx-auto px-6 sm:py-16 md:py-24">
             <div className="space-y-3 sm:space-y-6 flex-1">
@@ -125,16 +123,16 @@ export default function Home() {
                 AI-Powered Workforce Revolution
               </div>
 
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Let AI handle your <br /> calls like a human
-                {/* <DynamicText
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Let AI handle your <br /> calls like a human <br /> for&nbsp;
+                <DynamicText
                   words={[
                     "Sales Excellence",
                     "Smart Recruitment",
                     "Customer Service",
                   ]}
                   className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"
-                /> */}
+                />
               </h1>
 
               <p className="text-base text-gray-600 leading-relaxed max-w-lg">
@@ -153,14 +151,41 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative flex-1">
+            <div className="relative flex-1 flex sm:justify-end w-full max-w-[500px]">
               <OptimizedImage
-                src="/hero_image.png"
+                src="/ai-customer-service-face.png"
                 alt="AI Assistant"
-                width={500}
-                height={500}
-                className="w-full h-auto rounded-2xl"
+                width={450}
+                height={450}
+                imageClassName="rounded-2xl object-cover"
+                className="w-full max-w-[500px] h-auto sm:h-[500px]"
               />
+
+              <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white rounded-full shadow-lg flex items-center justify-between px-4 py-2 w-[360px] max-w-[90%]">
+                <Image
+                  src="/ai-customer-service-face.png"
+                  alt="Caller"
+                  width={100}
+                  height={100}
+                  className="w-10 h-10 rounded-full object-cover mr-3"
+                />
+
+                <div className="flex-1">
+                  <p className="text-sm text-gray-300 leading-none">Incoming</p>
+                  <p className="text-base font-semibold text-white leading-tight">
+                    Alex
+                  </p>
+                </div>
+
+                <div className="flex items-center space-x-2 ml-3">
+                  <button className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center">
+                    <PhoneMissed />
+                  </button>
+                  <button className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
+                    <PhoneIncoming />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -169,9 +194,9 @@ export default function Home() {
         <UseCaseSection />
 
         {/* Floating Stats Cards */}
-        <section className="relative z-10 my-8 md:my-16">
+        <section className="relative z-10 mb-8 md:mb-16">
           <div className="container mx-auto px-6">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {[
                 {
                   number: "500+",
@@ -200,7 +225,7 @@ export default function Home() {
               ].map(({ number, label, icon: Icon, color }) => (
                 <div
                   key={label}
-                  className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                  className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
                 >
                   <div
                     className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${color} rounded-xl mb-4`}
@@ -217,14 +242,6 @@ export default function Home() {
           </div>
         </section>
 
-        <OptimizedImage
-          src="/main_image.png"
-          alt="main_image"
-          width={500}
-          height={500}
-          className="w-[80%] mx-auto h-auto my-20 rounded-xl object-cover"
-        />
-
         {/* AI Team Showcase - Horizontal Cards */}
         <section className="py-20 bg-white">
           <div className="max-w-[1400px] mx-auto px-6">
@@ -235,26 +252,17 @@ export default function Home() {
                   AI Dream Team
                 </span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
                 Meet the AI employees that will revolutionize your business
                 operations and drive unprecedented growth.
               </p>
             </div>
 
-            <div className="flex gap-8 mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {/* Emma - Sales */}
               {aiAgents.map(
                 (
-                  {
-                    name,
-                    role,
-                    img,
-                    imgAlt,
-                    gradient,
-                    avatarGradient,
-                    features,
-                    description,
-                  },
+                  { name, role, img, imgAlt, gradient, features, description },
                   idx
                 ) => (
                   <div
@@ -264,7 +272,7 @@ export default function Home() {
                     <div className="flex flex-col gap-4 items-center">
                       <div className="flex flex-col items-start w-full">
                         <div
-                          className={`w-full h-[350px] rounded-xl bg-gradient-to-r ${avatarGradient} mb-4`}
+                          className={`w-full h-[330px] rounded-xl bg-gradient-to-r mb-4`}
                         >
                           <img
                             src={img}
@@ -301,99 +309,7 @@ export default function Home() {
         </section>
 
         {/* Process Steps - Vertical Timeline */}
-        <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                Get Started in{" "}
-                <span className="text-blue-600">3 Simple Steps</span>
-              </h2>
-              <p className="text-base text-gray-600 max-w-3xl mx-auto">
-                From setup to deployment, we'll have your AI employee working in
-                under an hour.
-              </p>
-            </div>
-
-            <div className="max-w-4xl mx-auto">
-              <div className="relative">
-                {/* Timeline line */}
-                <div className="hidden sm:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-indigo-400"></div>
-
-                <div className="space-y-12">
-                  {[
-                    {
-                      step: "1",
-                      title:
-                        "Simply add your job details and customise call script.",
-                      desc: "Fill out the salary, experience and additional info so the AI can discuss the role with the candidate precisely and identify the good fits.",
-                      img: "/how-it-works/one.png",
-                      color: "from-blue-500 to-blue-600",
-                    },
-                    {
-                      step: "2",
-                      title: "Add candidates manually or via csv",
-                      desc: "You can quickly enter details manually or upload a CSV file for bulk importing.",
-                      img: "/how-it-works/two.png",
-                      color: "from-indigo-500 to-indigo-600",
-                    },
-                    {
-                      step: "3",
-                      title:
-                        "Execute AI Calls & The Good Fit Candidates Will Be Shown In Green",
-                      desc: "You will be able to identify all the good fits from the ones that are not a good fit.",
-                      img: "/how-it-works/three.png",
-                      color: "from-purple-500 to-purple-600",
-                    },
-                  ].map(({ step, title, desc, img, color }, index) => (
-                    <div key={step} className="relative flex items-center">
-                      <div
-                        className={`hidden sm:flex relative z-10 w-10 sm:w-16 h-10 sm:h-16 bg-gradient-to-r ${color} rounded-full items-center justify-center text-white font-bold text-xl shadow-lg`}
-                      >
-                        {step}
-                      </div>
-
-                      <div className="ml-0 sm:ml-8 flex-1">
-                        <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                          <div className="grid lg:grid-cols-2 gap-8 items-center">
-                            <div>
-                              <div
-                                className={`block sm:hidden relative z-10 w-16 h-16 bg-gradient-to-r ${color} rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg mb-4`}
-                              >
-                                {step}
-                              </div>
-                              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                                {title}
-                              </h3>
-                              <p className="text-gray-600 text-base leading-relaxed">
-                                {desc}
-                              </p>
-                            </div>
-                            <div>
-                              <img
-                                src={img || "/placeholder.svg"}
-                                alt={title}
-                                className="w-full h-[350px] object-center rounded-xl"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center mt-16">
-              <a href={CALENDLY_LINK}>
-                <Button variant="default">
-                  Get Started Now
-                  <ArrowRight className="w-6 h-6 ml-2" />
-                </Button>
-              </a>
-            </div>
-          </div>
-        </section>
+        {/* <HiringSteps /> */}
 
         {/* Features Grid */}
         <section className="py-20 bg-white">
@@ -535,58 +451,7 @@ export default function Home() {
         <PricingPlansSection />
 
         {/* FAQ Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                FAQ
-              </h2>
-            </div>
-
-            <div className="max-w-4xl mx-auto space-y-6">
-              {[
-                {
-                  question: "How does the 3-day free trial work?",
-                  answer: "You get 3 free candidate calls per day for 3 days.",
-                },
-                {
-                  question: "Can I customise the AI voice and scripts?",
-                  answer:
-                    "Yes! You can choose from 10+ professional voices. You can also customise both call prompts and SMS templates.",
-                },
-                {
-                  question: "What happens if a candidate doesn't answer?",
-                  answer:
-                    "We send an automated SMS follow-up asking them to call you back or reply via email.",
-                },
-                {
-                  question: "Can Telo AI integrate with my CRM?",
-                  answer:
-                    "Yes, we offer CRM/ATS integrations to sync all call data and notes",
-                },
-                {
-                  question: "What happens after my free trial ends?",
-                  answer:
-                    "You can choose from one of our paid plans starting at £199/month or upgrade to a custom Enterprise plan.",
-                },
-              ].map((faq, idx) => (
-                <details
-                  key={faq.question}
-                  className="bg-white rounded-2xl p-8 shadow-lg group"
-                  open={idx === 0}
-                >
-                  <summary className="cursor-pointer text-xl font-bold text-gray-900 outline-none flex items-center justify-between">
-                    {faq.question}
-                    <span className="ml-2 transition-transform group-open:rotate-180">
-                      <ChevronDown />
-                    </span>
-                  </summary>
-                  <p className="text-gray-600 mt-4">{faq.answer}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
+        <FaqSection />
 
         {/* Trust Section */}
         <TrustSection />

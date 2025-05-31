@@ -11,6 +11,7 @@ interface OptimizedImageProps {
   width: number
   height: number
   className?: string
+  imageClassName?: string
   style?: React.CSSProperties
   priority?: boolean
 }
@@ -21,6 +22,7 @@ export function OptimizedImage({
   width,
   height,
   className = "",
+  imageClassName,
   style,
   priority = false,
 }: OptimizedImageProps) {
@@ -48,7 +50,7 @@ export function OptimizedImage({
           alt={alt}
           width={width}
           height={height}
-          className={`w-full h-full object-contain ${isLoading ? "opacity-0" : "opacity-100"} transition-opacity duration-300`}
+          className={`w-full h-full object-contain ${isLoading ? "opacity-0" : "opacity-100"} transition-opacity duration-300 ${imageClassName}`}
           onLoad={() => setIsLoading(false)}
           onError={() => {
             setIsLoading(false)
