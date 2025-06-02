@@ -12,7 +12,6 @@ import {
   Building2,
   Hotel,
   Tv,
-  Brain,
   Home,
   Heart,
   MessageSquare,
@@ -21,6 +20,7 @@ import {
   ShoppingCart,
   BadgePercent,
   Receipt,
+  UserSearch,
 } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
@@ -151,10 +151,10 @@ export default function UseCaseSection() {
           "Manage bookings, promote events, and engage customers with smooth, interactive communication.",
       },
       {
-        icon: <Brain className="h-8 w-8 text-indigo-600" />,
-        title: "Technology & E-commerce",
+        icon: <UserSearch className="h-8 w-8 text-indigo-600" />,
+        title: "Recruitment",
         description:
-          "Resolve technical issues, track orders, and personalise product recommendations to keep customers happy.",
+          "Streamline hiring by screening candidates, answering queries, and providing updates to enhance the candidate experience.",
       },
       {
         icon: <Tv className="h-8 w-8 text-blue-600" />,

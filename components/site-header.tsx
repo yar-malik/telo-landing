@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { CALENDLY_LINK, SIGNUP_LINK } from "@/constants"
+import { SIGNUP_LINK } from "@/constants"
 
 export function SiteHeader() {
   return (

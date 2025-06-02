@@ -14,6 +14,7 @@ import {
   TrendingUp,
   PhoneMissed,
   PhoneIncoming,
+  Languages,
 } from "lucide-react";
 import { OptimizedImage } from "@/components/optimized-image";
 import { SiteHeader } from "@/components/site-header";
@@ -22,7 +23,7 @@ import { SiteFooter } from "@/components/site-footer";
 import UseCaseSection from "@/components/usecase-section";
 import TrustSection from "@/components/gdpAndCompliance";
 import PricingPlansSection from "@/components/pricing-plans";
-import { CALENDLY_LINK } from "@/constants";
+import { CALENDLY_LINK, SIGNUP_LINK } from "@/constants";
 import { Button } from "@/components/ui/button";
 import FaqSection from "@/components/faq-section";
 import { DynamicText } from "@/components/dynamic-text";
@@ -41,14 +42,14 @@ export default function Home() {
         { icon: TrendingUp, label: "Lead Generation", color: "text-blue-500" },
         {
           icon: MessageSquare,
-          label: "Personalized Outreach",
+          label: "Personalised Outreach",
           color: "text-blue-500",
         },
         { icon: Bot, label: "24/7 Follow-ups", color: "text-blue-500" },
         { icon: CheckCircle, label: "CRM Integration", color: "text-blue-500" },
       ],
       description:
-        "Generates qualified leads, conducts personalized outreach, and nurtures prospects through your entire sales funnel with human-like conversations.",
+        "Generates qualified leads, conducts personalised outreach, and nurtures prospects through your entire sales funnel with human-like conversations.",
     },
     {
       name: "Alex",
@@ -144,14 +145,14 @@ export default function Home() {
 
               <p className="text-base text-gray-600 leading-relaxed max-w-lg">
                 Transform your recruitment process with AI that calls,
-                qualifies, and identifies the best candidates automatically.
-                Save hours every week on candidate outreach.
+                qualifies, and identifies the most suitable candidates
+                automatically. Save hours each week on candidate outreach.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6">
-                <Link href={CALENDLY_LINK}>
+                <Link href={SIGNUP_LINK}>
                   <Button>
-                    Start Free Trial
+                    Create your agent in 60 sec
                     <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
@@ -212,9 +213,9 @@ export default function Home() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {[
                 {
-                  number: "500+",
-                  label: "Active Clients",
-                  icon: Users,
+                  number: "32+",
+                  label: "Languages",
+                  icon: Languages,
                   color: "from-blue-500 to-blue-600",
                 },
                 {
@@ -241,7 +242,12 @@ export default function Home() {
                   className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1, y: -30 }}
-                  transition={{ duration: 1, y: 0, delay: idx * 0.5, damping: 20 }}
+                  transition={{
+                    duration: 1,
+                    y: 0,
+                    delay: idx * 0.5,
+                    damping: 20,
+                  }}
                 >
                   <div
                     className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${color} rounded-xl mb-4`}
@@ -417,7 +423,7 @@ export default function Home() {
                 </h3>
                 <p className="text-base text-gray-600 mb-8 leading-relaxed">
                   Our AI employees deliver human-like conversations that feel
-                  natural and engaging. They're available 24/7, never need
+                  natural and engaging. They&apos;re available 24/7, never need
                   breaks, and consistently provide exceptional service.
                 </p>
                 <div className="grid grid-cols-2 gap-6 mb-8">
@@ -506,8 +512,7 @@ export default function Home() {
                   Your Brand
                 </h3>
                 <p className="text-base text-gray-600 mb-8 leading-relaxed">
-                  Tailor every aspect of your AI employee to match your brand
-                  voice, industry requirements, and specific business processes.
+                  Tailour every aspect of your AI employee to match your brand voice, industry requirements, and specific business processes.
                 </p>
                 <div className="grid grid-cols-2 gap-6 mb-8">
                   {[
@@ -569,9 +574,7 @@ export default function Home() {
                   We integrate with your existing tools
                 </h2>
                 <p className="text-base text-gray-600 max-w-3xl mx-auto mb-8 text-center md:text-left">
-                  Our platform integrates with the most commonly used
-                  applications, so you can continue using your existing tools
-                  while maximising your efficiency.
+                  Our platform integrates with the most commonly used applications, so you can continue using your existing tools while maximising your efficiency.
                 </p>
 
                 <a href={CALENDLY_LINK}>

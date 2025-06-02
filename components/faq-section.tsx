@@ -7,10 +7,6 @@ import { motion } from "framer-motion";
 const FaqSection = () => {
   const faqs = [
     {
-      question: "How does the 3-day free trial work?",
-      answer: "You get 3 free candidate calls per day for 3 days.",
-    },
-    {
       question: "Can I customise the AI voice and scripts?",
       answer:
         "Yes! You can choose from 10+ professional voices. You can also customise both call prompts and SMS templates.",
@@ -28,7 +24,7 @@ const FaqSection = () => {
     {
       question: "What happens after my free trial ends?",
       answer:
-        "You can choose from one of our paid plans starting at £199/month or upgrade to a custom Enterprise plan.",
+        "You can choose from one of our paid plans starting at £99/month or upgrade to a custom Enterprise plan.",
     },
   ];
   return (
