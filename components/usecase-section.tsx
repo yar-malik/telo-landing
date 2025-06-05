@@ -166,7 +166,7 @@ export default function UseCaseSection() {
   };
 
   return (
-    <section className="px-4 2xl:px-16 py-16 bg-blue-50 rounded-3xl my-16">
+    <section id="use-cases" className="px-4 2xl:px-16 py-16 lg:py-24 bg-blue-50 rounded-3xl my-16">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">

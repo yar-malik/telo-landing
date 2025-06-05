@@ -1,2 +1,2 @@
-export const CALENDLY_LINK = "https://calendly.com/sohaib-orq/telo-ai"
+export const CALENDLY_LINK = "https://meetings.hubspot.com/sohaib-chohan"
 export const SIGNUP_LINK = "https://dashboard.teloai.app/signup" 

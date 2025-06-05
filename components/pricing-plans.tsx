@@ -13,53 +13,54 @@ const PricingPlansSection = () => {
   const pricingPlans = [
     {
       name: "Starter",
-      description: "For businesses getting started with AI phone minutes",
+      description: "For businesses just getting started with AI phone minutes",
       monthlyPrice: 99,
       yearlyPrice: 99,
       yearlyDiscount: 0,
       features: [
-        "200 minutes, then $0.29/min",
+        "200 minutes, then £0.29/min",
         "AI-powered call automation",
         "Basic chat support",
       ],
-      buttonText: "Start with 10 Free minutes",
+      buttonText: "Start with 10 free minutes",
       isEnterprise: false,
     },
     {
       name: "Growth",
-      description: "For businesses needing versatile and smart AI phone agents",
+      description:
+        "For businesses requiring versatile and intelligent AI phone agents",
       monthlyPrice: 249,
       yearlyPrice: 224,
       yearlyDiscount: 10,
       features: [
-        "1000 minutes, then $0.26/min",
+        "1000 minutes, then £0.26/min",
         "Self-learning AI technology",
         "Customer recognition",
         "Advanced call analytics",
         "30-day onboarding support",
       ],
-      buttonText: "Start with 10 Free minutes",
+      buttonText: "Start with 10 free minutes",
       isEnterprise: false,
     },
     {
       name: "Scale",
-      description: "For enterprises needing advanced AI phone solutions",
+      description: "For enterprises seeking advanced AI phone solutions",
       monthlyPrice: 499,
       yearlyPrice: 409,
       yearlyDiscount: 18,
       features: [
-        "2000 minutes, then $0.23/min",
+        "2000 minutes, then £0.23/min",
         "All Growth plan features",
         "Custom pricing per minute",
-        "Custom AI agent & integrations",
-        "Monthly optimization reports",
+        "Custom AI agent and integrations",
+        "Monthly optimisation reports",
       ],
-      buttonText: "Start with 10 Free minutes",
+      buttonText: "Start with 10 free minutes",
       isEnterprise: false,
     },
     {
       name: "Enterprise",
-      description: "For organizations needing complete customization",
+      description: "For organisations requiring complete customisation",
       monthlyPrice: null,
       yearlyPrice: null,
       yearlyDiscount: 0,
@@ -76,7 +77,7 @@ const PricingPlansSection = () => {
   ];
 
   return (
-    <div className="container mx-auto px-2 sm:px-6 md:px-12 py-12 md:py-24">
+    <div id="pricing" className="container mx-auto px-2 sm:px-6 md:px-12 py-12 md:py-24">
       <div className="text-center mb-16">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           Pricing Plans
@@ -173,7 +174,7 @@ const PricingPlansSection = () => {
                           plan.isEnterprise ? "text-white" : "text-gray-900"
                         }`}
                       >
-                        ${isYearly ? plan.yearlyPrice : plan.monthlyPrice}
+                        £{isYearly ? plan.yearlyPrice : plan.monthlyPrice}
                       </span>
                       <span
                         className={`text-lg ${
@@ -182,14 +183,14 @@ const PricingPlansSection = () => {
                             : "text-gray-600"
                         }`}
                       >
-                        /mo
+                        /month
                       </span>
                     </div>
                   )}
 
                   <div className="text-sm text-gray-500 line-through h-6">
                     {isYearly && plan.yearlyDiscount
-                      ? `$${plan.monthlyPrice}`
+                      ? `£${plan.monthlyPrice}`
                       : ""}
                   </div>
 
