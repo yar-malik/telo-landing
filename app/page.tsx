@@ -153,7 +153,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-6">
                   <Link href={SIGNUP_LINK}>
                     <Button>
-                      Create your agent in 60 sec
+                      Start with 10 Free Minutes
                       <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
