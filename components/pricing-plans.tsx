@@ -6,6 +6,7 @@ import { CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { motion } from "framer-motion";
+import { DASHBOARD_PAGE_LINK } from "@/constants";
 
 const PricingPlansSection = () => {
   const [isYearly, setIsYearly] = useState(false);
@@ -77,7 +78,10 @@ const PricingPlansSection = () => {
   ];
 
   return (
-    <div id="pricing" className="container mx-auto px-2 sm:px-6 md:px-12 py-12 md:py-24">
+    <div
+      id="pricing"
+      className="container mx-auto px-2 sm:px-6 md:px-12 py-12 md:py-24"
+    >
       <div className="text-center mb-16">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           Pricing Plans
@@ -207,16 +211,20 @@ const PricingPlansSection = () => {
 
                 {/* CTA Button */}
                 <div className="mb-6">
-                  <Button
-                    className={`w-full py-3 font-medium ${
-                      plan.isEnterprise
-                        ? "bg-white text-blue-600 hover:bg-gray-100"
-                        : "bg-transparent hover:bg-blue-50 text-primary border border-primary"
-                    }`}
-                  >
-                    {plan.isEnterprise && <Calendar className="w-4 h-4 mr-2" />}
-                    {plan.buttonText}
-                  </Button>
+                  <a href={DASHBOARD_PAGE_LINK}>
+                    <Button
+                      className={`w-full py-3 font-medium ${
+                        plan.isEnterprise
+                          ? "bg-white text-blue-600 hover:bg-gray-100"
+                          : "bg-transparent hover:bg-blue-50 text-primary border border-primary"
+                      }`}
+                    >
+                      {plan.isEnterprise && (
+                        <Calendar className="w-4 h-4 mr-2" />
+                      )}
+                      {plan.buttonText}
+                    </Button>
+                  </a>
                 </div>
 
                 {/* Features */}

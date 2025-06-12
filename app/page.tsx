@@ -23,7 +23,7 @@ import { SiteFooter } from "@/components/site-footer";
 import UseCaseSection from "@/components/usecase-section";
 import TrustSection from "@/components/gdpAndCompliance";
 import PricingPlansSection from "@/components/pricing-plans";
-import { CALENDLY_LINK, SIGNUP_LINK } from "@/constants";
+import { CALENDLY_LINK, DASHBOARD_PAGE_LINK, SIGNUP_LINK } from "@/constants";
 import { Button } from "@/components/ui/button";
 import FaqSection from "@/components/faq-section";
 import { DynamicText } from "@/components/dynamic-text";
@@ -673,7 +673,7 @@ export default function Home() {
                     while maximising your efficiency.
                   </p>
 
-                  <a href={CALENDLY_LINK}>
+                  <a href={DASHBOARD_PAGE_LINK}>
                     <Button variant="default">
                       Start building today
                       <ArrowRight className="w-6 h-6 ml-2" />

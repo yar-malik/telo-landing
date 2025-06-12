@@ -63,10 +63,10 @@ export default function UseCaseSection() {
           "Instantly respond to enquiries, troubleshoot technical issues, and address FAQs, so you never miss a customer query.",
       },
       {
-        icon: <Package className="h-8 w-8 text-green-600" />,
-        title: "Order Management",
+        icon: <UserSearch className="h-8 w-8 text-indigo-600" />,
+        title: "AI Recruiter",
         description:
-          "Assist customers with placing orders and tracking deliveries 24/7 to provide an exceptional experience.",
+          "Streamline hiring by screening candidates, answering queries, and providing updates to enhance the candidate experience.",
       },
       {
         icon: <Heart className="h-8 w-8 text-yellow-500" />,
@@ -166,7 +166,10 @@ export default function UseCaseSection() {
   };
 
   return (
-    <section id="use-cases" className="px-4 2xl:px-16 py-16 lg:py-24 bg-blue-50 rounded-3xl my-16">
+    <section
+      id="use-cases"
+      className="px-4 2xl:px-16 py-16 lg:py-24 bg-blue-50 rounded-3xl my-16"
+    >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
