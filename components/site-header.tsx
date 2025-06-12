@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { SIGNUP_LINK } from "@/constants";
+import { DASHBOARD_PAGE_LINK } from "@/constants";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -57,7 +57,7 @@ export function SiteHeader() {
         <nav className="hidden md:flex items-center gap-8">
           <a
             target="_blank"
-            href={SIGNUP_LINK}
+            href={DASHBOARD_PAGE_LINK}
             className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colours"
             rel="noreferrer"
           >
@@ -142,7 +142,7 @@ export function SiteHeader() {
               <div className="p-6 border-t border-gray-100">
                 <motion.a
                   target="_blank"
-                  href={SIGNUP_LINK}
+                  href={DASHBOARD_PAGE_LINK}
                   className="block w-full text-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors"
                   rel="noreferrer"
                   whileHover={{ scale: 1.02 }}

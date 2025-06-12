@@ -23,7 +23,7 @@ import { SiteFooter } from "@/components/site-footer";
 import UseCaseSection from "@/components/usecase-section";
 import TrustSection from "@/components/gdpAndCompliance";
 import PricingPlansSection from "@/components/pricing-plans";
-import { CALENDLY_LINK, DASHBOARD_PAGE_LINK, SIGNUP_LINK } from "@/constants";
+import { CALENDLY_LINK, DASHBOARD_PAGE_LINK } from "@/constants";
 import { Button } from "@/components/ui/button";
 import FaqSection from "@/components/faq-section";
 import { DynamicText } from "@/components/dynamic-text";
@@ -151,7 +151,7 @@ export default function Home() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6">
-                  <Link href={SIGNUP_LINK}>
+                  <Link href={DASHBOARD_PAGE_LINK}>
                     <Button>
                       Start with 10 Free Minutes
                       <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -460,7 +460,7 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <a href={CALENDLY_LINK}>
+                  <a href={DASHBOARD_PAGE_LINK}>
                     <Button variant="default">
                       Experience the Difference
                       <ArrowRight className="w-6 h-6 ml-2" />
@@ -550,7 +550,7 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <a href={CALENDLY_LINK}>
+                  <a href={DASHBOARD_PAGE_LINK}>
                     <Button variant="default">
                       Customize Your AI
                       <ArrowRight className="w-6 h-6 ml-2" />
@@ -613,7 +613,7 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <a href={CALENDLY_LINK}>
+                  <a href={DASHBOARD_PAGE_LINK}>
                     <Button variant="default">
                       Hear It in Action
                       <ArrowRight className="w-6 h-6 ml-2" />

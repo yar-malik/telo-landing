@@ -6,7 +6,7 @@ import { CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { motion } from "framer-motion";
-import { DASHBOARD_PAGE_LINK } from "@/constants";
+import { CALENDLY_LINK, DASHBOARD_PAGE_LINK } from "@/constants";
 
 const PricingPlansSection = () => {
   const [isYearly, setIsYearly] = useState(false);
@@ -211,7 +211,7 @@ const PricingPlansSection = () => {
 
                 {/* CTA Button */}
                 <div className="mb-6">
-                  <a href={DASHBOARD_PAGE_LINK}>
+                  <a href={index === 3 ? CALENDLY_LINK : DASHBOARD_PAGE_LINK}>
                     <Button
                       className={`w-full py-3 font-medium ${
                         plan.isEnterprise
