@@ -144,10 +144,8 @@ export default function Home() {
                   />
                 </h1>
 
-                <p className="text-base text-gray-600 leading-relaxed max-w-lg">
-                  Transform your recruitment process with AI that calls,
-                  qualifies, and identifies the most suitable candidates
-                  automatically. Save hours each week on candidate outreach.
+                <p className="text-base text-gray-600 leading-relaxed max-w-xl">
+                  Transform your business processes with AI that handles outreach, qualifies leads, and identifies the most promising opportunities automatically. Save hours each week on manual tasks and improve efficiency.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6">
