@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { DASHBOARD_PAGE_LINK } from "@/constants";
+import { CALENDLY_LINK, DASHBOARD_PAGE_LINK } from "@/constants";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -58,11 +58,11 @@ export function SiteHeader() {
         <nav className="hidden md:flex items-center gap-8">
           <a
             target="_blank"
-            href={DASHBOARD_PAGE_LINK}
+            href={CALENDLY_LINK}
             className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colours"
             rel="noreferrer"
           >
-            Start for Free
+            Book a Demo
           </a>
         </nav>
 
