@@ -129,7 +129,7 @@ export default function Home() {
               >
                 <div className="inline-flex items-center px-2 py-[5px] bg-gradient-to-r from-blue-100 to-blue-100 rounded-full text-blue-700 text-xs font-medium border border-blue-200">
                   <Zap className="w-4 h-4 mr-2" />
-                  AI-Powered Workforce Revolution
+                  AI-Powered Calling Revolution
                 </div>
 
                 <h1 className="text-3xl sm:text-4xl lg:text-[55px] lg:leading-[60px] font-bold text-gray-900 leading-tight">
