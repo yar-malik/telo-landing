@@ -698,7 +698,7 @@ export default function Home() {
           </section>
 
           {/* Pricing Section */}
-          <PricingPlansSection />
+          {/* <PricingPlansSection /> */}
 
           {/* FAQ Section */}
           <FaqSection />
