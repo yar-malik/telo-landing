@@ -149,9 +149,9 @@ export default function Home() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6">
-                  <Link href={DASHBOARD_PAGE_LINK}>
+                  <Link href={CALENDLY_LINK}>
                     <Button>
-                      Start with 10 Free Minutes
+                      Book a Demo
                       <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
