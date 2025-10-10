@@ -18,6 +18,7 @@ export function SiteHeader() {
     { href: "#features", label: "Features" },
     { href: "#team", label: "Our Team" },
     { href: "#faq", label: "FAQ" },
+     { href: "https://dashboard.teloai.app/login?redirect=%2F", label: "Login" },
   ];
 
   return (
