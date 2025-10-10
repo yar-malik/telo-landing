@@ -136,9 +136,10 @@ export default function Home() {
                   Let AI handle your <br /> calls like a human <br /> for&nbsp;
                   <DynamicText
                     words={[
+                      "Smart Debt Collection",
                       "Sales Excellence",
-                      "Smart Recruitment",
                       "Customer Service",
+                      "Smart Recruitment",
                     ]}
                     className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-600"
                   />
