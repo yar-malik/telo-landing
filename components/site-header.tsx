@@ -13,7 +13,7 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: "#pricing", label: "Pricing" },
+    // { href: "#pricing", label: "Pricing" },
     { href: "#use-cases", label: "Use Cases" },
     { href: "#features", label: "Features" },
     { href: "#team", label: "Our Team" },

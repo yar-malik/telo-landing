@@ -145,13 +145,16 @@ export default function Home() {
                 </h1>
 
                 <p className="text-base text-gray-600 leading-relaxed max-w-xl">
-                  Transform your business processes with AI that handles outreach, qualifies leads, and identifies the most promising opportunities automatically. Save hours each week on manual tasks and improve efficiency.
+                  Transform your business processes with AI that handles
+                  outreach, qualifies leads, and identifies the most promising
+                  opportunities automatically. Save hours each week on manual
+                  tasks and improve efficiency.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6">
-                  <Link href={DASHBOARD_PAGE_LINK}>
-                    <Button>
-                      Start with 10 Free Minutes
+                  <Link href={CALENDLY_LINK}>
+                    <Button className="min-w-[232px]">
+                      Let's talk
                       <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
@@ -458,9 +461,9 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <a href={DASHBOARD_PAGE_LINK}>
+                  <a href={CALENDLY_LINK}>
                     <Button variant="default">
-                      Experience the Difference
+                      Let's talk
                       <ArrowRight className="w-6 h-6 ml-2" />
                     </Button>
                   </a>
@@ -548,9 +551,9 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <a href={DASHBOARD_PAGE_LINK}>
+                  <a href={CALENDLY_LINK}>
                     <Button variant="default">
-                      Customize Your AI
+                      Let's talk
                       <ArrowRight className="w-6 h-6 ml-2" />
                     </Button>
                   </a>
@@ -611,9 +614,9 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <a href={DASHBOARD_PAGE_LINK}>
+                  <a href={CALENDLY_LINK}>
                     <Button variant="default">
-                      Hear It in Action
+                      Let's talk
                       <ArrowRight className="w-6 h-6 ml-2" />
                     </Button>
                   </a>
@@ -671,9 +674,9 @@ export default function Home() {
                     while maximising your efficiency.
                   </p>
 
-                  <a href={DASHBOARD_PAGE_LINK}>
+                  <a href={CALENDLY_LINK}>
                     <Button variant="default">
-                      Start building today
+                      Let's talk
                       <ArrowRight className="w-6 h-6 ml-2" />
                     </Button>
                   </a>
@@ -698,7 +701,7 @@ export default function Home() {
           </section>
 
           {/* Pricing Section */}
-          <PricingPlansSection />
+          {/* <PricingPlansSection /> */}
 
           {/* FAQ Section */}
           <FaqSection />
