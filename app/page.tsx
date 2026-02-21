@@ -136,20 +136,20 @@ export default function Home() {
                   Let AI handle your <br /> calls like a human <br /> for&nbsp;
                   <DynamicText
                     words={[
-                      "Smart Debt Collection",
-                      "Sales Excellence",
-                      "Customer Service",
                       "Smart Recruitment",
+                      "Appointment Booking",
+                      "Call Routing",
+                      "Candidate Screening",
                     ]}
                     className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-600"
                   />
                 </h1>
 
                 <p className="text-base text-gray-600 leading-relaxed max-w-xl">
-                  Transform your business processes with AI that handles
-                  outreach, qualifies leads, and identifies the most promising
-                  opportunities automatically. Save hours each week on manual
-                  tasks and improve efficiency.
+                  Transform your business processes with AI that handles call
+                  routing, appointment booking, and routine follow-ups
+                  automatically. Save hours each week on manual tasks and
+                  improve efficiency.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6">
