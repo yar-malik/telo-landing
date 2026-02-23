@@ -96,9 +96,9 @@ export default function UseCaseSection() {
       },
       {
         icon: <BadgePercent className="h-8 w-8 text-indigo-600" />,
-        title: "Sales Calls",
+        title: "Appointment Follow-ups",
         description:
-          "Call clients to promote products, qualify leads, and schedule meetings.",
+          "Call clients to confirm schedules, reschedule requests, and reduce no-shows.",
       },
       {
         icon: <ShoppingCart className="h-8 w-8 text-green-600" />,
@@ -113,12 +113,6 @@ export default function UseCaseSection() {
           "Provide tailored recommendations, book reservations, or share event updates.",
       },
       {
-        icon: <PiggyBank className="h-8 w-8 text-indigo-600" />,
-        title: "Debt Collection",
-        description:
-          "Follow up with debtors, offer payment plans, and send reminders for overdue accounts.",
-      },
-      {
         icon: <Receipt className="h-8 w-8 text-blue-600" />,
         title: "Payment Reminders",
         description:
@@ -130,7 +124,7 @@ export default function UseCaseSection() {
         icon: <Building2 className="h-8 w-8 text-blue-600" />,
         title: "Banking & Financial Services",
         description:
-          "From loan collections to sales and support, tailor multiple AI agents to automate operations and save millions of pounds.",
+          "Tailor multiple AI agents to automate routine operations, client updates, and service workflows at scale.",
       },
       {
         icon: <Heart className="h-8 w-8 text-indigo-600" />,
