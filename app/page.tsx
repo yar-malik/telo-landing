@@ -136,7 +136,7 @@ export default function Home() {
                   Let AI handle your <br /> calls like a human <br /> for&nbsp;
                   <DynamicText
                     words={[
-                      "Contact Center Operations",
+                      "Contact Center",
                       "Appointment Booking",
                       "Call Routing",
                       "Customer Support",
