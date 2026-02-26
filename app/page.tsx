@@ -53,31 +53,31 @@ export default function Home() {
     },
     {
       name: "Alex",
-      role: "AI Recruiter",
-      href: "/recruitment",
+      role: "AI Contact Center Specialist",
+      href: "/#use-cases",
       img: "/ai-customer-service-face.png",
-      imgAlt: "Alex AI Recruiter",
+      imgAlt: "Alex AI Contact Center Specialist",
       gradient: "from-blue-50 to-purple-50",
       features: [
-        { icon: Users, label: "Candidate Screening", color: "text-blue-500" },
+        { icon: Users, label: "Queue Monitoring", color: "text-blue-500" },
         {
           icon: Calendar,
-          label: "Interview Scheduling",
+          label: "Callback Scheduling",
           color: "text-blue-500",
         },
         {
           icon: MessageSquare,
-          label: "Candidate Communication",
+          label: "Customer Query Resolution",
           color: "text-blue-500",
         },
         {
           icon: CheckCircle,
-          label: "ATS Integration",
+          label: "CRM and Helpdesk Integration",
           color: "text-blue-500",
         },
       ],
       description:
-        "Screens candidates, schedules interviews, and manages your entire recruitment pipeline with precision and efficiency.",
+        "Handles customer conversations, triages support requests, and keeps your contact center running smoothly with fast, consistent service.",
     },
     {
       name: "Sophia",
@@ -136,10 +136,10 @@ export default function Home() {
                   Let AI handle your <br /> calls like a human <br /> for&nbsp;
                   <DynamicText
                     words={[
-                      "Smart Recruitment",
+                      "Contact Center Operations",
                       "Appointment Booking",
                       "Call Routing",
-                      "Candidate Screening",
+                      "Customer Support",
                     ]}
                     className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-600"
                   />
@@ -147,9 +147,9 @@ export default function Home() {
 
                 <p className="text-base text-gray-600 leading-relaxed max-w-xl">
                   Transform your business processes with AI that handles call
-                  routing, appointment booking, and routine follow-ups
-                  automatically. Save hours each week on manual tasks and
-                  improve efficiency.
+                  routing, customer support, appointment booking, and routine
+                  follow-ups automatically. Save hours each week on manual
+                  tasks and deliver faster customer service.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6">

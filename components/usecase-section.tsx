@@ -64,9 +64,9 @@ export default function UseCaseSection() {
       },
       {
         icon: <UserSearch className="h-8 w-8 text-indigo-600" />,
-        title: "AI Recruiter",
+        title: "Contact Center Operations",
         description:
-          "Streamline hiring by screening candidates, answering queries, and providing updates to enhance the candidate experience.",
+          "Automate ticket triage, route calls to the right teams, and deliver faster first-response times for customers.",
       },
       {
         icon: <Heart className="h-8 w-8 text-yellow-500" />,
@@ -146,9 +146,9 @@ export default function UseCaseSection() {
       },
       {
         icon: <UserSearch className="h-8 w-8 text-indigo-600" />,
-        title: "Recruitment",
+        title: "Contact Centers and BPOs",
         description:
-          "Streamline hiring by screening candidates, answering queries, and providing updates to enhance the candidate experience.",
+          "Scale high-quality customer support across inbound and outbound operations while keeping service levels consistent.",
       },
       {
         icon: <Tv className="h-8 w-8 text-blue-600" />,
