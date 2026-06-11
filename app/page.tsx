@@ -622,20 +622,15 @@ export default function Home() {
   return (
     <main className={`${isDark ? "dark bg-[#050608] text-white" : "bg-[#f7fbf8] text-slate-950"} min-h-screen overflow-hidden font-sans transition-colors duration-300`}>
       <style>{`
-        @keyframes saudiFloat {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-12px); }
-        }
         @keyframes saudiScan {
           0% { transform: translate(-50%, 0) scale(0.88); opacity: 0.35; }
           50% { opacity: 0.9; }
           100% { transform: translate(-50%, 0) scale(1.08); opacity: 0.18; }
         }
-        .saudi-float { animation: saudiFloat 6s ease-in-out infinite; }
         .saudi-scan { animation: saudiScan 5.5s ease-in-out infinite; }
       `}</style>
       <Header isDark={isDark} onToggleTheme={() => setIsDark((value) => !value)} />
-      <section className="relative min-h-[820px] px-4 pt-36 sm:pt-44">
+      <section className="relative px-4 pb-24 pt-36 sm:pt-44 lg:pb-28">
         <TeloHeroBackground />
         <div className="relative z-10 mx-auto flex max-w-[1190px] flex-col items-center text-center">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-sm dark:border-white/10 dark:bg-white/[0.04] dark:text-white/70">
@@ -668,46 +663,6 @@ export default function Home() {
               Explore Saudi Arabic
               <Globe2 className="h-4 w-4" />
             </Link>
-          </div>
-
-          <div className="mt-14 grid w-full gap-6 text-left lg:grid-cols-[0.92fr_1.08fr]">
-            <div className="grid gap-4 rounded-[28px] border border-slate-200 bg-white/82 p-3 shadow-[0_24px_70px_rgba(15,23,42,0.08)] backdrop-blur dark:border-white/10 dark:bg-white/[0.04] dark:shadow-none sm:grid-cols-3 lg:grid-cols-1">
-              {[
-                ["24/7", "Answer every call"],
-                ["Saudi Arabic", "Najdi, Hijazi, Gulf, Southern, Northern"],
-                ["Best prices", "Custom packages for Saudi teams"],
-              ].map(([value, label]) => (
-                <div key={label} className="rounded-[20px] bg-white p-5 shadow-sm dark:bg-white/[0.055] dark:shadow-none">
-                  <p className="text-2xl font-semibold text-slate-950 dark:text-white">{value}</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-white/48">{label}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="saudi-float relative min-h-[360px] overflow-hidden rounded-[32px] border border-emerald-200 bg-slate-950 shadow-[0_30px_90px_rgba(15,23,42,0.12)] dark:border-white/10">
-              <Image
-                src="/hero_image.png"
-                alt="Telo AI operations view"
-                fill
-                sizes="(min-width: 1024px) 680px, 100vw"
-                className="object-contain object-center p-4 opacity-90"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/88 via-slate-950/18 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white sm:p-8">
-                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/14 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/78 backdrop-blur">
-                  <Globe2 className="h-4 w-4" />
-                  Local voice intelligence
-                </div>
-                <h2 className="max-w-xl text-3xl font-semibold leading-tight">
-                  Understand the customer, the city, the branch, and the intent.
-                </h2>
-                <p className="mt-3 max-w-xl text-sm leading-6 text-white/72">
-                  Built for Saudi companies that need customer service to feel local,
-                  fast, and reliable from the first call.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
