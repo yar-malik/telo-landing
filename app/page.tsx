@@ -9,12 +9,10 @@ import {
   BriefcaseBusiness,
   CalendarCheck,
   Check,
-  ChevronDown,
   ClipboardList,
   Copy,
   Headphones,
   Heart,
-  Languages,
   Mail,
   Menu,
   Mic,
@@ -28,14 +26,14 @@ import {
   Target,
   TicketCheck,
   UserRoundCheck,
-  Workflow,
   X,
   Zap,
 } from "lucide-react";
 import { useState } from "react";
-import { CALENDLY_LINK, DASHBOARD_PAGE_LINK } from "@/constants";
+import { CALENDLY_LINK } from "@/constants";
 
 const contactEmails = ["hello@teloai.app", "support@teloai.app"];
+const LOGIN_LINK = "https://dashboard.teloai.app/login?redirect=%2F";
 
 const demoTabs = [
   {
@@ -226,10 +224,10 @@ function Header({
 }) {
   const [open, setOpen] = useState(false);
   const links = [
-    { label: "Products", href: "#products", dropdown: true },
-    { label: "Resources", href: "#features", dropdown: true },
-    { label: "Demos", href: "#demos" },
+    { label: "Use Cases", href: "#use-cases" },
     { label: "Features", href: "#features" },
+    { label: "Products", href: "#products" },
+    { label: "FAQ", href: "/faq" },
     { label: "Pricing", href: "#pricing" },
   ];
 
@@ -248,18 +246,11 @@ function Header({
               className="flex items-center gap-1 transition hover:text-slate-950 dark:hover:text-white"
             >
               {link.label}
-              {link.dropdown ? <ChevronDown className="h-3.5 w-3.5" /> : null}
             </Link>
           ))}
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <button
-            aria-label="Translate"
-            className="grid h-9 w-9 place-items-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-950 dark:text-white/70 dark:hover:bg-white/8 dark:hover:text-white"
-          >
-            <Languages className="h-4 w-4" />
-          </button>
           <button
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
             onClick={onToggleTheme}
@@ -268,7 +259,7 @@ function Header({
             {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
           <Link
-            href={DASHBOARD_PAGE_LINK}
+            href={LOGIN_LINK}
             className="rounded-[13px] border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 dark:border-[#3340ff]/60 dark:text-white dark:hover:bg-white/8"
           >
             Login
@@ -304,14 +295,17 @@ function Header({
               </Link>
             ))}
           </nav>
-          <div className="mt-3 grid grid-cols-2 gap-3">
+          <div className="mt-3 grid grid-cols-3 gap-3">
             <button
               onClick={onToggleTheme}
-              className="rounded-2xl border border-slate-200 px-4 py-3 text-center text-sm dark:border-white/12"
+              className="rounded-2xl border border-slate-200 px-3 py-3 text-center text-sm dark:border-white/12"
             >
               {isDark ? "Light mode" : "Dark mode"}
             </button>
-            <Link href={CALENDLY_LINK} className="rounded-2xl bg-[#2438ff] px-4 py-3 text-center text-sm font-semibold text-white">
+            <Link href={LOGIN_LINK} className="rounded-2xl border border-slate-200 px-3 py-3 text-center text-sm font-semibold dark:border-white/12">
+              Login
+            </Link>
+            <Link href={CALENDLY_LINK} className="rounded-2xl bg-[#2438ff] px-3 py-3 text-center text-sm font-semibold text-white">
               Contact us
             </Link>
           </div>
@@ -408,13 +402,13 @@ function DemoSection() {
 
         <div className="mt-6 grid overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.09)] dark:border-white/10 dark:bg-[#08090c] dark:shadow-none lg:grid-cols-[0.95fr_1.05fr]">
           <div className="flex min-h-[410px] flex-col items-center justify-center border-b border-slate-200 p-8 text-center dark:border-white/10 lg:border-b-0 lg:border-r">
-            <button
-              aria-label="Start voice demo"
+            <div
+              aria-hidden="true"
               className="group relative grid h-28 w-28 place-items-center rounded-full bg-[#2438ff] text-white shadow-[0_0_0_22px_rgba(36,56,255,0.09),0_20px_55px_rgba(36,56,255,0.26)] transition hover:scale-105"
             >
               <span className="absolute h-36 w-36 rounded-full border border-[#2438ff]/20 transition group-hover:scale-110" />
               <DemoIcon className="h-10 w-10" />
-            </button>
+            </div>
             <h3 className="mt-14 text-2xl font-semibold text-slate-950 dark:text-white">
               {demo.title}
             </h3>
@@ -618,7 +612,7 @@ function ProductsSection() {
 
 function IndustriesSection() {
   return (
-    <section className="relative z-10 border-t border-slate-200 px-4 py-24 dark:border-white/8">
+    <section id="use-cases" className="relative z-10 border-t border-slate-200 px-4 py-24 dark:border-white/8">
       <div className="mx-auto max-w-[1190px]">
         <SectionHeading
           title={
@@ -728,11 +722,17 @@ function Footer() {
             <Link href={CALENDLY_LINK} className="text-slate-600 transition hover:text-slate-950 dark:text-white/72 dark:hover:text-white">
               Book a demo
             </Link>
-            <Link href={DASHBOARD_PAGE_LINK} className="text-slate-600 transition hover:text-slate-950 dark:text-white/72 dark:hover:text-white">
+            <Link href={LOGIN_LINK} className="text-slate-600 transition hover:text-slate-950 dark:text-white/72 dark:hover:text-white">
               Login
+            </Link>
+            <Link href="/faq" className="text-slate-600 transition hover:text-slate-950 dark:text-white/72 dark:hover:text-white">
+              FAQ
             </Link>
             <Link href="/privacy-policy" className="text-slate-600 transition hover:text-slate-950 dark:text-white/72 dark:hover:text-white">
               Privacy policy
+            </Link>
+            <Link href="/terms-and-conditions" className="text-slate-600 transition hover:text-slate-950 dark:text-white/72 dark:hover:text-white">
+              Terms and conditions
             </Link>
           </div>
         </div>
