@@ -12,20 +12,15 @@ import {
   CalendarCheck,
   Check,
   ClipboardList,
-  Copy,
   Globe2,
   Headphones,
   Heart,
   Landmark,
   Mail,
   Menu,
-  Mic,
   Moon,
   MapPin,
   MessageCircle,
-  Phone,
-  Play,
-  Radio,
   ShieldCheck,
   Sparkles,
   Sun,
@@ -41,53 +36,6 @@ import { CALENDLY_LINK } from "@/constants";
 
 const contactEmails = ["hello@teloai.app", "support@teloai.app"];
 const LOGIN_LINK = "https://dashboard.teloai.app/login?redirect=%2F";
-
-const demoTabs = [
-  {
-    label: "Saudi Voice Agent",
-    icon: Mic,
-    title: "Arabic agent for Saudi customers",
-    copy: "A Telo agent answers naturally, understands Saudi Arabic accents, and keeps every call moving.",
-    transcript: [
-      "Customer: I need to change my appointment in Riyadh.",
-      "Telo: I found two available slots today and tomorrow.",
-      "Outcome: Rescheduled, WhatsApp confirmation sent.",
-    ],
-  },
-  {
-    label: "Arabic Speech",
-    icon: Radio,
-    title: "Natural Saudi-ready speech",
-    copy: "Turn scripts, reminders, and service updates into clear Arabic and English voice experiences.",
-    transcript: [
-      "Script loaded",
-      "Voice style: Saudi-friendly, warm, professional",
-      "Output: Customer-ready message",
-    ],
-  },
-  {
-    label: "Call Intelligence",
-    icon: ClipboardList,
-    title: "Structured transcripts",
-    copy: "Convert Arabic and English calls into searchable transcripts, topics, action items, and quality signals.",
-    transcript: [
-      "Call transcribed",
-      "Intent: Booking change",
-      "Action item: Send updated invoice by WhatsApp",
-    ],
-  },
-  {
-    label: "Brand Voice",
-    icon: Copy,
-    title: "Consistent approved voices",
-    copy: "Create controlled, brand-safe voices for campaigns, branches, service flows, and training.",
-    transcript: [
-      "Consent verified",
-      "Voice profile prepared",
-      "Ready for approved Saudi campaign usage",
-    ],
-  },
-];
 
 const capabilities = [
   {
@@ -185,26 +133,16 @@ const saudiAdvantages = [
 
 function LogoMark() {
   return (
-    <div className="flex items-center gap-3">
-      <div className="grid h-11 w-11 place-items-center rounded-[14px] bg-slate-950 text-white shadow-sm dark:bg-white dark:text-slate-950">
-        <div className="flex h-6 items-center gap-[3px]">
-          {[14, 22, 30, 18, 26].map((height, index) => (
-            <span
-              key={index}
-              className="w-[3px] rounded-full bg-current"
-              style={{ height }}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="leading-none">
-        <div className="text-[13px] font-black uppercase tracking-[0.32em] text-slate-950 dark:text-white">
-          Telo AI
-        </div>
-        <div className="mt-1 text-xs font-medium text-slate-500 dark:text-white/55">
-          Voice agents
-        </div>
-      </div>
+    <div className="flex items-center gap-3" aria-label="Telo AI">
+      <Image
+        src="/images/logo.png"
+        alt="Telo AI"
+        width={185}
+        height={64}
+        className="h-11 w-auto object-contain"
+        priority
+      />
+      <span className="sr-only">Telo AI voice agents</span>
     </div>
   );
 }
@@ -262,7 +200,7 @@ function Header({
             href={CALENDLY_LINK}
             className="rounded-[13px] bg-[#0f8f5f] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(15,143,95,0.25)] transition hover:-translate-y-0.5 hover:bg-[#0b744d]"
           >
-            Contact us
+            Book a call
           </Link>
         </div>
 
@@ -300,7 +238,7 @@ function Header({
               Login
             </Link>
             <Link href={CALENDLY_LINK} className="rounded-2xl bg-[#0f8f5f] px-3 py-3 text-center text-sm font-semibold text-white">
-              Contact us
+              Book a call
             </Link>
           </div>
         </div>
@@ -350,123 +288,6 @@ function SectionHeading({
         </p>
       ) : null}
     </div>
-  );
-}
-
-function DemoSection() {
-  const [activeDemo, setActiveDemo] = useState(0);
-  const demo = demoTabs[activeDemo];
-  const DemoIcon = demo.icon;
-
-  return (
-    <section id="demos" className="relative z-10 px-4 py-24 sm:py-28">
-      <div className="mx-auto max-w-[1116px]">
-        <SectionHeading
-          eyebrow="Saudi-ready demos"
-          title={
-            <>
-              See how Telo handles local conversations in one{" "}
-              <span className="text-slate-400 dark:text-white/40">workspace</span>
-            </>
-          }
-          copy="Switch between workflows and see how Telo turns Saudi customer calls into clear outcomes for your team."
-        />
-
-        <div className="mt-12 rounded-[20px] border border-slate-200 bg-white p-2 shadow-[0_18px_50px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-white/[0.07]">
-          <div className="grid gap-2 md:grid-cols-4">
-            {demoTabs.map((tab, index) => {
-              const Icon = tab.icon;
-              const active = index === activeDemo;
-              return (
-                <button
-                  key={tab.label}
-                  onClick={() => setActiveDemo(index)}
-                  className={`flex items-center justify-center gap-2 rounded-[15px] px-4 py-3 text-sm font-semibold transition ${
-                    active
-                      ? "bg-[#0f8f5f] text-white shadow-[0_12px_28px_rgba(15,143,95,0.24)]"
-                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-950 dark:text-white/72 dark:hover:bg-white/8 dark:hover:text-white"
-                  }`}
-                >
-                  <Icon className="h-4 w-4" />
-                  {tab.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="mt-6 grid overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.09)] dark:border-white/10 dark:bg-[#08090c] dark:shadow-none lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="flex min-h-[410px] flex-col items-center justify-center border-b border-slate-200 p-8 text-center dark:border-white/10 lg:border-b-0 lg:border-r">
-            <div
-              aria-hidden="true"
-              className="voice-pulse group relative grid h-28 w-28 place-items-center rounded-full bg-[#0f8f5f] text-white shadow-[0_0_0_22px_rgba(15,143,95,0.09),0_20px_55px_rgba(15,143,95,0.26)] transition hover:scale-105"
-            >
-              <span className="absolute h-36 w-36 rounded-full border border-[#0f8f5f]/20 transition group-hover:scale-110" />
-              <DemoIcon className="h-10 w-10" />
-            </div>
-            <h3 className="mt-14 text-2xl font-semibold text-slate-950 dark:text-white">
-              {demo.title}
-            </h3>
-            <p className="mt-4 max-w-sm text-slate-600 dark:text-white/55">
-              {demo.copy}
-            </p>
-          </div>
-
-          <div className="min-h-[410px] p-6 sm:p-8">
-            <div className="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/[0.04]">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400 dark:text-white/35">
-                  Live workflow
-                </p>
-                <p className="mt-1 font-semibold text-slate-950 dark:text-white">
-                  {demo.label}
-                </p>
-              </div>
-              <div className="grid h-11 w-11 place-items-center rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-400/15 dark:text-emerald-300">
-                <Play className="h-4 w-4 fill-current" />
-              </div>
-            </div>
-
-            <div className="mt-5 grid gap-3">
-              {demo.transcript.map((line, index) => (
-                <div
-                  key={line}
-                  className="rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-600 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/[0.035] dark:text-white/62 dark:shadow-none"
-                >
-                  <span className="mr-3 inline-grid h-6 w-6 place-items-center rounded-full bg-slate-100 text-xs font-bold text-slate-500 dark:bg-white/8 dark:text-white/55">
-                    {index + 1}
-                  </span>
-                  {line}
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 rounded-2xl bg-slate-950 p-5 text-white shadow-[0_18px_45px_rgba(15,23,42,0.18)] dark:bg-white dark:text-slate-950">
-              <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-emerald-400" />
-                <p className="font-semibold">Prefer a quick call?</p>
-              </div>
-              <p className="mt-3 text-sm leading-6 text-white/65 dark:text-slate-600">
-                Book a live walkthrough and we will map the best Saudi Arabic
-                workflow for your current operation.
-              </p>
-              <Link
-                href={CALENDLY_LINK}
-                className="mt-5 inline-flex w-full items-center justify-center gap-3 rounded-[16px] bg-[#0f8f5f] px-6 py-4 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#0b744d]"
-              >
-                Book a live demo
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <p className="mx-auto mt-10 max-w-4xl text-center text-sm leading-7 text-slate-500 dark:text-white/42">
-          Built for responsible Saudi deployments, including privacy safeguards,
-          approved business workflows, and human handoff when conversations need care.
-        </p>
-      </div>
-    </section>
   );
 }
 
@@ -698,7 +519,7 @@ function SaudiAdvantageSection() {
               href={CALENDLY_LINK}
               className="inline-flex items-center justify-center gap-3 rounded-[18px] bg-slate-950 px-6 py-4 font-semibold text-white shadow-[0_18px_42px_rgba(15,23,42,0.18)] transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-white/82"
             >
-              Talk to us about the best prices
+              Book a call about the best prices
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -734,7 +555,7 @@ function Footer() {
           <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-400 dark:text-white/45">Actions</h3>
           <div className="mt-5 grid gap-3">
             <Link href={CALENDLY_LINK} className="text-slate-600 transition hover:text-slate-950 dark:text-white/72 dark:hover:text-white">
-              Book a demo
+              Book a call
             </Link>
             <Link href={LOGIN_LINK} className="text-slate-600 transition hover:text-slate-950 dark:text-white/72 dark:hover:text-white">
               Login
@@ -772,17 +593,12 @@ export default function Home() {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-12px); }
         }
-        @keyframes voicePulse {
-          0%, 100% { box-shadow: 0 0 0 18px rgba(15, 143, 95, 0.08), 0 20px 55px rgba(15, 143, 95, 0.24); }
-          50% { box-shadow: 0 0 0 30px rgba(15, 143, 95, 0.03), 0 26px 70px rgba(15, 143, 95, 0.32); }
-        }
         @keyframes saudiScan {
           0% { transform: translate(-50%, 0) scale(0.88); opacity: 0.35; }
           50% { opacity: 0.9; }
           100% { transform: translate(-50%, 0) scale(1.08); opacity: 0.18; }
         }
         .saudi-float { animation: saudiFloat 6s ease-in-out infinite; }
-        .voice-pulse { animation: voicePulse 2.8s ease-in-out infinite; }
         .saudi-scan { animation: saudiScan 5.5s ease-in-out infinite; }
       `}</style>
       <Header isDark={isDark} onToggleTheme={() => setIsDark((value) => !value)} />
@@ -811,13 +627,13 @@ export default function Home() {
             WhatsApp, and gives your team clean summaries across Arabic and English.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Link href="#demos" className="inline-flex items-center justify-center gap-3 rounded-[14px] bg-[#0f8f5f] px-6 py-3.5 font-semibold text-white shadow-[0_18px_42px_rgba(15,143,95,0.22)] transition hover:-translate-y-0.5 hover:bg-[#0b744d]">
-              Try the Saudi demo
+            <Link href={CALENDLY_LINK} className="inline-flex items-center justify-center gap-3 rounded-[14px] bg-[#0f8f5f] px-6 py-3.5 font-semibold text-white shadow-[0_18px_42px_rgba(15,143,95,0.22)] transition hover:-translate-y-0.5 hover:bg-[#0b744d]">
+              Book a call
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href={CALENDLY_LINK} className="inline-flex items-center justify-center gap-3 rounded-[14px] border border-slate-200 bg-white px-6 py-3.5 font-semibold text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:hover:bg-white/8">
-              Contact us
-              <CalendarCheck className="h-4 w-4" />
+            <Link href="#saudi" className="inline-flex items-center justify-center gap-3 rounded-[14px] border border-slate-200 bg-white px-6 py-3.5 font-semibold text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:hover:bg-white/8">
+              Explore Saudi Arabic
+              <Globe2 className="h-4 w-4" />
             </Link>
           </div>
 
@@ -863,7 +679,6 @@ export default function Home() {
         </div>
       </section>
 
-      <DemoSection />
       <CapabilitiesSection />
       <SaudiAdvantageSection />
       <ProductsSection />
