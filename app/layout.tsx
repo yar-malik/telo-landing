@@ -2,15 +2,13 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./../styles/globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TeloAI",
+  title: "Telo AI | Voice Agents for Contact Centers",
   description:
-    "AI employees for your business that never sleep, get tired or quit.",
+    "AI voice agents, speech tools, and automation for modern customer operations.",
   generator: "TeloAI Platform",
   creator: "TeloAI",
   icons: {
@@ -41,28 +39,7 @@ export default function RootLayout({
         ></link>
       </head>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-        <Script id="image-fallback">
-          {`
-            document.addEventListener('DOMContentLoaded', function() {
-              const images = document.querySelectorAll('img');
-              images.forEach(img => {
-                img.onerror = function() {
-                  if (!img.src.includes('?fallback=true')) {
-                    img.src = img.src + '?fallback=true';
-                  }
-                }
-              });
-            });
-          `}
-        </Script>
+        {children}
       </body>
     </html>
   );

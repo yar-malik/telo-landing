@@ -1,718 +1,680 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  CheckCircle,
-  Users,
-  Clock,
-  Zap,
+  BadgeCheck,
+  BarChart3,
   Bot,
-  MessageSquare,
-  Calendar,
-  TrendingUp,
-  PhoneMissed,
-  PhoneIncoming,
+  BriefcaseBusiness,
+  CalendarCheck,
+  Check,
+  ChevronDown,
+  ClipboardList,
+  Copy,
+  Headphones,
   Languages,
+  Mail,
+  Menu,
+  Mic,
+  Moon,
+  Phone,
+  Radio,
+  Sparkles,
+  Sun,
+  Target,
+  TicketCheck,
+  UserRoundCheck,
+  X,
+  Zap,
 } from "lucide-react";
-import { OptimizedImage } from "@/components/optimized-image";
-import { SiteHeader } from "@/components/site-header";
-import { AgentImage } from "@/components/agent-image";
-import { SiteFooter } from "@/components/site-footer";
-import UseCaseSection from "@/components/usecase-section";
-import TrustSection from "@/components/gdpAndCompliance";
-import PricingPlansSection from "@/components/pricing-plans";
+import { useState } from "react";
 import { CALENDLY_LINK, DASHBOARD_PAGE_LINK } from "@/constants";
-import { Button } from "@/components/ui/button";
-import FaqSection from "@/components/faq-section";
-import { DynamicText } from "@/components/dynamic-text";
-import { motion } from "framer-motion";
 
-export default function Home() {
-  const aiAgents = [
-    {
-      name: "Emma",
-      role: "AI Sales Executive",
-      href: "/sales-executive",
-      img: "/ai-sales-face.png",
-      imgAlt: "Emma AI Sales",
-      gradient: "from-blue-50 to-blue-50",
-      features: [
-        { icon: TrendingUp, label: "Lead Generation", color: "text-blue-500" },
-        {
-          icon: MessageSquare,
-          label: "Personalised Outreach",
-          color: "text-blue-500",
-        },
-        { icon: Bot, label: "24/7 Follow-ups", color: "text-blue-500" },
-        { icon: CheckCircle, label: "CRM Integration", color: "text-blue-500" },
-      ],
-      description:
-        "Generates qualified leads, conducts personalised outreach, and nurtures prospects through your entire sales funnel with human-like conversations.",
-    },
-    {
-      name: "Alex",
-      role: "AI Contact Center Specialist",
-      href: "/#use-cases",
-      img: "/ai-customer-service-face.png",
-      imgAlt: "Alex AI Contact Center Specialist",
-      gradient: "from-blue-50 to-purple-50",
-      features: [
-        { icon: Users, label: "Queue Monitoring", color: "text-blue-500" },
-        {
-          icon: Calendar,
-          label: "Callback Scheduling",
-          color: "text-blue-500",
-        },
-        {
-          icon: MessageSquare,
-          label: "Customer Query Resolution",
-          color: "text-blue-500",
-        },
-        {
-          icon: CheckCircle,
-          label: "CRM and Helpdesk Integration",
-          color: "text-blue-500",
-        },
-      ],
-      description:
-        "Handles customer conversations, triages support requests, and keeps your contact center running smoothly with fast, consistent service.",
-    },
-    {
-      name: "Sophia",
-      role: "AI Receptionist",
-      href: "/receptionist",
-      img: "/ai-receptionist-face.jpg",
-      imgAlt: "Sophia AI Receptionist",
-      gradient: "from-blue-50 to-purple-50",
-      features: [
-        {
-          icon: MessageSquare,
-          label: "Call Handling",
-          color: "text-purple-500",
-        },
-        {
-          icon: Calendar,
-          label: "Appointment Booking",
-          color: "text-purple-500",
-        },
-        { icon: Clock, label: "24/7 Availability", color: "text-purple-500" },
-        {
-          icon: CheckCircle,
-          label: "Multi-language Support",
-          color: "text-purple-500",
-        },
-      ],
-      description:
-        "Handles calls, books appointments, and provides exceptional customer service around the clock with professional courtesy.",
-    },
+const contactEmails = ["hello@teloai.app", "support@teloai.app"];
+
+const demoTabs = [
+  { label: "AI Voice Agent", icon: Mic },
+  { label: "Text To Speech", icon: Radio },
+  { label: "Speech-to-Text", icon: ClipboardList },
+  { label: "Voice Cloning", icon: Copy },
+];
+
+const capabilities = [
+  {
+    title: "Natural Voice Agents",
+    copy: "Answer inbound calls, qualify leads, and resolve customer questions with fluent, human-like conversations.",
+    icon: Bot,
+    visual: "nodes",
+  },
+  {
+    title: "Live Call Intelligence",
+    copy: "Track performance, transcripts, sentiment, and outcomes with dashboards built for contact center teams.",
+    icon: BarChart3,
+    visual: "chart",
+  },
+  {
+    title: "Knowledge Grounding",
+    copy: "Connect your website, policies, CRM, and docs so agents respond with accurate, current information.",
+    icon: Headphones,
+    visual: "flow",
+  },
+  {
+    title: "Human Handoff",
+    copy: "Escalate sensitive or complex conversations with context, transcript history, and next best actions.",
+    icon: UserRoundCheck,
+    visual: "handoff",
+  },
+  {
+    title: "Always On Operations",
+    copy: "Keep service running after hours, on weekends, and during volume spikes without adding headcount.",
+    icon: Zap,
+    visual: "pulse",
+  },
+];
+
+const productCards = [
+  {
+    title: "Telo Agents",
+    copy: "Automate inbound and outbound calls with AI employees that speak naturally, work 24/7, and integrate with your business systems.",
+    points: [
+      "Never miss a lead or customer call",
+      "Automate support and follow-up workflows",
+      "Route WhatsApp, phone, and web conversations",
+      "Scale high-volume conversations without hiring delays",
+    ],
+  },
+  {
+    title: "Telo Studio",
+    copy: "Create realistic voice experiences for content, demos, call flows, and internal training with a toolkit built for teams.",
+    points: [
+      "Generate natural voice from text",
+      "Transcribe calls and meetings accurately",
+      "Build repeatable workflows with a simple API",
+      "Clone approved brand voices for consistent delivery",
+    ],
+  },
+];
+
+const industries = [
+  { title: "Appointment Handling", copy: "Book, confirm, and reschedule visits automatically.", icon: CalendarCheck },
+  { title: "Answering FAQs", copy: "Give instant answers to common customer questions.", icon: Headphones },
+  { title: "Customer Complaints", copy: "Route, summarize, and resolve issues around the clock.", icon: TicketCheck },
+  { title: "Lead Qualification", copy: "Score and route inbound leads while intent is fresh.", icon: Target },
+  { title: "Orders", copy: "Confirm purchases, status updates, and delivery questions.", icon: ClipboardList },
+  { title: "Real Estate Inquiries", copy: "Qualify buyers and schedule property viewings.", icon: BriefcaseBusiness },
+  { title: "Bookings", copy: "Manage reservations, reminders, and cancellations.", icon: CalendarCheck },
+  { title: "Feedback", copy: "Collect post-call feedback and surface trends.", icon: BadgeCheck },
+];
+
+const plans = [
+  {
+    name: "Free Trial",
+    eyebrow: "Try Telo with no credit card required.",
+    price: "Free",
+    cta: "Try Now",
+    features: ["20,000 credits", "API access included", "Demo voice agent", "Email onboarding"],
+  },
+  {
+    name: "Individual",
+    eyebrow: "For individual use and personal projects.",
+    price: "$99",
+    cadence: "/ month",
+    cta: "Choose Plan",
+    features: [
+      "99,000 credits",
+      "Unlimited voice AI agents",
+      "WhatsApp integration",
+      "Built-in ticketing",
+      "Dynamic call analytics",
+      "Voice cloning access",
+    ],
+  },
+  {
+    name: "Business",
+    eyebrow: "For growing teams and customer operations.",
+    price: "$600",
+    cadence: "/ month",
+    cta: "Choose Plan",
+    features: [
+      "800,000 credits",
+      "Everything in Individual",
+      "Priority support",
+      "CRM and helpdesk integrations",
+      "Team workspace",
+      "Production deployment guidance",
+    ],
+  },
+];
+
+function LogoMark() {
+  return (
+    <div className="flex items-center gap-3">
+      <div className="grid h-11 w-11 place-items-center rounded-[14px] bg-white text-black shadow-[0_0_28px_rgba(54,70,255,0.35)]">
+        <div className="flex h-6 items-center gap-[3px]">
+          {[14, 22, 30, 18, 26].map((height, index) => (
+            <span
+              key={index}
+              className="w-[3px] rounded-full bg-black"
+              style={{ height }}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="leading-none">
+        <div className="text-[13px] font-black uppercase tracking-[0.32em] text-white">
+          Telo AI
+        </div>
+        <div className="mt-1 text-xs font-medium text-white/60">Voice agents</div>
+      </div>
+    </div>
+  );
+}
+
+function Header() {
+  const [open, setOpen] = useState(false);
+  const links = [
+    { label: "Products", href: "#products", dropdown: true },
+    { label: "Resources", href: "#features", dropdown: true },
+    { label: "Demos", href: "#demos" },
+    { label: "Features", href: "#features" },
+    { label: "Pricing", href: "#pricing" },
   ];
 
   return (
-    <>
-      <SiteHeader />
-      <div className="min-h-screen bg-blue-50 overflow-hidden">
-        {/* Header section */}
+    <header className="fixed left-0 right-0 top-4 z-50 px-4 sm:top-6">
+      <div className="mx-auto flex max-w-[1152px] items-center justify-between rounded-[28px] border border-white/10 bg-[#08090c]/85 px-4 py-3 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:px-6">
+        <Link href="/" aria-label="Telo AI home">
+          <LogoMark />
+        </Link>
 
-        <main>
-          {/* Hero section - Completely redesigned */}
-          <section className="relative">
-            <div className="absolute top-[50%] left-[30%] w-[50%] h-[50%] sm:w-72 sm:h-72 bg-blue-800/40 rounded-full blur-[100px]"></div>
+        <nav className="hidden items-center gap-7 text-sm text-white/82 lg:flex">
+          {links.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="flex items-center gap-1 transition hover:text-white"
+            >
+              {link.label}
+              {link.dropdown ? <ChevronDown className="h-3.5 w-3.5" /> : null}
+            </Link>
+          ))}
+        </nav>
 
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-10 sm:gap-20 max-w-[1400px] mx-auto px-6 py-8 sm:py-16 md:py-24">
-              <motion.div
-                initial={{ opacity: 0, x: -200 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="space-y-3 sm:space-y-6 flex-1"
+        <div className="hidden items-center gap-3 lg:flex">
+          <button aria-label="Translate" className="grid h-9 w-9 place-items-center rounded-full text-white/80 transition hover:bg-white/8 hover:text-white">
+            <Languages className="h-4 w-4" />
+          </button>
+          <button aria-label="Toggle theme" className="grid h-9 w-9 place-items-center rounded-full text-white/80 transition hover:bg-white/8 hover:text-white">
+            <Sun className="h-4 w-4" />
+          </button>
+          <Link
+            href={DASHBOARD_PAGE_LINK}
+            className="rounded-[13px] border border-[#3340ff]/70 px-5 py-2.5 text-sm font-medium text-white shadow-[0_0_18px_rgba(50,57,255,0.22)] transition hover:bg-white/8"
+          >
+            Login
+          </Link>
+          <Link
+            href={CALENDLY_LINK}
+            className="rounded-[13px] bg-[#3038f2] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_22px_rgba(48,56,242,0.48)] transition hover:bg-[#4d55ff]"
+          >
+            Contact us
+          </Link>
+        </div>
+
+        <button
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((value) => !value)}
+          className="grid h-10 w-10 place-items-center rounded-full text-white lg:hidden"
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      {open ? (
+        <div className="mx-auto mt-2 max-w-[1152px] rounded-[24px] border border-white/10 bg-[#08090c]/95 p-4 text-white shadow-2xl backdrop-blur-xl lg:hidden">
+          <nav className="grid gap-2">
+            {links.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="rounded-2xl px-4 py-3 text-white/80 hover:bg-white/8 hover:text-white"
               >
-                <div className="inline-flex items-center px-2 py-[5px] bg-gradient-to-r from-blue-100 to-blue-100 rounded-full text-blue-700 text-xs font-medium border border-blue-200">
-                  <Zap className="w-4 h-4 mr-2" />
-                  AI-Powered Calling Revolution
-                </div>
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="mt-3 grid grid-cols-2 gap-3">
+            <Link href={DASHBOARD_PAGE_LINK} className="rounded-2xl border border-white/12 px-4 py-3 text-center text-sm">
+              Login
+            </Link>
+            <Link href={CALENDLY_LINK} className="rounded-2xl bg-[#3038f2] px-4 py-3 text-center text-sm font-semibold">
+              Contact us
+            </Link>
+          </div>
+        </div>
+      ) : null}
+    </header>
+  );
+}
 
-                <h1 className="text-3xl sm:text-4xl lg:text-[55px] lg:leading-[60px] font-bold text-gray-900 leading-tight">
-                  Let AI handle your <br /> calls like a human <br /> for&nbsp;
-                  <DynamicText
-                    words={[
-                      "Contact Center",
-                      "Appointment Booking",
-                      "Call Routing",
-                      "Customer Support",
-                    ]}
-                    className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-600"
-                  />
-                </h1>
+function OrbitalHero() {
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="absolute left-1/2 top-20 h-[760px] w-[760px] -translate-x-1/2 rounded-full border border-dashed border-white/10" />
+      <div className="absolute left-1/2 top-0 h-[1040px] w-[1040px] -translate-x-1/2 rounded-full border border-dashed border-white/8" />
+      <div className="absolute left-1/2 top-[-120px] h-[1320px] w-[1320px] -translate-x-1/2 rounded-full border border-dashed border-white/6" />
+      <span className="absolute left-[27%] top-[22%] h-2 w-2 rounded-full bg-white/80 shadow-[0_0_20px_rgba(255,255,255,0.7)]" />
+      <span className="absolute right-[25%] top-[44%] h-1.5 w-1.5 rounded-full bg-white/70" />
+      <span className="absolute left-[38%] top-[72%] h-2.5 w-2.5 rounded-full border border-white/30 bg-white/15" />
+      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#07080a] to-transparent" />
+    </div>
+  );
+}
 
-                <p className="text-base text-gray-600 leading-relaxed max-w-xl">
-                  Transform your business processes with AI that handles call
-                  routing, customer support, appointment booking, and routine
-                  follow-ups automatically. Save hours each week on manual
-                  tasks and deliver faster customer service.
-                </p>
+function SectionHeading({
+  eyebrow,
+  title,
+  copy,
+}: {
+  eyebrow?: string;
+  title: React.ReactNode;
+  copy?: string;
+}) {
+  return (
+    <div className="mx-auto max-w-4xl text-center">
+      {eyebrow ? (
+        <div className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-4 py-2 text-xs font-semibold uppercase tracking-[0.42em] text-white/70">
+          <Sparkles className="h-3.5 w-3.5 text-[#3038f2]" />
+          {eyebrow}
+        </div>
+      ) : null}
+      <h2 className="text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+        {title}
+      </h2>
+      {copy ? (
+        <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/55 sm:text-lg">
+          {copy}
+        </p>
+      ) : null}
+    </div>
+  );
+}
 
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <Link href={CALENDLY_LINK}>
-                    <Button className="min-w-[232px]">
-                      Let's talk
-                      <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                </div>
-              </motion.div>
+function DemoSection() {
+  return (
+    <section id="demos" className="relative z-10 px-4 py-24 sm:py-28">
+      <div className="mx-auto max-w-[1116px]">
+        <SectionHeading
+          eyebrow="Interactive demos"
+          title={
+            <>
+              Experience Telo&apos;s voice products in one{" "}
+              <span className="text-white/45">place</span>
+            </>
+          }
+          copy="Try voice AI in action with live agents, text-to-speech, transcription, and voice cloning designed for realistic customer conversations."
+        />
 
-              <motion.div
-                initial={{ opacity: 0, x: 200 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="relative flex-1 flex sm:justify-end w-full max-w-[550px]"
-              >
-                <OptimizedImage
-                  src="/ai-customer-service-face.png"
-                  alt="AI Assistant"
-                  width={550}
-                  height={550}
-                  priority
-                  imageClassName="rounded-2xl object-cover"
-                  className="w-full max-w-[550px] h-auto sm:h-[500px]"
-                />
+        <div className="mt-12 rounded-[18px] border border-white/10 bg-white/[0.08] p-2">
+          <div className="grid gap-2 md:grid-cols-4">
+            {demoTabs.map((tab, index) => {
+              const Icon = tab.icon;
+              return (
+                <button
+                  key={tab.label}
+                  className={`flex items-center justify-center gap-2 rounded-[13px] px-4 py-3 text-sm font-medium transition ${
+                    index === 0
+                      ? "bg-[#3038f2] text-white shadow-[0_0_26px_rgba(48,56,242,0.45)]"
+                      : "text-white/82 hover:bg-white/8"
+                  }`}
+                >
+                  <Icon className="h-4 w-4" />
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
-                <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white rounded-full shadow-lg flex items-center justify-between px-4 py-2 w-[360px] max-w-[90%]">
-                  <Image
-                    src="/ai-customer-service-face.png"
-                    alt="Caller"
-                    width={100}
-                    height={100}
-                    className="w-10 h-10 rounded-full object-cover mr-3"
-                  />
+        <div className="mt-6 grid overflow-hidden rounded-[24px] border border-white/10 bg-[#08090c] lg:grid-cols-2">
+          <div className="flex min-h-[380px] flex-col items-center justify-center border-b border-white/10 p-8 text-center lg:border-b-0 lg:border-r">
+            <button aria-label="Start voice demo" className="relative grid h-28 w-28 place-items-center rounded-full bg-[#3038f2] text-white shadow-[0_0_0_32px_rgba(48,56,242,0.08),0_0_0_62px_rgba(48,56,242,0.04),0_0_70px_rgba(48,56,242,0.65)]">
+              <Mic className="h-10 w-10" />
+            </button>
+            <h3 className="mt-16 text-2xl font-semibold text-white">
+              Click the Mic to start talking
+            </h3>
+            <p className="mt-4 text-white/52">Receive an instant call from our AI agent.</p>
+          </div>
 
-                  <div className="flex-1">
-                    <p className="text-sm text-gray-300 leading-none">
-                      Incoming
-                    </p>
-                    <p className="text-base font-semibold text-white leading-tight">
-                      Alex
-                    </p>
-                  </div>
-
-                  <div className="flex items-center space-x-2 ml-3">
-                    <button className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center">
-                      <PhoneMissed />
-                    </button>
-                    <button className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
-                      <PhoneIncoming />
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
+          <div className="flex min-h-[380px] flex-col items-center justify-center p-8 text-center">
+            <div className="grid h-14 w-14 place-items-center rounded-full bg-[#3038f2] text-white">
+              <Phone className="h-6 w-6" />
             </div>
-          </section>
+            <h3 className="mt-6 text-2xl font-semibold text-white">
+              Prefer a quick call?
+            </h3>
+            <p className="mt-3 max-w-sm text-white/52">
+              Call us directly to discuss the voice agent demo with our team.
+            </p>
+            <Link
+              href={CALENDLY_LINK}
+              className="mt-8 inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-[18px] bg-[#3038f2] px-6 py-5 text-lg font-bold text-white transition hover:bg-[#4d55ff]"
+            >
+              <Phone className="h-5 w-5" />
+              Book a live demo
+            </Link>
+            <p className="mt-4 text-sm text-white/45">Available for demo and sales questions.</p>
+          </div>
+        </div>
 
-          {/* Use Cases */}
-          <UseCaseSection />
+        <p className="mx-auto mt-10 max-w-4xl text-center text-sm leading-7 text-white/45">
+          By using our AI-powered services, including voice agents, text-to-speech,
+          speech-to-text, and voice cloning, you agree to responsible usage,
+          privacy safeguards, and approved business workflows.
+        </p>
+      </div>
+    </section>
+  );
+}
 
-          {/* Floating Stats Cards */}
-          <section className="relative z-10 mb-8 md:mb-16">
-            <div className="container mx-auto px-6">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                {[
-                  {
-                    number: "32+",
-                    label: "Languages",
-                    icon: Languages,
-                    color: "from-blue-500 to-blue-600",
-                  },
-                  {
-                    number: "24/7",
-                    label: "Availability",
-                    icon: Clock,
-                    color: "from-blue-500 to-blue-600",
-                  },
-                  {
-                    number: "95%",
-                    label: "Accuracy Rate",
-                    icon: CheckCircle,
-                    color: "from-purple-500 to-purple-600",
-                  },
-                  {
-                    number: "60min",
-                    label: "Setup Time",
-                    icon: Zap,
-                    color: "from-pink-500 to-pink-600",
-                  },
-                ].map(({ number, label, icon: Icon, color }, idx) => (
-                  <motion.div
-                    key={label}
-                    className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1, y: -30 }}
-                    transition={{
-                      duration: 1,
-                      y: 0,
-                      delay: idx * 0.5,
-                      damping: 20,
-                    }}
-                  >
-                    <div
-                      className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${color} rounded-xl mb-4`}
-                    >
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="text-3xl font-bold text-gray-900 mb-1">
-                      {number}
-                    </div>
-                    <div className="text-gray-600 text-sm">{label}</div>
-                  </motion.div>
+function Visual({ type }: { type: string }) {
+  if (type === "chart") {
+    return (
+      <div className="relative h-52 overflow-hidden rounded-2xl bg-white/[0.02]">
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:44px_44px] opacity-50" />
+        <svg viewBox="0 0 320 190" className="absolute inset-0 h-full w-full">
+          <path d="M24 144 C70 104 96 128 132 104 C170 78 186 128 224 68 C250 28 272 66 304 28" fill="none" stroke="#3038f2" strokeWidth="5" />
+          <circle cx="224" cy="68" r="10" fill="#3038f2" />
+        </svg>
+      </div>
+    );
+  }
+
+  if (type === "handoff") {
+    return (
+      <div className="flex h-52 items-center justify-center gap-6">
+        {["To Do", "In Progress"].map((label, index) => (
+          <div key={label} className="h-36 w-32 rounded-2xl border border-white/10 bg-white/[0.06] p-4">
+            <p className="text-sm font-semibold text-white/75">{label}</p>
+            <div className="mt-5 h-3 rounded-full bg-white/12" />
+            <div className="mt-3 h-3 w-3/4 rounded-full bg-white/10" />
+            {index === 0 ? <ArrowRight className="ml-auto mt-8 h-5 w-5 text-[#3038f2]" /> : null}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (type === "pulse") {
+    return (
+      <div className="grid h-52 place-items-center">
+        <div className="relative grid h-28 w-28 place-items-center rounded-full bg-[#3038f2]/15">
+          <span className="absolute h-40 w-40 rounded-full border border-[#3038f2]/20" />
+          <span className="absolute h-56 w-56 rounded-full border border-[#3038f2]/10" />
+          <BadgeCheck className="h-12 w-12 text-[#4d55ff]" />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid h-52 place-items-center">
+      <div className="relative h-24 w-24 rounded-2xl border border-white/10 bg-white/[0.08]">
+        <UserRoundCheck className="absolute left-1/2 top-1/2 h-9 w-9 -translate-x-1/2 -translate-y-1/2 text-white/70" />
+        {[["-70px", "8px", Mail], ["86px", "10px", BarChart3], ["-58px", "78px", Zap], ["92px", "78px", ClipboardList]].map(([left, top, Icon], index) => {
+          const NodeIcon = Icon as typeof Mail;
+          return (
+            <div
+              key={index}
+              className="absolute grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/[0.08]"
+              style={{ left: left as string, top: top as string }}
+            >
+              <NodeIcon className="h-5 w-5 text-white/65" />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function CapabilitiesSection() {
+  return (
+    <section id="features" className="relative z-10 px-4 py-24">
+      <div className="mx-auto max-w-[1190px]">
+        <SectionHeading
+          title={
+            <>
+              Advanced Capabilities for Your <span className="text-white/45">AI Workforce</span>
+            </>
+          }
+        />
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {capabilities.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <article
+                key={feature.title}
+                className={`rounded-[24px] border border-white/10 bg-white/[0.015] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] ${
+                  index === 4 ? "lg:col-span-2" : ""
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <Icon className="h-5 w-5 text-white" />
+                  <h3 className="text-xl font-semibold text-white">{feature.title}</h3>
+                </div>
+                <p className="mt-4 min-h-16 text-sm leading-7 text-white/48">{feature.copy}</p>
+                <Visual type={feature.visual} />
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProductsSection() {
+  return (
+    <section id="products" className="relative z-10 border-t border-white/6 px-4 py-24">
+      <div className="mx-auto max-w-[1190px]">
+        <SectionHeading
+          title={
+            <>
+              Our <span className="text-white/45">Products</span>
+            </>
+          }
+          copy="Two platforms. One goal: putting powerful AI voice and conversation tools in your hands."
+        />
+        <div className="mt-16 grid gap-10 lg:grid-cols-2">
+          {productCards.map((product) => (
+            <article key={product.title} className="rounded-[26px] border border-white/10 bg-white/[0.015] p-8 sm:p-10">
+              <h3 className="text-2xl font-semibold text-white">{product.title}</h3>
+              <p className="mt-5 text-base leading-8 text-white/52">{product.copy}</p>
+              <div className="mt-8 grid gap-6">
+                {product.points.map((point) => (
+                  <div key={point} className="flex gap-4">
+                    <span className="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/12 text-white">
+                      <Check className="h-4 w-4" />
+                    </span>
+                    <p className="text-white/72">{point}</p>
+                  </div>
                 ))}
               </div>
-            </div>
-          </section>
-
-          {/* AI Team Showcase - Horizontal Cards */}
-          <section id="team" className="py-20 lg:py-24 bg-white">
-            <div className="max-w-[1400px] mx-auto px-6">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                  Your{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-600">
-                    AI Dream Team
-                  </span>
-                </h2>
-                <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                  Meet the AI employees that will revolutionize your business
-                  operations and drive unprecedented growth.
-                </p>
-              </div>
-
-              <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                variants={{
-                  hidden: {},
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.18,
-                    },
-                  },
-                }}
-              >
-                {aiAgents.map(
-                  (
-                    {
-                      name,
-                      role,
-                      img,
-                      imgAlt,
-                      gradient,
-                      features,
-                      description,
-                    },
-                    idx
-                  ) => (
-                    <motion.div
-                      key={idx}
-                      className={`bg-gradient-to-b ${gradient} flex-1 rounded-3xl p-6 hover:shadow-2xl transition-all duration-300`}
-                      variants={{
-                        hidden: { opacity: 0, y: 60, scale: 0.96 },
-                        visible: { opacity: 1, y: 0, scale: 1 },
-                      }}
-                      transition={{
-                        duration: 0.7,
-                        delay: idx * 0.15,
-                        type: "spring",
-                        stiffness: 80,
-                      }}
-                      viewport={{ once: true, amount: 0.5 }}
-                    >
-                      <div className="flex flex-col gap-4 items-center">
-                        <motion.div
-                          className="flex flex-col items-start w-full"
-                          initial={{ opacity: 0, y: 30 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.2 + idx * 0.1, duration: 0.5 }}
-                        >
-                          <div
-                            className={`w-full h-[330px] rounded-xl bg-gradient-to-r mb-4 overflow-hidden`}
-                          >
-                            <img
-                              src={img}
-                              alt={imgAlt}
-                              className="w-full h-full object-cover rounded-xl"
-                            />
-                          </div>
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">
-                            {name}
-                          </h3>
-                          <p
-                            className={`text-blue-600 text-base font-semibold`}
-                          >
-                            {role}
-                          </p>
-                        </motion.div>
-                        <motion.div
-                          className="lg:col-span-2"
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.3 + idx * 0.1, duration: 0.5 }}
-                        >
-                          <p className="text-gray-700 text-base leading-relaxed mb-6">
-                            {description}
-                          </p>
-                          <div className="grid grid-cols-1 gap-4">
-                            {features.map(
-                              ({ icon: Icon, label, color }, fidx) => (
-                                <motion.div
-                                  className="flex items-center"
-                                  key={label}
-                                  initial={{ opacity: 0, x: -20 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{
-                                    delay: 0.4 + fidx * 0.08,
-                                    duration: 0.4,
-                                  }}
-                                >
-                                  <Icon className={`w-5 h-5 ${color} mr-2`} />
-                                  <span className="text-gray-600">{label}</span>
-                                </motion.div>
-                              )
-                            )}
-                          </div>
-                        </motion.div>
-                      </div>
-                    </motion.div>
-                  )
-                )}
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Process Steps - Vertical Timeline */}
-          {/* <HiringSteps /> */}
-
-          {/* Features Grid */}
-          <section id="features" className="py-20 lg:py-24 bg-white">
-            <div className="container mx-auto px-6 md:px-10 flex flex-col gap-6 md:gap-12 lg:gap-28 justify-center items-center">
-              <motion.div
-                className="text-center mb-10"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true, amount: 0.5 }}
-              >
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                  Why Choose Our{" "}
-                  <span className="text-blue-600">AI Employees</span>
-                </h2>
-                <p className="text-base text-gray-600 max-w-3xl mx-auto">
-                  Experience the future of work with AI that's indistinguishable
-                  from human interaction.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="grid lg:grid-cols-2 gap-16 items-center"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={{
-                  hidden: {},
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.18,
-                    },
-                  },
-                }}
-              >
-                <motion.div
-                  initial={{ opacity: 0, x: -60 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                >
-                  <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                    Always <span className="text-blue-600">Available</span>,
-                    Always <span className="text-blue-600">Professional</span>
-                  </h3>
-                  <p className="text-base text-gray-600 mb-8 leading-relaxed">
-                    Our AI employees deliver human-like conversations that feel
-                    natural and engaging. They&apos;re available 24/7, never
-                    need breaks, and consistently provide exceptional service.
-                  </p>
-                  <div className="grid grid-cols-2 gap-6 mb-8">
-                    {[
-                      "Natural conversation flow",
-                      "Multilingual support",
-                      "Instant response time",
-                      "Consistent quality",
-                    ].map((feature, idx) => (
-                      <motion.div
-                        key={feature}
-                        className="flex items-center"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
-                        viewport={{ once: true, amount: 0.5 }}
-                      >
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700 text-sm">{feature}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  <a href={CALENDLY_LINK}>
-                    <Button variant="default">
-                      Let's talk
-                      <ArrowRight className="w-6 h-6 ml-2" />
-                    </Button>
-                  </a>
-                </motion.div>
-                <motion.div
-                  className="flex justify-end"
-                  initial={{ opacity: 0, x: 60 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, delay: 0.2 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                >
-                  <AgentImage
-                    src="/available.jpg"
-                    alt="24/7 Available AI"
-                    width={600}
-                    height={400}
-                    className="relative w-full lg:w-[70%] h-auto rounded-3xl"
-                  />
-                </motion.div>
-              </motion.div>
-
-              <motion.div
-                className="grid lg:grid-cols-2 gap-16 items-center"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={{
-                  hidden: {},
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.18,
-                    },
-                  },
-                }}
-              >
-                <motion.div
-                  className="order-2 lg:order-1 relative flex justify-start"
-                  initial={{ opacity: 0, x: -60 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                >
-                  <Image
-                    src="/love_employee.png"
-                    alt="Customizable AI"
-                    width={600}
-                    height={400}
-                    className="relative w-full lg:w-[70%] h-auto"
-                  />
-                </motion.div>
-                <motion.div
-                  className="order-1 lg:order-2"
-                  initial={{ opacity: 0, x: 60 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, delay: 0.2 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                >
-                  <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                    Fully <span className="text-blue-600">Customizable</span> to
-                    Your Brand
-                  </h3>
-                  <p className="text-base text-gray-600 mb-8 leading-relaxed">
-                    Tailour every aspect of your AI employee to match your brand
-                    voice, industry requirements, and specific business
-                    processes.
-                  </p>
-                  <div className="grid grid-cols-2 gap-6 mb-8">
-                    {[
-                      "Custom personality & tone",
-                      "Industry-specific knowledge",
-                      "Brand voice alignment",
-                      "Workflow integration",
-                    ].map((feature, idx) => (
-                      <motion.div
-                        key={feature}
-                        className="flex items-center"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
-                        viewport={{ once: true, amount: 0.5 }}
-                      >
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700 text-sm">{feature}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  <a href={CALENDLY_LINK}>
-                    <Button variant="default">
-                      Let's talk
-                      <ArrowRight className="w-6 h-6 ml-2" />
-                    </Button>
-                  </a>
-                </motion.div>
-              </motion.div>
-
-              <motion.div
-                className="grid lg:grid-cols-2 gap-16 items-center mb-20"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={{
-                  hidden: {},
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.18,
-                    },
-                  },
-                }}
-              >
-                <motion.div
-                  initial={{ opacity: 0, x: -60 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                >
-                  <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                    Voice Accent
-                    <span className="text-blue-600">
-                      &nbsp;Flexibility&nbsp;
-                    </span>
-                    for Every Audience
-                  </h3>
-                  <p className="text-base text-gray-600 mb-8 leading-relaxed">
-                    Our AI agents are designed to understand and speak in a wide
-                    range of English accents — including British, American,
-                    Australian, and more. Communicate naturally with your
-                    audience, no matter where they are.
-                  </p>
-                  <div className="grid grid-cols-2 gap-6 mb-8">
-                    {[
-                      "British, American, and global accents",
-                      "Regional clarity and recognition",
-                      "Enhanced customer experience",
-                      "Natural speech delivery",
-                    ].map((feature, idx) => (
-                      <motion.div
-                        key={feature}
-                        className="flex items-center"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
-                        viewport={{ once: true, amount: 0.5 }}
-                      >
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700 text-sm">{feature}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  <a href={CALENDLY_LINK}>
-                    <Button variant="default">
-                      Let's talk
-                      <ArrowRight className="w-6 h-6 ml-2" />
-                    </Button>
-                  </a>
-                </motion.div>
-
-                <motion.div
-                  className="flex justify-end"
-                  initial={{ opacity: 0, x: 60 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, delay: 0.2 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                >
-                  <AgentImage
-                    src="/voice-accent-support.jpg"
-                    alt="AI Voice Accent Support"
-                    width={600}
-                    height={400}
-                    className="relative w-full lg:w-[70%] h-auto rounded-3xl"
-                  />
-                </motion.div>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Integration Section */}
-          <section className="py-16 bg-[#FDF9F8]">
-            <div className="px-6 md:px-12 text-center">
-              <motion.div
-                className="grid md:grid-cols-2 gap-16 items-center mb-12"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={{
-                  hidden: {},
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.18,
-                    },
-                  },
-                }}
-              >
-                <motion.div
-                  className="flex flex-col items-center md:items-start"
-                  initial={{ opacity: 0, x: -60 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                >
-                  <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center md:text-left">
-                    We integrate with your existing tools
-                  </h2>
-                  <p className="text-base text-gray-600 max-w-3xl mx-auto mb-8 text-center md:text-left">
-                    Our platform integrates with the most commonly used
-                    applications, so you can continue using your existing tools
-                    while maximising your efficiency.
-                  </p>
-
-                  <a href={CALENDLY_LINK}>
-                    <Button variant="default">
-                      Let's talk
-                      <ArrowRight className="w-6 h-6 ml-2" />
-                    </Button>
-                  </a>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: 60 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, delay: 0.2 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                >
-                  <Image
-                    src="/how-it-works.png"
-                    alt="How It Works Process"
-                    width={1000}
-                    height={400}
-                    className="mx-auto"
-                  />
-                </motion.div>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Pricing Section */}
-          {/* <PricingPlansSection /> */}
-
-          {/* FAQ Section */}
-          <FaqSection />
-
-          {/* Trust Section */}
-          <TrustSection />
-        </main>
-
-        <SiteFooter />
+            </article>
+          ))}
+        </div>
       </div>
-    </>
+    </section>
+  );
+}
+
+function IndustriesSection() {
+  return (
+    <section className="relative z-10 border-t border-white/6 px-4 py-24">
+      <div className="mx-auto max-w-[1190px]">
+        <SectionHeading
+          title={
+            <>
+              Solutions for Every <span className="text-white/45">Industry</span>
+            </>
+          }
+          copy="From appointment scheduling to complaint resolution, see how Telo serves diverse use cases."
+        />
+        <div className="mt-16 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
+          {industries.map((industry) => {
+            const Icon = industry.icon;
+            return (
+              <article key={industry.title} className="min-h-44 rounded-[22px] border border-white/10 bg-white/[0.015] p-6">
+                <div className="grid h-12 w-12 place-items-center rounded-[14px] border border-white/12 bg-white/[0.07] text-white">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-7 text-xl font-semibold text-white">{industry.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-white/48">{industry.copy}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PricingSection() {
+  return (
+    <section id="pricing" className="relative z-10 border-t border-white/6 px-4 py-24">
+      <div className="mx-auto max-w-[1190px]">
+        <SectionHeading
+          title={
+            <>
+              Plans for Every <span className="text-white/45">Scale</span>
+            </>
+          }
+          copy="Simple, transparent pricing for Agents and Studio. Choose what is right for you."
+        />
+        <div className="mt-8 text-center">
+          <Link href="/pricing" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-sm text-white/72 transition hover:text-white">
+            View plan comparisons and FAQs
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <div className="mt-16 grid gap-7 lg:grid-cols-3">
+          {plans.map((plan) => (
+            <article key={plan.name} className="rounded-[26px] border border-white/10 bg-[#08090c] p-6 sm:p-8">
+              <h3 className="text-2xl font-semibold text-white">{plan.name}</h3>
+              <p className="mt-4 min-h-12 text-sm leading-6 text-white/52">{plan.eyebrow}</p>
+              <div className="mt-8 flex items-end gap-2 text-white">
+                <span className="text-5xl font-semibold">{plan.price}</span>
+                {plan.cadence ? <span className="pb-2 text-white/48">{plan.cadence}</span> : null}
+              </div>
+              <Link href={CALENDLY_LINK} className="mt-8 flex w-full items-center justify-center rounded-[14px] bg-white px-5 py-3 font-semibold text-black transition hover:bg-white/82">
+                {plan.cta}
+              </Link>
+              <div className="mt-8 grid gap-4">
+                {plan.features.map((feature) => (
+                  <div key={feature} className="flex items-center justify-between gap-5 border-b border-white/8 pb-4 text-sm text-white/68 last:border-b-0">
+                    <span className="flex items-center gap-3">
+                      <Check className="h-4 w-4 text-white" />
+                      {feature}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="relative z-10 border-t border-white/8 px-4 py-16">
+      <div className="mx-auto grid max-w-[1190px] gap-10 lg:grid-cols-[1.3fr_1fr_1fr]">
+        <div>
+          <LogoMark />
+          <p className="mt-6 max-w-md text-sm leading-7 text-white/48">
+            Telo AI builds production-ready voice agents for customer operations,
+            sales, support, and booking workflows.
+          </p>
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-white/45">Contact</h3>
+          <div className="mt-5 grid gap-3">
+            {contactEmails.map((email) => (
+              <a key={email} href={`mailto:${email}`} className="flex items-center gap-3 text-white/72 transition hover:text-white">
+                <Mail className="h-4 w-4" />
+                {email}
+              </a>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-white/45">Actions</h3>
+          <div className="mt-5 grid gap-3">
+            <Link href={CALENDLY_LINK} className="text-white/72 transition hover:text-white">
+              Book a demo
+            </Link>
+            <Link href={DASHBOARD_PAGE_LINK} className="text-white/72 transition hover:text-white">
+              Login
+            </Link>
+            <Link href="/privacy-policy" className="text-white/72 transition hover:text-white">
+              Privacy policy
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="mx-auto mt-12 flex max-w-[1190px] flex-col justify-between gap-4 border-t border-white/8 pt-8 text-sm text-white/38 sm:flex-row">
+        <span>Copyright 2026 Telo AI. All rights reserved.</span>
+        <span className="flex items-center gap-2">
+          <Moon className="h-4 w-4" />
+          Voice AI for always-on teams
+        </span>
+      </div>
+    </footer>
+  );
+}
+
+export default function Home() {
+  return (
+    <main className="min-h-screen overflow-hidden bg-[#050608] font-sans text-white">
+      <Header />
+      <section className="relative min-h-[720px] px-4 pt-36 sm:min-h-[760px] sm:pt-44">
+        <OrbitalHero />
+        <div className="relative z-10 mx-auto flex max-w-[1120px] flex-col items-center text-center">
+          <div className="mb-9 inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white/70">
+            Made for modern customer teams
+          </div>
+          <h1 className="max-w-6xl text-[44px] font-semibold leading-[1.12] tracking-[-0.02em] text-white sm:text-6xl lg:text-[74px]">
+            The Future of AI Voice, Now for Your Contact Center
+          </h1>
+          <p className="mt-8 max-w-3xl text-base leading-8 text-white/55 sm:text-lg">
+            From autonomous AI agents for your business to realistic voice
+            generation for customer journeys. Discover the Telo AI platform.
+          </p>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <Link href="#demos" className="inline-flex items-center justify-center gap-3 rounded-[13px] bg-white px-5 py-3 font-semibold text-black transition hover:bg-white/80">
+              Try The Demos
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href={CALENDLY_LINK} className="inline-flex items-center justify-center gap-3 rounded-[13px] border border-white/10 bg-white/[0.04] px-5 py-3 font-semibold text-white transition hover:bg-white/8">
+              Contact us
+              <CalendarCheck className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <DemoSection />
+      <CapabilitiesSection />
+      <ProductsSection />
+      <IndustriesSection />
+      <PricingSection />
+      <Footer />
+    </main>
   );
 }
