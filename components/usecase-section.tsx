@@ -154,7 +154,7 @@ export default function UseCaseSection() {
         icon: <Tv className="h-8 w-8 text-blue-600" />,
         title: "Telecom & Service Providers",
         description:
-          "Handle account setups, billing issues, and troubleshooting efficiently, ensuring customer satisfaction.",
+          "Handle customer profile updates, billing questions, and troubleshooting efficiently, ensuring customer satisfaction.",
       },
     ],
   };

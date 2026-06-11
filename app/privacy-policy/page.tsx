@@ -3,243 +3,166 @@
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 
+const sections = [
+  {
+    title: "Information We Collect",
+    body: [
+      "We collect the information you choose to share when you contact Telo AI, book a meeting, request a proposal, or work with us on a voice AI deployment.",
+      "This can include contact details, company information, project goals, support context, call workflow requirements, and technical information such as device, browser, IP address, and website usage data.",
+    ],
+  },
+  {
+    title: "How We Collect Information",
+    body: [
+      "We collect information directly from you through forms, meetings, email, phone calls, and approved project channels.",
+      "We may also collect limited technical information through cookies, analytics, and similar tools so we can keep the website reliable and improve the experience.",
+    ],
+  },
+  {
+    title: "How We Use Your Information",
+    body: [
+      "We use information to respond to inquiries, schedule meetings, design Saudi-ready voice AI workflows, provide support, improve our services, and communicate relevant updates.",
+      "When we process customer data for a project, we use it only for the agreed business purpose and according to the terms of the relevant engagement.",
+    ],
+  },
+  {
+    title: "Data Security",
+    body: [
+      "We use reasonable administrative, technical, and organizational safeguards to protect personal information from unauthorized access, misuse, loss, or disclosure.",
+      "No internet-based service is perfectly secure, but we work to keep security practices proportionate to the sensitivity of the information we handle.",
+    ],
+  },
+  {
+    title: "Data Sharing",
+    body: [
+      "We do not sell personal information. We may share information with trusted service providers who help us operate the website, schedule meetings, host systems, or deliver agreed services.",
+      "We may also disclose information when required by law, to protect rights and safety, or with your consent.",
+    ],
+  },
+  {
+    title: "Your Rights",
+    body: [
+      "Depending on your location and applicable law, you may have rights to access, correct, delete, restrict, or object to the use of your personal information.",
+      "To make a privacy request, contact us and we will respond in line with applicable legal requirements.",
+    ],
+  },
+  {
+    title: "Cookies and Tracking",
+    body: [
+      "We may use cookies and similar technologies to understand website performance and improve navigation. You can manage cookies through your browser settings.",
+    ],
+  },
+  {
+    title: "Children's Privacy",
+    body: [
+      "Telo AI services are designed for businesses and are not intended for children. We do not knowingly collect personal information from children.",
+    ],
+  },
+  {
+    title: "Policy Updates",
+    body: [
+      "We may update this Privacy Policy from time to time. The latest version will be posted on this page with an updated date.",
+    ],
+  },
+  {
+    title: "Contact Us",
+    body: [
+      "If you have questions about this Privacy Policy or how Telo AI handles information, contact us at hello@teloai.app.",
+    ],
+  },
+]
+
 export default function PrivacyPolicyPage() {
+  const updatedAt = new Date().toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
+
   return (
-    <div className="bg-slate-50 min-h-screen">
-      {/* Header */}
+    <div className="min-h-screen overflow-hidden bg-[#f7fbf8] text-slate-950">
       <SiteHeader />
 
-      {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Sidebar Navigation */}
-          <aside className="md:w-1/4">
-            <div className="bg-white p-6 rounded-lg shadow-sm sticky top-6">
-              <h2 className="text-lg font-semibold mb-4 text-slate-900">Quick Navigation</h2>
-              <nav className="space-y-2">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((section) => (
+      <main className="relative">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute left-[-10rem] top-20 h-72 w-72 rounded-full border border-emerald-200/70" />
+          <div className="absolute right-[-8rem] top-48 h-96 w-96 rounded-full border border-dashed border-emerald-300/70" />
+          <div className="absolute bottom-16 left-1/3 h-44 w-44 rounded-full bg-emerald-100/45 blur-3xl" />
+        </div>
+
+        <section className="relative mx-auto max-w-[1190px] px-4 pb-12 pt-10 sm:px-6 lg:pb-16 lg:pt-16">
+          <div className="max-w-3xl">
+            <span className="inline-flex rounded-full border border-emerald-200 bg-white px-4 py-2 text-sm font-semibold text-[#0f8f5f] shadow-[0_10px_28px_rgba(15,143,95,0.08)]">
+              Privacy, written clearly
+            </span>
+            <h1 className="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              Privacy Policy
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+              How Telo AI handles information when Saudi teams contact us, book meetings, and deploy voice AI workflows.
+            </p>
+            <p className="mt-4 text-sm font-medium text-slate-500">Last updated: {updatedAt}</p>
+          </div>
+        </section>
+
+        <section className="relative mx-auto grid max-w-[1190px] gap-8 px-4 pb-20 sm:px-6 lg:grid-cols-[280px_1fr] lg:pb-24">
+          <aside className="lg:sticky lg:top-28 lg:self-start">
+            <div className="rounded-[24px] border border-emerald-100 bg-white/90 p-5 shadow-[0_18px_54px_rgba(15,23,42,0.08)] backdrop-blur">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#0f8f5f]">On this page</p>
+              <nav className="mt-4 space-y-1">
+                {sections.map((section, index) => (
                   <a
-                    key={section}
-                    href={`#section-${section}`}
-                    className="block text-slate-600 hover:text-primary transition-colors"
+                    key={section.title}
+                    href={`#section-${index + 1}`}
+                    className="block rounded-2xl px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-emerald-50 hover:text-[#0f8f5f]"
                   >
-                    {section}. {getSectionTitle(section)}
+                    {index + 1}. {section.title}
                   </a>
                 ))}
               </nav>
             </div>
           </aside>
 
-          {/* Privacy Policy Content */}
-          <div className="md:w-3/4">
-            <div className="bg-white p-8 rounded-lg shadow-sm">
-              <h1 className="text-3xl font-bold mb-6 text-slate-900">Privacy Policy</h1>
-              <p className="text-slate-600 mb-8">
-                Last Updated:{" "}
-                {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
-              </p>
-
-              <p className="text-slate-600 mb-8">
-                This Privacy Policy outlines how Connect AI Solutions Automation Agency collects, uses, discloses, and
-                safeguards your personal information.
-              </p>
-
-              <section id="section-1" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">1. Information We Collect</h2>
-                <p className="text-slate-600 mb-4">We may collect various types of information from you, including:</p>
-
-                <h3 className="text-lg font-medium mb-2 text-slate-800">Personal Information:</h3>
-                <ul className="list-disc pl-6 space-y-2 text-slate-600 mb-4">
-                  <li>
-                    <span className="font-medium">Contact Information:</span> Name, email address, phone number, company
-                    name.
-                  </li>
-                  <li>
-                    <span className="font-medium">Business Information:</span> Industry, company size, website URL.
-                  </li>
-                  <li>
-                    <span className="font-medium">Project Information:</span> Details about your projects, including
-                    goals, challenges, and budgets.
-                  </li>
-                </ul>
-
-                <h3 className="text-lg font-medium mb-2 text-slate-800">Technical Information:</h3>
-                <ul className="list-disc pl-6 space-y-2 text-slate-600">
-                  <li>
-                    Information collected automatically when you interact with our website or services, such as IP
-                    address, browser type, device information, and browsing history.
-                  </li>
-                  <li>
-                    <span className="font-medium">Usage Data:</span> Information about how you use our services, such as
-                    the features you access and the actions you take within our platform.
-                  </li>
-                </ul>
-              </section>
-
-              <section id="section-2" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">2. How We Collect Information</h2>
-                <p className="text-slate-600 mb-4">We collect information through various means, including:</p>
-                <ul className="list-disc pl-6 space-y-2 text-slate-600">
-                  <li>
-                    <span className="font-medium">Directly from you:</span> When you provide information through our
-                    website, contact forms, emails, or phone calls.
-                  </li>
-                  <li>
-                    <span className="font-medium">Automatically:</span> Through the use of cookies, web beacons, and
-                    other tracking technologies.
-                  </li>
-                  <li>
-                    <span className="font-medium">From third parties:</span> With your consent or as permitted by law,
-                    we may receive information about you from third-party sources.
-                  </li>
-                </ul>
-              </section>
-
-              <section id="section-3" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">3. How We Use Your Information</h2>
-                <p className="text-slate-600 mb-4">We use your information for various purposes, including:</p>
-                <ul className="list-disc pl-6 space-y-2 text-slate-600">
-                  <li>
-                    <span className="font-medium">Providing our services:</span> To deliver the AI solutions you have
-                    requested, such as AI-powered customer support, email marketing, content recommendations, and
-                    operational automation.
-                  </li>
-                  <li>
-                    <span className="font-medium">Communicating with you:</span> To respond to your inquiries, provide
-                    customer support, and send you updates and notifications.
-                  </li>
-                  <li>
-                    <span className="font-medium">Improving our services:</span> To analyze usage data and improve the
-                    functionality and performance of our services.
-                  </li>
-                  <li>
-                    <span className="font-medium">Marketing and sales:</span> To send you marketing communications, such
-                    as newsletters, promotions, and event invitations, with your consent.
-                  </li>
-                  <li>
-                    <span className="font-medium">Compliance with legal obligations:</span> To comply with applicable
-                    laws and regulations.
-                  </li>
-                </ul>
-              </section>
-
-              <section id="section-4" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">4. Data Security</h2>
-                <p className="text-slate-600">
-                  We take reasonable measures to protect your personal information from unauthorized access, use,
-                  disclosure, alteration, and destruction. However, no method of transmission over the internet or
-                  method of electronic storage is completely secure.
-                </p>
-              </section>
-
-              <section id="section-5" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">5. Data Sharing</h2>
-                <p className="text-slate-600 mb-4">We may share your personal information with:</p>
-                <ul className="list-disc pl-6 space-y-2 text-slate-600">
-                  <li>
-                    <span className="font-medium">Service providers:</span> Third-party companies that provide services
-                    to us, such as data processing, website hosting, and email delivery.
-                  </li>
-                  <li>
-                    <span className="font-medium">Business partners:</span> With your consent, we may share your
-                    information with our business partners for marketing or other purposes.
-                  </li>
-                  <li>
-                    <span className="font-medium">Legal authorities:</span> To comply with legal requests or when
-                    required by law.
-                  </li>
-                </ul>
-              </section>
-
-              <section id="section-6" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">6. Your Rights</h2>
-                <p className="text-slate-600 mb-4">
-                  You may have certain rights regarding your personal information, including:
-                </p>
-                <ul className="list-disc pl-6 space-y-2 text-slate-600">
-                  <li>
-                    <span className="font-medium">Access:</span> The right to access and request a copy of your personal
-                    information.
-                  </li>
-                  <li>
-                    <span className="font-medium">Correction:</span> The right to request the correction of inaccurate
-                    or incomplete information.
-                  </li>
-                  <li>
-                    <span className="font-medium">Erasure:</span> The right to request the deletion of your personal
-                    information in certain circumstances.
-                  </li>
-                  <li>
-                    <span className="font-medium">Restriction:</span> The right to restrict the processing of your
-                    personal information.
-                  </li>
-                  <li>
-                    <span className="font-medium">Data portability:</span> The right to receive your personal
-                    information in a portable format.
-                  </li>
-                  <li>
-                    <span className="font-medium">Objection:</span> The right to object to the processing of your
-                    personal information in certain circumstances.
-                  </li>
-                </ul>
-              </section>
-
-              <section id="section-7" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">7. Cookies and Tracking Technologies</h2>
-                <p className="text-slate-600">
-                  We use cookies and other tracking technologies to collect information about how you use our website
-                  and services. You can manage your cookie preferences through your browser settings.
-                </p>
-              </section>
-
-              <section id="section-8" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">8. Children's Privacy</h2>
-                <p className="text-slate-600">
-                  Our services are not intended for children under the age of 13. We do not knowingly collect personal
-                  information from children under 13.
-                </p>
-              </section>
-
-              <section id="section-9" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">9. Changes to This Privacy Policy</h2>
-                <p className="text-slate-600">
-                  We may update this Privacy Policy from time to time. We will notify you of any material changes by
-                  posting the updated policy on our website.
-                </p>
-              </section>
-
-              <section id="section-10" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">10. Contact Us</h2>
-                <p className="text-slate-600">
-                  If you have any questions about this Privacy Policy, please contact us at{" "}
-                  <a href="mailto:contact@connectaisolutions.com" className="text-primary hover:underline">
-                    contact@connectaisolutions.com
-                  </a>
-                </p>
-              </section>
+          <div className="rounded-[28px] border border-emerald-100 bg-white p-6 shadow-[0_24px_70px_rgba(15,23,42,0.09)] sm:p-8 lg:p-10">
+            <div className="space-y-8">
+              {sections.map((section, index) => (
+                <section
+                  key={section.title}
+                  id={`section-${index + 1}`}
+                  className="scroll-mt-32 rounded-[22px] border border-slate-100 bg-slate-50/60 p-5 transition hover:border-emerald-200 hover:bg-emerald-50/45 sm:p-6"
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#0f8f5f] text-sm font-semibold text-white shadow-[0_12px_26px_rgba(15,143,95,0.22)]">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <h2 className="text-xl font-semibold text-slate-950">{section.title}</h2>
+                      <div className="mt-3 space-y-3 text-base leading-7 text-slate-600">
+                        {section.body.map((paragraph) =>
+                          paragraph.includes("hello@teloai.app") ? (
+                            <p key={paragraph}>
+                              If you have questions about this Privacy Policy or how Telo AI handles information, contact
+                              us at{" "}
+                              <a className="font-semibold text-[#0f8f5f] hover:underline" href="mailto:hello@teloai.app">
+                                hello@teloai.app
+                              </a>
+                              .
+                            </p>
+                          ) : (
+                            <p key={paragraph}>{paragraph}</p>
+                          ),
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              ))}
             </div>
           </div>
-        </div>
+        </section>
       </main>
 
-      {/* Footer */}
       <SiteFooter />
     </div>
   )
-}
-
-function getSectionTitle(section: number): string {
-  const titles = {
-    1: "Information We Collect",
-    2: "How We Collect Information",
-    3: "How We Use Your Information",
-    4: "Data Security",
-    5: "Data Sharing",
-    6: "Your Rights",
-    7: "Cookies and Tracking Technologies",
-    8: "Children's Privacy",
-    9: "Changes to This Privacy Policy",
-    10: "Contact Us",
-  }
-  return titles[section as keyof typeof titles]
 }

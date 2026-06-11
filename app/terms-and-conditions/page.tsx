@@ -1,256 +1,175 @@
-"use client";
+"use client"
 
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import Link from "next/link";
+import { SiteFooter } from "@/components/site-footer"
+import { SiteHeader } from "@/components/site-header"
+
+const sections = [
+  {
+    title: "Agreement",
+    body: [
+      "These Terms and Conditions apply when you use the Telo AI website, contact us, book a meeting, or engage Telo AI for services.",
+      "Any signed proposal, service order, statement of work, or written agreement will control if it conflicts with these general terms.",
+    ],
+  },
+  {
+    title: "Services",
+    body: [
+      "Telo AI provides Arabic-first voice AI and automation services for Saudi teams, including inbound call handling, outbound calling, qualification, support workflows, integrations, and AI consulting.",
+      "The exact scope, pricing, timeline, and delivery requirements are agreed separately for each customer engagement.",
+    ],
+  },
+  {
+    title: "Client Responsibilities",
+    body: [
+      "Clients are responsible for providing accurate project information, approved business requirements, and timely feedback.",
+      "Clients must maintain the security of approved integration credentials, third-party systems, and data access they choose to provide to Telo AI.",
+    ],
+  },
+  {
+    title: "Acceptable Use",
+    body: [
+      "You may not use Telo AI services for unlawful, deceptive, abusive, or unauthorized communications.",
+      "You are responsible for ensuring your campaigns, call flows, customer data, and consent practices comply with applicable laws and platform rules.",
+    ],
+  },
+  {
+    title: "Intellectual Property",
+    body: [
+      "Telo AI retains ownership of its software, models, know-how, templates, processes, and technology unless a written agreement says otherwise.",
+      "Clients retain ownership of their own business data, customer data, brand assets, and content provided to Telo AI.",
+    ],
+  },
+  {
+    title: "Service Levels",
+    body: [
+      "Service levels, support windows, maintenance terms, and success criteria may be defined in a separate written agreement for each project.",
+    ],
+  },
+  {
+    title: "Limitations of Liability",
+    body: [
+      "To the fullest extent permitted by applicable law, Telo AI is not liable for indirect, incidental, special, consequential, or punitive damages arising from use of the website or services.",
+      "Any liability limits agreed in a signed service order or contract will apply to the relevant engagement.",
+    ],
+  },
+  {
+    title: "Termination",
+    body: [
+      "Either party may end an engagement according to the termination terms in the relevant proposal, service order, or written agreement.",
+      "If no separate terms apply, either party may request termination in writing, subject to payment for approved work already completed or committed.",
+    ],
+  },
+  {
+    title: "Governing Terms",
+    body: [
+      "The governing law and dispute process may be defined in the relevant written agreement between Telo AI and the customer.",
+      "Where no separate agreement exists, these terms will be interpreted according to applicable law and the commercial context of the services provided.",
+    ],
+  },
+  {
+    title: "Updates",
+    body: [
+      "Telo AI may update these Terms and Conditions from time to time. The latest version will be posted on this page with an updated date.",
+    ],
+  },
+  {
+    title: "Contact",
+    body: [
+      "For questions about these Terms and Conditions, contact Telo AI at hello@teloai.app.",
+    ],
+  },
+]
 
 export default function TermsAndConditionsPage() {
+  const updatedAt = new Date().toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
+
   return (
-    <div className="bg-slate-50 min-h-screen">
-      {/* Header */}
+    <div className="min-h-screen overflow-hidden bg-[#f7fbf8] text-slate-950">
       <SiteHeader />
 
-      {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Sidebar Navigation */}
-          <aside className="md:w-1/4">
-            <div className="bg-white p-6 rounded-lg shadow-sm sticky top-6">
-              <h2 className="text-lg font-semibold mb-4 text-slate-900">
-                Quick Navigation
-              </h2>
-              <nav className="space-y-2">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((section) => (
+      <main className="relative">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute right-[-12rem] top-16 h-80 w-80 rounded-full border border-emerald-200/70" />
+          <div className="absolute left-[-8rem] top-56 h-96 w-96 rounded-full border border-dashed border-emerald-300/70" />
+          <div className="absolute bottom-20 right-1/4 h-52 w-52 rounded-full bg-emerald-100/50 blur-3xl" />
+        </div>
+
+        <section className="relative mx-auto max-w-[1190px] px-4 pb-12 pt-10 sm:px-6 lg:pb-16 lg:pt-16">
+          <div className="max-w-3xl">
+            <span className="inline-flex rounded-full border border-emerald-200 bg-white px-4 py-2 text-sm font-semibold text-[#0f8f5f] shadow-[0_10px_28px_rgba(15,143,95,0.08)]">
+              Terms for working together
+            </span>
+            <h1 className="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              Terms and Conditions
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+              A clear outline of how Telo AI engagements, voice AI projects, and customer responsibilities are handled.
+            </p>
+            <p className="mt-4 text-sm font-medium text-slate-500">Last updated: {updatedAt}</p>
+          </div>
+        </section>
+
+        <section className="relative mx-auto grid max-w-[1190px] gap-8 px-4 pb-20 sm:px-6 lg:grid-cols-[280px_1fr] lg:pb-24">
+          <aside className="lg:sticky lg:top-28 lg:self-start">
+            <div className="rounded-[24px] border border-emerald-100 bg-white/90 p-5 shadow-[0_18px_54px_rgba(15,23,42,0.08)] backdrop-blur">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#0f8f5f]">On this page</p>
+              <nav className="mt-4 space-y-1">
+                {sections.map((section, index) => (
                   <a
-                    key={section}
-                    href={`#section-${section}`}
-                    className="block text-slate-600 hover:text-primary transition-colors"
+                    key={section.title}
+                    href={`#section-${index + 1}`}
+                    className="block rounded-2xl px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-emerald-50 hover:text-[#0f8f5f]"
                   >
-                    {section}. {getSectionTitle(section)}
+                    {index + 1}. {section.title}
                   </a>
                 ))}
               </nav>
             </div>
           </aside>
 
-          {/* Terms Content */}
-          <div className="md:w-3/4">
-            <div className="bg-white p-8 rounded-lg shadow-sm">
-              <h1 className="text-3xl font-bold mb-6 text-slate-900">
-                Terms and Conditions
-              </h1>
-              <p className="text-slate-600 mb-8">
-                Last Updated:{" "}
-                {new Date().toLocaleDateString("en-US", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}
-              </p>
-
-              <section id="section-1" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">
-                  1. Agreement
-                </h2>
-                <p className="text-slate-600">
-                  These Terms and Conditions govern the use of Connect AI
-                  Solutions' Automation Agency services. By engaging Connect AI
-                  Solutions for any Services, you agree to be bound by these
-                  Terms.
-                </p>
-              </section>
-
-              <section id="section-2" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">
-                  2. Services
-                </h2>
-                <p className="text-slate-600 mb-4">
-                  Connect AI Solutions provides a range of AI-powered services,
-                  including:
-                </p>
-                <ul className="list-disc pl-6 space-y-2 text-slate-600">
-                  <li>
-                    <span className="font-medium">
-                      AI-Powered Customer Support:
-                    </span>{" "}
-                    24/7 AI chatbot and support systems.
-                  </li>
-                  <li>
-                    <span className="font-medium">Email Marketing:</span>{" "}
-                    Hyper-personalized campaigns with AI-driven segmentation and
-                    automation.
-                  </li>
-                  <li>
-                    <span className="font-medium">Content Recommendation:</span>{" "}
-                    Tailored content recommendations for website visitors.
-                  </li>
-                  <li>
-                    <span className="font-medium">Operational Automation:</span>{" "}
-                    Automation of routine tasks like social media management and
-                    data entry.
-                  </li>
-                  <li>
-                    <span className="font-medium">Visitor Re-engagement:</span>{" "}
-                    AI-powered tools to identify and re-engage website visitors.
-                  </li>
-                  <li>
-                    <span className="font-medium">AI Consulting:</span> Expert
-                    guidance on AI strategy, implementation, and optimization.
-                  </li>
-                </ul>
-              </section>
-
-              <section id="section-3" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">
-                  3. Client Responsibilities
-                </h2>
-                <ul className="list-disc pl-6 space-y-2 text-slate-600">
-                  <li>
-                    <span className="font-medium">
-                      Provide accurate information:
-                    </span>{" "}
-                    Clients are responsible for providing accurate and complete
-                    information to Connect AI Solutions.
-                  </li>
-                  <li>
-                    <span className="font-medium">Access and security:</span>{" "}
-                    Clients are responsible for maintaining the security of
-                    any approved access details or integration credentials.
-                  </li>
-                  <li>
-                    <span className="font-medium">
-                      Third-party integrations:
-                    </span>{" "}
-                    Clients are responsible for ensuring compatibility and
-                    security of any third-party integrations with Connect AI
-                    Solutions' services.
-                  </li>
-                  <li>
-                    <span className="font-medium">Data privacy:</span> Clients
-                    are responsible for ensuring compliance with all applicable
-                    data privacy laws and regulations.
-                  </li>
-                </ul>
-              </section>
-
-              <section id="section-4" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">
-                  4. Intellectual Property
-                </h2>
-                <ul className="list-disc pl-6 space-y-2 text-slate-600">
-                  <li>
-                    Connect AI Solutions retains all intellectual property
-                    rights in its software, technology, and any materials
-                    provided as part of the Services.
-                  </li>
-                  <li>
-                    Clients retain ownership of their own data and content.
-                  </li>
-                </ul>
-              </section>
-
-              <section id="section-5" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">
-                  5. Service Level Agreements (SLAs)
-                </h2>
-                <p className="text-slate-600">
-                  SLAs may be agreed upon separately in writing for specific
-                  services.
-                </p>
-              </section>
-
-              <section id="section-6" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">
-                  6. Limitations of Liability
-                </h2>
-                <p className="text-slate-600">
-                  Connect AI Solutions shall not be liable for any indirect,
-                  incidental, special, consequential, or punitive damages
-                  arising out of or relating to the use of the Services.
-                </p>
-              </section>
-
-              <section id="section-7" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">
-                  7. Termination
-                </h2>
-                <p className="text-slate-600">
-                  This Agreement may be terminated by either party upon written
-                  notice to the other party.
-                </p>
-              </section>
-
-              <section id="section-8" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">
-                  8. Governing Law
-                </h2>
-                <p className="text-slate-600">
-                  These Terms shall be governed by and construed in accordance
-                  with the laws of United Kingdom.
-                </p>
-              </section>
-
-              <section id="section-9" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">
-                  9. Modifications
-                </h2>
-                <p className="text-slate-600">
-                  Connect AI Solutions reserves the right to modify these Terms
-                  at any time. Any changes will be effective upon posting on the
-                  Connect AI Solutions website.
-                </p>
-              </section>
-
-              <section id="section-10" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">
-                  10. Entire Agreement
-                </h2>
-                <p className="text-slate-600">
-                  These Terms constitute the entire agreement between the
-                  parties with respect to the subject matter hereof and
-                  supersede all prior or contemporaneous communications,
-                  representations, or agreements, whether oral or written.
-                </p>
-              </section>
-
-              <section id="section-11" className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-slate-900">
-                  11. Contact
-                </h2>
-                <p className="text-slate-600">
-                  For any questions regarding these Terms, please contact us at{" "}
-                  <a
-                    href="mailto:contact@connectaisolutions.com"
-                    className="text-primary hover:underline"
-                  >
-                    contact@connectaisolutions.com
-                  </a>
-                </p>
-              </section>
+          <div className="rounded-[28px] border border-emerald-100 bg-white p-6 shadow-[0_24px_70px_rgba(15,23,42,0.09)] sm:p-8 lg:p-10">
+            <div className="space-y-8">
+              {sections.map((section, index) => (
+                <section
+                  key={section.title}
+                  id={`section-${index + 1}`}
+                  className="scroll-mt-32 rounded-[22px] border border-slate-100 bg-slate-50/60 p-5 transition hover:border-emerald-200 hover:bg-emerald-50/45 sm:p-6"
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#0f8f5f] text-sm font-semibold text-white shadow-[0_12px_26px_rgba(15,143,95,0.22)]">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <h2 className="text-xl font-semibold text-slate-950">{section.title}</h2>
+                      <div className="mt-3 space-y-3 text-base leading-7 text-slate-600">
+                        {section.body.map((paragraph) =>
+                          paragraph.includes("hello@teloai.app") ? (
+                            <p key={paragraph}>
+                              For questions about these Terms and Conditions, contact Telo AI at{" "}
+                              <a className="font-semibold text-[#0f8f5f] hover:underline" href="mailto:hello@teloai.app">
+                                hello@teloai.app
+                              </a>
+                              .
+                            </p>
+                          ) : (
+                            <p key={paragraph}>{paragraph}</p>
+                          ),
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              ))}
             </div>
           </div>
-        </div>
+        </section>
       </main>
 
-      {/* Footer */}
       <SiteFooter />
     </div>
-  );
-}
-
-function getSectionTitle(section: number): string {
-  const titles = {
-    1: "Agreement",
-    2: "Services",
-    3: "Client Responsibilities",
-    4: "Intellectual Property",
-    5: "Service Level Agreements",
-    6: "Limitations of Liability",
-    7: "Termination",
-    8: "Governing Law",
-    9: "Modifications",
-    10: "Entire Agreement",
-    11: "Contact",
-  };
-  return titles[section as keyof typeof titles];
+  )
 }
