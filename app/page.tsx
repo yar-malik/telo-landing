@@ -134,7 +134,7 @@ function LogoMark() {
   return (
     <div className="flex items-center gap-3" aria-label="Telo AI">
       <Image
-        src="/images/logo.png"
+        src="/images/logo-green.png"
         alt="Telo AI"
         width={185}
         height={64}

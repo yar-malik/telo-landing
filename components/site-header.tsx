@@ -13,23 +13,24 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: "#use-cases", label: "Use Cases" },
-    { href: "#features", label: "Features" },
-    { href: "#saudi", label: "Saudi Arabic" },
-    { href: "#faq", label: "FAQ" },
+    { href: "/#use-cases", label: "Use Cases" },
+    { href: "/#features", label: "Features" },
+    { href: "/#saudi", label: "Saudi Arabic" },
+    { href: "/faq", label: "FAQ" },
   ];
 
   return (
     <>
-      <header className="w-full px-6 md:px-12 py-3 flex justify-between items-center sticky top-0 z-50 bg-purple-50/70 backdrop-blur-md backdrop-saturate-150">
+      <header className="sticky top-0 z-50 w-full px-4 py-4">
+        <div className="mx-auto flex max-w-[1152px] items-center justify-between rounded-[28px] border border-emerald-100/80 bg-white/85 px-4 py-3 shadow-[0_18px_60px_rgba(15,23,42,0.10)] backdrop-blur-xl md:px-6">
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/logo.png"
-              alt="ConnectAI Solutions Logo"
-              width={180}
-              height={180}
-              className="h-[50px] w-auto"
+              src="/images/logo-green.png"
+              alt="Telo AI"
+              width={185}
+              height={64}
+              className="h-11 w-auto object-contain"
               priority
             />
           </Link>
@@ -43,8 +44,8 @@ export function SiteHeader() {
               <Link
                 key={href}
                 href={href}
-                className={`font-medium px-2 py-1 rounded transition-colours ${
-                  isActive ? "text-primary" : "text-gray-700"
+                className={`rounded px-2 py-1 font-medium transition-colors ${
+                  isActive ? "text-[#0f8f5f]" : "text-slate-600 hover:text-slate-950"
                 }`}
               >
                 {label}
@@ -57,7 +58,7 @@ export function SiteHeader() {
           <a
             target="_blank"
             href={CALENDLY_LINK}
-            className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colours"
+            className="rounded-[13px] bg-[#0f8f5f] px-5 py-2.5 font-semibold text-white shadow-[0_14px_34px_rgba(15,143,95,0.25)] transition hover:-translate-y-0.5 hover:bg-[#0b744d]"
             rel="noreferrer"
           >
             Book a call
@@ -66,13 +67,18 @@ export function SiteHeader() {
 
         {/* Mobile menu button */}
         <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)}>
+          <button
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="grid h-10 w-10 place-items-center rounded-full text-slate-700"
+          >
             {menuOpen ? (
               <X className="w-6 h-6" />
             ) : (
               <Menu className="w-6 h-6" />
             )}
           </button>
+        </div>
         </div>
       </header>
       <AnimatePresence>
@@ -89,7 +95,7 @@ export function SiteHeader() {
 
             {/* Sidebar mobile menu */}
             <motion.div
-              className="fixed top-0 left-0 w-80 h-full bg-white shadow-xl z-50 flex flex-col md:hidden"
+              className="fixed left-0 top-0 z-50 flex h-full w-80 flex-col bg-white shadow-xl md:hidden"
               initial={{ x: -320 }}
               animate={{ x: 0 }}
               exit={{ x: -320 }}
@@ -97,8 +103,8 @@ export function SiteHeader() {
             >
               <div className="flex justify-between items-center p-6 border-b border-gray-100">
                 <Image
-                  src="/images/logo.png"
-                  alt="ConnectAI Solutions Logo"
+                  src="/images/logo-green.png"
+                  alt="Telo AI"
                   width={150}
                   height={50}
                   className="h-[40px] w-auto"
@@ -127,8 +133,8 @@ export function SiteHeader() {
                         onClick={() => setMenuOpen(false)}
                         className={`block text-lg font-medium py-3 px-4 rounded-lg transition-colors ${
                           isActive
-                            ? "text-primary bg-purple-50"
-                            : "text-gray-700 hover:text-primary hover:bg-gray-50"
+                            ? "bg-emerald-50 text-[#0f8f5f]"
+                            : "text-gray-700 hover:bg-emerald-50 hover:text-[#0f8f5f]"
                         }`}
                       >
                         {label}
@@ -142,7 +148,7 @@ export function SiteHeader() {
                 <motion.a
                   target="_blank"
                   href={CALENDLY_LINK}
-                  className="block w-full text-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                  className="block w-full rounded-lg bg-[#0f8f5f] px-6 py-3 text-center font-medium text-white transition-colors hover:bg-[#0b744d]"
                   rel="noreferrer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

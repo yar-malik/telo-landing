@@ -5,7 +5,7 @@ import React from 'react'
 
 const Page = () => {
   return (
-    <div className='bg-blue-50'>
+    <div className='min-h-screen bg-[#f7fbf8] text-slate-950'>
       <SiteHeader />
       <FaqSection />
       <SiteFooter />
