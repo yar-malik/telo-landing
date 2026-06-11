@@ -22,6 +22,6 @@ server {
     }
 
     location / {
-        try_files $uri $uri.html $uri/ /index.html;
+        try_files $uri $uri.html $uri/ =404;
     }
 }
