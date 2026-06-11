@@ -22,9 +22,9 @@ const FaqSection = () => {
         "Yes, we offer CRM/ATS integrations to sync all call data and notes",
     },
     {
-      question: "What happens after my free trial ends?",
+      question: "How do commercial packages work?",
       answer:
-        "You can choose from one of our paid plans starting at £99/month or upgrade to a custom Enterprise plan.",
+        "We tailor each package around your call volume, workflows, and rollout needs so Saudi teams get the best prices for production use.",
     },
   ];
   return (

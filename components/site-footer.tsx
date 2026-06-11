@@ -151,14 +151,6 @@ export function SiteFooter() {
               <ul className="space-y-3">
                 <li>
                   <Link
-                    href="/pricing"
-                    className="text-gray-800 hover:text-black transition-colors"
-                  >
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link
                     href="/blog"
                     className="text-gray-800 hover:text-black transition-colors"
                   >

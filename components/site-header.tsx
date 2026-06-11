@@ -13,10 +13,9 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
-    // { href: "#pricing", label: "Pricing" },
     { href: "#use-cases", label: "Use Cases" },
     { href: "#features", label: "Features" },
-    { href: "#team", label: "Our Team" },
+    { href: "#saudi", label: "Saudi Arabic" },
     { href: "#faq", label: "FAQ" },
      { href: "https://dashboard.teloai.app/login?redirect=%2F", label: "Login" },
   ];
