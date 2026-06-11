@@ -115,7 +115,7 @@ export default function TermsAndConditionsPage() {
                   <li>
                     <span className="font-medium">Access and security:</span>{" "}
                     Clients are responsible for maintaining the security of
-                    their accounts and any login credentials.
+                    any approved access details or integration credentials.
                   </li>
                   <li>
                     <span className="font-medium">

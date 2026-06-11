@@ -35,7 +35,6 @@ import { useState } from "react";
 import { CALENDLY_LINK } from "@/constants";
 
 const contactEmails = ["hello@teloai.app", "support@teloai.app"];
-const LOGIN_LINK = "https://dashboard.teloai.app/login?redirect=%2F";
 
 const capabilities = [
   {
@@ -191,12 +190,6 @@ function Header({
             {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
           <Link
-            href={LOGIN_LINK}
-            className="rounded-[13px] border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 dark:border-[#3340ff]/60 dark:text-white dark:hover:bg-white/8"
-          >
-            Login
-          </Link>
-          <Link
             href={CALENDLY_LINK}
             className="rounded-[13px] bg-[#0f8f5f] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(15,143,95,0.25)] transition hover:-translate-y-0.5 hover:bg-[#0b744d]"
           >
@@ -227,16 +220,13 @@ function Header({
               </Link>
             ))}
           </nav>
-          <div className="mt-3 grid grid-cols-3 gap-3">
+          <div className="mt-3 grid grid-cols-2 gap-3">
             <button
               onClick={onToggleTheme}
               className="rounded-2xl border border-slate-200 px-3 py-3 text-center text-sm dark:border-white/12"
             >
               {isDark ? "Light mode" : "Dark mode"}
             </button>
-            <Link href={LOGIN_LINK} className="rounded-2xl border border-slate-200 px-3 py-3 text-center text-sm font-semibold dark:border-white/12">
-              Login
-            </Link>
             <Link href={CALENDLY_LINK} className="rounded-2xl bg-[#0f8f5f] px-3 py-3 text-center text-sm font-semibold text-white">
               Book a call
             </Link>
@@ -557,9 +547,6 @@ function Footer() {
             <Link href={CALENDLY_LINK} className="text-slate-600 transition hover:text-slate-950 dark:text-white/72 dark:hover:text-white">
               Book a call
             </Link>
-            <Link href={LOGIN_LINK} className="text-slate-600 transition hover:text-slate-950 dark:text-white/72 dark:hover:text-white">
-              Login
-            </Link>
             <Link href="/faq" className="text-slate-600 transition hover:text-slate-950 dark:text-white/72 dark:hover:text-white">
               FAQ
             </Link>
@@ -654,7 +641,7 @@ export default function Home() {
             <div className="saudi-float relative min-h-[360px] overflow-hidden rounded-[32px] border border-emerald-200 bg-slate-950 shadow-[0_30px_90px_rgba(15,23,42,0.12)] dark:border-white/10">
               <Image
                 src="/hero_image.png"
-                alt="Telo AI operations dashboard"
+                alt="Telo AI operations view"
                 fill
                 sizes="(min-width: 1024px) 680px, 100vw"
                 className="object-contain object-center p-4 opacity-90"

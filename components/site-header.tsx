@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { CALENDLY_LINK, DASHBOARD_PAGE_LINK } from "@/constants";
+import { CALENDLY_LINK } from "@/constants";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -17,7 +17,6 @@ export function SiteHeader() {
     { href: "#features", label: "Features" },
     { href: "#saudi", label: "Saudi Arabic" },
     { href: "#faq", label: "FAQ" },
-     { href: "https://dashboard.teloai.app/login?redirect=%2F", label: "Login" },
   ];
 
   return (
@@ -142,13 +141,13 @@ export function SiteHeader() {
               <div className="p-6 border-t border-gray-100">
                 <motion.a
                   target="_blank"
-                  href={DASHBOARD_PAGE_LINK}
+                  href={CALENDLY_LINK}
                   className="block w-full text-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors"
                   rel="noreferrer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Start Now
+                  Book a call
                 </motion.a>
               </div>
             </motion.div>
