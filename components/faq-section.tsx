@@ -1,6 +1,16 @@
 "use client";
 
-import { ChevronDown, MessageCircleQuestion, Sparkles } from "lucide-react";
+import { CALENDLY_LINK } from "@/constants";
+import {
+  ArrowUpRight,
+  ChevronDown,
+  Clock3,
+  Mail,
+  MessageCircleQuestion,
+  PhoneCall,
+  Sparkles,
+} from "lucide-react";
+import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -28,57 +38,101 @@ const FaqSection = () => {
     },
   ];
   return (
-    <section id="faq" className="relative overflow-hidden px-4 py-20 sm:py-24">
-      <div className="pointer-events-none absolute left-1/2 top-12 h-[620px] w-[620px] -translate-x-1/2 rounded-full border border-dashed border-emerald-200" />
-      <div className="pointer-events-none absolute right-[-180px] top-28 h-96 w-96 rounded-full border border-amber-200/80" />
+    <section id="faq" className="relative overflow-hidden px-4 pb-20 pt-12 sm:pb-24 sm:pt-16">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(15,143,95,0.06)_1px,transparent_1px),linear-gradient(0deg,rgba(15,23,42,0.04)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      <div className="pointer-events-none absolute left-0 top-0 h-96 w-[42vw] bg-emerald-100/55" style={{ clipPath: "polygon(0 0, 78% 0, 48% 100%, 0 100%)" }} />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-[420px] w-[36vw] bg-amber-100/55" style={{ clipPath: "polygon(34% 0, 100% 18%, 100% 100%, 0 100%)" }} />
 
-      <div className="relative mx-auto mb-16 max-w-4xl text-center">
-        <div className="mx-auto mb-7 inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-emerald-700 shadow-sm">
-          <Sparkles className="h-3.5 w-3.5" />
-          Telo answers
-        </div>
-        <h2 className="text-4xl font-semibold leading-tight text-slate-950 sm:text-5xl lg:text-6xl">
-          Questions before we book your first call
-        </h2>
-        <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
-          A quick view of how Telo works with Saudi teams, Arabic voice flows,
-          and meeting-led onboarding.
-        </p>
-      </div>
+      <div className="relative mx-auto grid max-w-[1152px] gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+          className="lg:sticky lg:top-32"
+        >
+          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#0f8f5f] shadow-sm">
+            <Sparkles className="h-3.5 w-3.5" />
+            FAQ
+          </div>
+          <h1 className="mt-7 max-w-xl text-4xl font-semibold leading-[1.05] text-slate-950 sm:text-5xl lg:text-6xl">
+            Answers before your first Telo call.
+          </h1>
+          <p className="mt-6 max-w-lg text-base leading-8 text-slate-600 sm:text-lg">
+            Everything Saudi teams usually ask about voice setup, workflows,
+            CRM handoff, and commercial rollout.
+          </p>
 
-      <div className="relative mx-auto max-w-4xl space-y-4 sm:space-y-5">
-        {faqs.map((faq, idx) => (
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.45,
-              delay: 0.1 + idx * 0.15,
-            }}
-            key={faq.question}
-          >
-            <details
-              className="group rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_18px_54px_rgba(15,23,42,0.07)] transition hover:-translate-y-0.5 hover:shadow-[0_26px_70px_rgba(15,23,42,0.10)] sm:p-7"
-              open={idx === 0}
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+            <Link
+              href={CALENDLY_LINK}
+              className="group flex items-center justify-between rounded-[20px] bg-[#0f8f5f] px-5 py-4 font-semibold text-white shadow-[0_18px_42px_rgba(15,143,95,0.25)] transition hover:-translate-y-0.5 hover:bg-[#0b744d]"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-left text-base font-semibold text-slate-950 outline-none sm:text-xl">
-                <span className="flex items-center gap-4">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[15px] bg-emerald-50 text-[#0f8f5f]">
-                    <MessageCircleQuestion className="h-5 w-5" />
+              <span className="flex items-center gap-3">
+                <PhoneCall className="h-5 w-5" />
+                Book a call
+              </span>
+              <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+            <a
+              href="mailto:hello@teloai.app"
+              className="flex items-center justify-between rounded-[20px] border border-slate-200 bg-white/90 px-5 py-4 font-semibold text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200 hover:text-[#0f8f5f]"
+            >
+              <span className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-[#0f8f5f]" />
+                hello@teloai.app
+              </span>
+            </a>
+          </div>
+
+          <div className="mt-6 rounded-[24px] border border-emerald-100 bg-white/80 p-5 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur">
+            <div className="flex items-center gap-3 text-sm font-semibold text-slate-950">
+              <span className="grid h-10 w-10 place-items-center rounded-2xl bg-emerald-50 text-[#0f8f5f]">
+                <Clock3 className="h-5 w-5" />
+              </span>
+              Typical onboarding
+            </div>
+            <p className="mt-4 text-sm leading-7 text-slate-600">
+              Most pilots start with one workflow, approved scripts, and a
+              short calibration cycle before production calls.
+            </p>
+          </div>
+        </motion.div>
+
+        <div className="space-y-4">
+          {faqs.map((faq, idx) => (
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.45,
+                delay: 0.08 + idx * 0.08,
+              }}
+              key={faq.question}
+            >
+              <details
+                className="group rounded-[26px] border border-slate-200/90 bg-white/95 p-4 shadow-[0_18px_54px_rgba(15,23,42,0.08)] backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-[0_26px_70px_rgba(15,23,42,0.11)] sm:p-5"
+                open={idx === 0}
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-[18px] text-left text-base font-semibold text-slate-950 outline-none sm:text-lg">
+                  <span className="flex min-w-0 items-center gap-4">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[16px] bg-slate-950 text-white transition group-open:bg-[#0f8f5f]">
+                      <MessageCircleQuestion className="h-5 w-5" />
+                    </span>
+                    <span className="leading-snug">{faq.question}</span>
                   </span>
-                  {faq.question}
-                </span>
-                <span className="ml-4 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-500 transition-transform group-open:rotate-180 group-open:border-emerald-200 group-open:text-[#0f8f5f]">
-                  <ChevronDown className="h-5 w-5" />
-                </span>
-              </summary>
-              <p className="mt-5 pl-0 text-sm leading-7 text-slate-600 sm:pl-[60px] sm:text-base">
-                {faq.answer}
-              </p>
-            </details>
-          </motion.div>
-        ))}
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 bg-white text-slate-500 transition group-open:rotate-180 group-open:border-emerald-200 group-open:bg-emerald-50 group-open:text-[#0f8f5f]">
+                    <ChevronDown className="h-5 w-5" />
+                  </span>
+                </summary>
+                <div className="mt-5 rounded-[20px] bg-slate-50 px-5 py-4 sm:ml-[60px]">
+                  <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                    {faq.answer}
+                  </p>
+                </div>
+              </details>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
