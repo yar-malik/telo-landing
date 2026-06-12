@@ -240,59 +240,9 @@ function Header({
 function TeloHeroBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,143,95,0.07)_1px,transparent_1px),linear-gradient(0deg,rgba(15,23,42,0.045)_1px,transparent_1px)] bg-[size:72px_72px] opacity-70 dark:bg-[linear-gradient(90deg,rgba(52,211,153,0.08)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.045)_1px,transparent_1px)]" />
-      <div className="absolute left-0 top-0 h-[520px] w-[42vw] bg-emerald-100/45 dark:bg-emerald-400/[0.035]" style={{ clipPath: "polygon(0 0, 74% 0, 48% 100%, 0 100%)" }} />
-      <div className="absolute right-0 top-24 h-[460px] w-[34vw] bg-amber-100/45 dark:bg-amber-300/[0.035]" style={{ clipPath: "polygon(38% 0, 100% 0, 100% 100%, 0 82%)" }} />
-      <div className="absolute left-[7%] top-[28%] hidden h-[216px] w-[360px] border-l border-t border-emerald-300/50 bg-white/20 dark:border-emerald-300/10 dark:bg-white/[0.015] md:block" style={{ clipPath: "polygon(0 0, 100% 18%, 86% 100%, 0 78%)" }} />
-      <div className="absolute right-[8%] top-[54%] hidden h-[180px] w-[310px] border-r border-b border-slate-300/50 bg-white/25 dark:border-white/10 dark:bg-white/[0.018] lg:block" style={{ clipPath: "polygon(12% 0, 100% 16%, 100% 100%, 0 82%)" }} />
-      <svg
-        className="absolute left-1/2 top-40 h-[360px] w-[min(960px,110vw)] -translate-x-1/2 text-[#0f8f5f] opacity-55 dark:opacity-30"
-        viewBox="0 0 960 360"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M0 188H130C178 188 192 132 238 132C287 132 300 228 352 228C412 228 423 86 484 86C548 86 565 272 632 272C688 272 704 162 760 162H960"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeDasharray="8 12"
-        />
-        <path
-          d="M60 238H186C238 238 256 198 302 198C352 198 368 278 420 278C476 278 500 148 562 148C624 148 644 222 704 222H900"
-          stroke="currentColor"
-          strokeWidth="1.4"
-          strokeLinecap="round"
-          opacity="0.55"
-        />
-        {[
-          [132, 188],
-          [238, 132],
-          [484, 86],
-          [632, 272],
-          [760, 162],
-        ].map(([cx, cy]) => (
-          <rect key={`${cx}-${cy}`} x={cx - 5} y={cy - 5} width="10" height="10" rx="2" fill="currentColor" />
-        ))}
-      </svg>
-      <div className="absolute left-[13%] top-[62%] grid grid-cols-5 gap-2 opacity-70 dark:opacity-35">
-        {Array.from({ length: 20 }).map((_, index) => (
-          <span
-            key={index}
-            className="h-1.5 w-1.5 rounded-[2px] bg-[#0f8f5f]"
-            style={{ opacity: 0.22 + ((index % 5) * 0.12) }}
-          />
-        ))}
-      </div>
-      <div className="absolute right-[12%] top-[22%] hidden w-48 grid-cols-8 gap-1.5 opacity-60 dark:opacity-30 sm:grid">
-        {Array.from({ length: 48 }).map((_, index) => (
-          <span
-            key={index}
-            className="h-1 w-4 rounded-[1px] bg-slate-400 dark:bg-white/50"
-            style={{ opacity: index % 3 === 0 ? 0.55 : 0.18 }}
-          />
-        ))}
-      </div>
+      <div className="absolute left-0 top-0 h-[520px] w-[42vw] bg-emerald-100/35 dark:bg-emerald-400/[0.025]" style={{ clipPath: "polygon(0 0, 70% 0, 42% 100%, 0 100%)" }} />
+      <div className="absolute right-0 top-28 h-[420px] w-[30vw] bg-amber-100/30 dark:bg-amber-300/[0.025]" style={{ clipPath: "polygon(42% 0, 100% 0, 100% 100%, 0 86%)" }} />
+      <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-white/70 to-transparent dark:from-[#050608]/70" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#f7fbf8] to-transparent dark:from-[#050608]" />
     </div>
   );
