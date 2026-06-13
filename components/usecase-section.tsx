@@ -69,7 +69,7 @@ export default function UseCaseSection() {
           "Automate ticket triage, route calls to the right teams, and deliver faster first-response times for customers.",
       },
       {
-        icon: <Heart className="h-8 w-8 text-yellow-500" />,
+        icon: <Heart className="h-8 w-8 text-blue-500" />,
         title: "Wellbeing Companion",
         description:
           "Offer wellbeing support through calming exercises, active listening, and employee mood tracking.",
@@ -101,13 +101,13 @@ export default function UseCaseSection() {
           "Call clients to confirm schedules, reschedule requests, and reduce no-shows.",
       },
       {
-        icon: <ShoppingCart className="h-8 w-8 text-green-600" />,
+        icon: <ShoppingCart className="h-8 w-8 text-violet-600" />,
         title: "Order Confirmation",
         description:
           "Deliver real-time updates on order statuses through various channels.",
       },
       {
-        icon: <Building2 className="h-8 w-8 text-yellow-500" />,
+        icon: <Building2 className="h-8 w-8 text-blue-500" />,
         title: "Concierge Service",
         description:
           "Provide tailored recommendations, book reservations, or share event updates.",
@@ -133,13 +133,13 @@ export default function UseCaseSection() {
           "Enhance patient care and simplify claims processes with intelligent, proactive, and always-available AI agents.",
       },
       {
-        icon: <Home className="h-8 w-8 text-green-600" />,
+        icon: <Home className="h-8 w-8 text-violet-600" />,
         title: "Real Estate & Retail Services",
         description:
           "Generate high-quality leads based on your criteria and boost conversions without expanding your team.",
       },
       {
-        icon: <Hotel className="h-8 w-8 text-yellow-500" />,
+        icon: <Hotel className="h-8 w-8 text-blue-500" />,
         title: "Hospitality & Entertainment",
         description:
           "Manage bookings, promote events, and engage customers with smooth, interactive communication.",
@@ -193,7 +193,7 @@ export default function UseCaseSection() {
                   className={cn(
                     "rounded-sm flex items-center gap-3 px-4 py-2",
                     activeTab === tab.value
-                      ? "text-orange-500 bg-white shadow border-[1px] border-gray-200"
+                      ? "text-violet-500 bg-white shadow border-[1px] border-gray-200"
                       : "text-slate-600"
                   )}
                 >

@@ -134,7 +134,7 @@ function LogoMark() {
   return (
     <div className="flex items-center gap-3" aria-label="Telo AI">
       <Image
-        src="/images/logo-green.png"
+        src="/images/logo.png"
         alt="Telo AI"
         width={185}
         height={64}
@@ -191,7 +191,7 @@ function Header({
           </button>
           <Link
             href={CALENDLY_LINK}
-            className="rounded-[13px] bg-[#0f8f5f] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(15,143,95,0.25)] transition hover:-translate-y-0.5 hover:bg-[#0b744d]"
+            className="rounded-[13px] bg-[#6b46c1] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(107,70,193,0.25)] transition hover:-translate-y-0.5 hover:bg-[#553c9a]"
           >
             Book a call
           </Link>
@@ -227,7 +227,7 @@ function Header({
             >
               {isDark ? "Light mode" : "Dark mode"}
             </button>
-            <Link href={CALENDLY_LINK} className="rounded-2xl bg-[#0f8f5f] px-3 py-3 text-center text-sm font-semibold text-white">
+            <Link href={CALENDLY_LINK} className="rounded-2xl bg-[#6b46c1] px-3 py-3 text-center text-sm font-semibold text-white">
               Book a call
             </Link>
           </div>
@@ -240,8 +240,8 @@ function Header({
 function TeloHeroBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute left-0 top-0 h-[520px] w-[42vw] bg-emerald-100/35 dark:bg-emerald-400/[0.025]" style={{ clipPath: "polygon(0 0, 70% 0, 42% 100%, 0 100%)" }} />
-      <div className="absolute right-0 top-28 h-[420px] w-[30vw] bg-amber-100/30 dark:bg-amber-300/[0.025]" style={{ clipPath: "polygon(42% 0, 100% 0, 100% 100%, 0 86%)" }} />
+      <div className="absolute left-0 top-0 h-[520px] w-[42vw] bg-violet-100/35 dark:bg-violet-400/[0.025]" style={{ clipPath: "polygon(0 0, 70% 0, 42% 100%, 0 100%)" }} />
+      <div className="absolute right-0 top-28 h-[420px] w-[30vw] bg-sky-100/30 dark:bg-sky-300/[0.025]" style={{ clipPath: "polygon(42% 0, 100% 0, 100% 100%, 0 86%)" }} />
       <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-white/70 to-transparent dark:from-[#050608]/70" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#f7fbf8] to-transparent dark:from-[#050608]" />
     </div>
@@ -261,7 +261,7 @@ function SectionHeading({
     <div className="mx-auto max-w-4xl text-center">
       {eyebrow ? (
         <div className="mx-auto mb-7 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.34em] text-slate-500 shadow-sm dark:border-white/12 dark:bg-white/[0.04] dark:text-white/62">
-          <Sparkles className="h-3.5 w-3.5 text-[#0f8f5f]" />
+          <Sparkles className="h-3.5 w-3.5 text-[#6b46c1]" />
           {eyebrow}
         </div>
       ) : null}
@@ -283,8 +283,8 @@ function Visual({ type }: { type: string }) {
       <div className="relative h-52 overflow-hidden rounded-2xl bg-slate-50 dark:bg-white/[0.025]">
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,23,42,0.08)_1px,transparent_1px),linear-gradient(0deg,rgba(15,23,42,0.06)_1px,transparent_1px)] bg-[size:44px_44px] opacity-50 dark:bg-[linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.05)_1px,transparent_1px)]" />
         <svg viewBox="0 0 320 190" className="absolute inset-0 h-full w-full">
-          <path d="M24 144 C70 104 96 128 132 104 C170 78 186 128 224 68 C250 28 272 66 304 28" fill="none" stroke="#0f8f5f" strokeWidth="5" />
-          <circle cx="224" cy="68" r="10" fill="#0f8f5f" />
+          <path d="M24 144 C70 104 96 128 132 104 C170 78 186 128 224 68 C250 28 272 66 304 28" fill="none" stroke="#6b46c1" strokeWidth="5" />
+          <circle cx="224" cy="68" r="10" fill="#6b46c1" />
         </svg>
       </div>
     );
@@ -298,7 +298,7 @@ function Visual({ type }: { type: string }) {
             <p className="text-sm font-semibold text-slate-700 dark:text-white/75">{label}</p>
             <div className="mt-5 h-3 rounded-full bg-slate-200 dark:bg-white/12" />
             <div className="mt-3 h-3 w-3/4 rounded-full bg-slate-100 dark:bg-white/10" />
-            {index === 0 ? <ArrowRight className="ml-auto mt-8 h-5 w-5 text-[#0f8f5f]" /> : null}
+            {index === 0 ? <ArrowRight className="ml-auto mt-8 h-5 w-5 text-[#6b46c1]" /> : null}
           </div>
         ))}
       </div>
@@ -308,10 +308,10 @@ function Visual({ type }: { type: string }) {
   if (type === "pulse") {
     return (
       <div className="grid h-52 place-items-center">
-        <div className="relative grid h-28 w-28 place-items-center rounded-full bg-[#0f8f5f]/10">
-          <span className="absolute h-40 w-40 rounded-full border border-[#0f8f5f]/15" />
-          <span className="absolute h-56 w-56 rounded-full border border-[#0f8f5f]/8" />
-          <BadgeCheck className="h-12 w-12 text-[#0f8f5f]" />
+        <div className="relative grid h-28 w-28 place-items-center rounded-full bg-[#6b46c1]/10">
+          <span className="absolute h-40 w-40 rounded-full border border-[#6b46c1]/15" />
+          <span className="absolute h-56 w-56 rounded-full border border-[#6b46c1]/8" />
+          <BadgeCheck className="h-12 w-12 text-[#6b46c1]" />
         </div>
       </div>
     );
@@ -360,7 +360,7 @@ function CapabilitiesSection() {
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 text-slate-700 transition group-hover:bg-[#0f8f5f] group-hover:text-white dark:bg-white/8 dark:text-white">
+                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 text-slate-700 transition group-hover:bg-[#6b46c1] group-hover:text-white dark:bg-white/8 dark:text-white">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="text-xl font-semibold text-slate-950 dark:text-white">{feature.title}</h3>
@@ -396,7 +396,7 @@ function ProductsSection() {
               <div className="mt-8 grid gap-6">
                 {product.points.map((point) => (
                   <div key={point} className="flex gap-4">
-                    <span className="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-400/12 dark:text-emerald-300">
+                    <span className="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-violet-100 text-violet-700 dark:bg-violet-400/12 dark:text-violet-300">
                       <Check className="h-4 w-4" />
                     </span>
                     <p className="text-slate-700 dark:text-white/72">{point}</p>
@@ -428,7 +428,7 @@ function IndustriesSection() {
             const Icon = industry.icon;
             return (
               <article key={industry.title} className="group min-h-44 rounded-[22px] border border-slate-200 bg-white p-6 shadow-[0_14px_46px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(15,23,42,0.10)] dark:border-white/10 dark:bg-white/[0.025] dark:shadow-none">
-                <div className="grid h-12 w-12 place-items-center rounded-[14px] border border-slate-200 bg-slate-50 text-slate-700 transition group-hover:border-[#0f8f5f] group-hover:bg-[#0f8f5f] group-hover:text-white dark:border-white/12 dark:bg-white/[0.07] dark:text-white">
+                <div className="grid h-12 w-12 place-items-center rounded-[14px] border border-slate-200 bg-slate-50 text-slate-700 transition group-hover:border-[#6b46c1] group-hover:bg-[#6b46c1] group-hover:text-white dark:border-white/12 dark:bg-white/[0.07] dark:text-white">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-7 text-xl font-semibold text-slate-950 dark:text-white">{industry.title}</h3>
@@ -457,7 +457,7 @@ function SaudiAdvantageSection() {
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_1.1fr]">
-          <div className="relative overflow-hidden rounded-[28px] border border-emerald-200 bg-[#0f8f5f] p-7 text-white shadow-[0_30px_80px_rgba(15,143,95,0.22)] dark:border-emerald-300/20 sm:p-9">
+          <div className="relative overflow-hidden rounded-[28px] border border-violet-200 bg-[#6b46c1] p-7 text-white shadow-[0_30px_80px_rgba(107,70,193,0.22)] dark:border-violet-300/20 sm:p-9">
             <div className="saudi-scan absolute -right-24 -top-24 h-72 w-72 rounded-full border border-white/20" />
             <div className="relative">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/75">
@@ -491,7 +491,7 @@ function SaudiAdvantageSection() {
                   className="group flex gap-5 rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_54px_rgba(15,23,42,0.07)] transition hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(15,23,42,0.11)] dark:border-white/10 dark:bg-white/[0.035] dark:shadow-none"
                   style={{ animationDelay: `${index * 120}ms` }}
                 >
-                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-[16px] bg-emerald-50 text-[#0f8f5f] transition group-hover:bg-[#0f8f5f] group-hover:text-white dark:bg-emerald-400/10">
+                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-[16px] bg-violet-50 text-[#6b46c1] transition group-hover:bg-[#6b46c1] group-hover:text-white dark:bg-violet-400/10">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -587,12 +587,12 @@ export default function Home() {
             <Heart className="h-4 w-4 fill-rose-500 text-rose-500" />
             Made with Love in Riyadh
           </div>
-          <div className="mb-7 inline-flex flex-wrap items-center justify-center gap-3 text-sm font-semibold text-emerald-800 dark:text-emerald-200">
-            <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 dark:bg-emerald-400/10">
+          <div className="mb-7 inline-flex flex-wrap items-center justify-center gap-3 text-sm font-semibold text-violet-800 dark:text-violet-200">
+            <span className="inline-flex items-center gap-2 rounded-full bg-violet-50 px-4 py-2 dark:bg-violet-400/10">
               <MapPin className="h-4 w-4" />
               Saudi-first
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-2 text-amber-800 dark:bg-amber-400/10 dark:text-amber-200">
+            <span className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-4 py-2 text-sky-700 dark:bg-sky-400/10 dark:text-sky-200">
               <Building2 className="h-4 w-4" />
               Built for local operations
             </span>
@@ -605,7 +605,7 @@ export default function Home() {
             WhatsApp, and gives your team clean summaries across Arabic and English.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Link href={CALENDLY_LINK} className="inline-flex items-center justify-center gap-3 rounded-[14px] bg-[#0f8f5f] px-6 py-3.5 font-semibold text-white shadow-[0_18px_42px_rgba(15,143,95,0.22)] transition hover:-translate-y-0.5 hover:bg-[#0b744d]">
+            <Link href={CALENDLY_LINK} className="inline-flex items-center justify-center gap-3 rounded-[14px] bg-[#6b46c1] px-6 py-3.5 font-semibold text-white shadow-[0_18px_42px_rgba(107,70,193,0.22)] transition hover:-translate-y-0.5 hover:bg-[#553c9a]">
               Book a call
               <ArrowRight className="h-4 w-4" />
             </Link>

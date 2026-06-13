@@ -22,11 +22,11 @@ export function SiteHeader() {
   return (
     <>
       <header className="sticky top-0 z-50 w-full px-4 py-4">
-        <div className="mx-auto flex max-w-[1152px] items-center justify-between rounded-[28px] border border-emerald-100/80 bg-white/85 px-4 py-3 shadow-[0_18px_60px_rgba(15,23,42,0.10)] backdrop-blur-xl md:px-6">
+        <div className="mx-auto flex max-w-[1152px] items-center justify-between rounded-[28px] border border-violet-100/80 bg-white/85 px-4 py-3 shadow-[0_18px_60px_rgba(15,23,42,0.10)] backdrop-blur-xl md:px-6">
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/logo-green.png"
+              src="/images/logo.png"
               alt="Telo AI"
               width={185}
               height={64}
@@ -45,7 +45,7 @@ export function SiteHeader() {
                 key={href}
                 href={href}
                 className={`rounded px-2 py-1 font-medium transition-colors ${
-                  isActive ? "text-[#0f8f5f]" : "text-slate-600 hover:text-slate-950"
+                  isActive ? "text-[#6b46c1]" : "text-slate-600 hover:text-slate-950"
                 }`}
               >
                 {label}
@@ -58,7 +58,7 @@ export function SiteHeader() {
           <a
             target="_blank"
             href={CALENDLY_LINK}
-            className="rounded-[13px] bg-[#0f8f5f] px-5 py-2.5 font-semibold text-white shadow-[0_14px_34px_rgba(15,143,95,0.25)] transition hover:-translate-y-0.5 hover:bg-[#0b744d]"
+            className="rounded-[13px] bg-[#6b46c1] px-5 py-2.5 font-semibold text-white shadow-[0_14px_34px_rgba(107,70,193,0.25)] transition hover:-translate-y-0.5 hover:bg-[#553c9a]"
             rel="noreferrer"
           >
             Book a call
@@ -103,7 +103,7 @@ export function SiteHeader() {
             >
               <div className="flex justify-between items-center p-6 border-b border-gray-100">
                 <Image
-                  src="/images/logo-green.png"
+                  src="/images/logo.png"
                   alt="Telo AI"
                   width={150}
                   height={50}
@@ -133,8 +133,8 @@ export function SiteHeader() {
                         onClick={() => setMenuOpen(false)}
                         className={`block text-lg font-medium py-3 px-4 rounded-lg transition-colors ${
                           isActive
-                            ? "bg-emerald-50 text-[#0f8f5f]"
-                            : "text-gray-700 hover:bg-emerald-50 hover:text-[#0f8f5f]"
+                            ? "bg-violet-50 text-[#6b46c1]"
+                            : "text-gray-700 hover:bg-violet-50 hover:text-[#6b46c1]"
                         }`}
                       >
                         {label}
@@ -148,7 +148,7 @@ export function SiteHeader() {
                 <motion.a
                   target="_blank"
                   href={CALENDLY_LINK}
-                  className="block w-full rounded-lg bg-[#0f8f5f] px-6 py-3 text-center font-medium text-white transition-colors hover:bg-[#0b744d]"
+                  className="block w-full rounded-lg bg-[#6b46c1] px-6 py-3 text-center font-medium text-white transition-colors hover:bg-[#553c9a]"
                   rel="noreferrer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

@@ -9,12 +9,12 @@ const contactEmails = ["hello@teloai.app", "support@teloai.app"];
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-emerald-100 bg-white px-4 py-14">
+    <footer className="border-t border-violet-100 bg-white px-4 py-14">
       <div className="mx-auto grid max-w-[1190px] gap-10 lg:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <Link href="/" aria-label="Telo AI home" className="inline-flex">
             <Image
-              src="/images/logo-green.png"
+              src="/images/logo.png"
               alt="Telo AI"
               width={185}
               height={64}
@@ -39,7 +39,7 @@ export function SiteFooter() {
                 href={`mailto:${email}`}
                 className="flex items-center gap-3 text-slate-600 transition hover:text-slate-950"
               >
-                <Mail className="h-4 w-4 text-[#0f8f5f]" />
+                <Mail className="h-4 w-4 text-[#6b46c1]" />
                 {email}
               </a>
             ))}
@@ -79,10 +79,10 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 flex max-w-[1190px] flex-col justify-between gap-4 border-t border-emerald-100 pt-8 text-sm text-slate-400 sm:flex-row">
+      <div className="mx-auto mt-12 flex max-w-[1190px] flex-col justify-between gap-4 border-t border-violet-100 pt-8 text-sm text-slate-400 sm:flex-row">
         <span>Copyright 2026 Telo AI. All rights reserved.</span>
         <span className="flex items-center gap-2">
-          <ShieldCheck className="h-4 w-4 text-[#0f8f5f]" />
+          <ShieldCheck className="h-4 w-4 text-[#6b46c1]" />
           Voice AI for always-on Saudi teams
         </span>
       </div>
