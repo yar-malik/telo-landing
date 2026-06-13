@@ -243,7 +243,7 @@ function TeloHeroBackground() {
       <div className="absolute left-0 top-0 h-[520px] w-[42vw] bg-violet-100/35 dark:bg-violet-400/[0.025]" style={{ clipPath: "polygon(0 0, 70% 0, 42% 100%, 0 100%)" }} />
       <div className="absolute right-0 top-28 h-[420px] w-[30vw] bg-sky-100/30 dark:bg-sky-300/[0.025]" style={{ clipPath: "polygon(42% 0, 100% 0, 100% 100%, 0 86%)" }} />
       <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-white/70 to-transparent dark:from-[#050608]/70" />
-      <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#f7fbf8] to-transparent dark:from-[#050608]" />
+      <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#f8f7ff] to-transparent dark:from-[#050608]" />
     </div>
   );
 }
@@ -570,7 +570,7 @@ export default function Home() {
   const [isDark, setIsDark] = useState(false);
 
   return (
-    <main className={`${isDark ? "dark bg-[#050608] text-white" : "bg-[#f7fbf8] text-slate-950"} min-h-screen overflow-hidden font-sans transition-colors duration-300`}>
+    <main className={`${isDark ? "dark bg-[#050608] text-white" : "bg-[#f8f7ff] text-slate-950"} min-h-screen overflow-hidden font-sans transition-colors duration-300`}>
       <style>{`
         @keyframes saudiScan {
           0% { transform: translate(-50%, 0) scale(0.88); opacity: 0.35; }

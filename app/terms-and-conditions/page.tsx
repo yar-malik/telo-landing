@@ -88,7 +88,7 @@ export default function TermsAndConditionsPage() {
   })
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f7fbf8] text-slate-950">
+    <div className="min-h-screen overflow-hidden bg-[#f8f7ff] text-slate-950">
       <SiteHeader />
 
       <main className="relative">
